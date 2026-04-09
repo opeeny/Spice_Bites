@@ -1,27 +1,27 @@
 <?php
 return [
     '@class' => 'Gantry\\Component\\Config\\CompiledConfig',
-    'timestamp' => 1775741897,
-    'checksum' => '59fcf5c68f5343d82b8e0d3e47192dab',
+    'timestamp' => 1775745774,
+    'checksum' => 'b5f19b654a8727ab1cdcf2ff82398009',
     'files' => [
         'templates/jl_redchili/custom/config/17' => [
             'index' => [
                 'file' => 'templates/jl_redchili/custom/config/17/index.yaml',
-                'modified' => 1775741629
+                'modified' => 1775745754
             ],
             'layout' => [
                 'file' => 'templates/jl_redchili/custom/config/17/layout.yaml',
-                'modified' => 1775741629
+                'modified' => 1775745754
             ]
         ],
         'templates/jl_redchili/custom/config/default' => [
             'index' => [
                 'file' => 'templates/jl_redchili/custom/config/default/index.yaml',
-                'modified' => 1775741629
+                'modified' => 1775745754
             ],
             'layout' => [
                 'file' => 'templates/jl_redchili/custom/config/default/layout.yaml',
-                'modified' => 1775741629
+                'modified' => 1775745754
             ]
         ],
         'templates/jl_redchili/config/default' => [
@@ -1666,7 +1666,7 @@ return [
         ],
         'index' => [
             'name' => 17,
-            'timestamp' => 1775741629,
+            'timestamp' => 1775745754,
             'version' => 7,
             'preset' => [
                 'image' => 'gantry-admin://images/layouts/default.png',
@@ -2137,7 +2137,7 @@ return [
                                 'icon' => 'fab fa-github',
                                 'text' => 'Github',
                                 'title' => '',
-                                'link' => '#',
+                                'link' => 'https://github.com/opeeny/Spice_Bites.git',
                                 'name' => 'GitHub'
                             ],
                             3 => [
@@ -2152,7 +2152,7 @@ return [
                 ],
                 'copyright-6042' => [
                     'attributes' => [
-                        'owner' => 'RedChili Joomla 6 Template by <a href="https://joomlead.com/" target="_blank">Joomlead</a>'
+                        'owner' => 'SPICE BITES  by <a href="#" target="_blank">BITES</a>'
                     ]
                 ]
             ]

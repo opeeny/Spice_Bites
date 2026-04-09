@@ -306,7 +306,7 @@ content:
           icon: 'fab fa-github'
           text: Github
           title: ''
-          link: '#'
+          link: 'https://github.com/opeeny/Spice_Bites.git'
           name: GitHub
         -
           icon: 'fab fa-instagram'

@@ -2,7 +2,7 @@
 return [
     '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
     'filename' => 'D:/Apache24/htdocs/Spice_Bites/templates/jl_redchili/custom/config/default/layout.yaml',
-    'modified' => 1775741629,
+    'modified' => 1775745754,
     'data' => [
         'version' => 2,
         'preset' => [
@@ -438,7 +438,7 @@ return [
                             'icon' => 'fab fa-github',
                             'text' => 'Github',
                             'title' => '',
-                            'link' => '#',
+                            'link' => 'https://github.com/opeeny/Spice_Bites.git',
                             'name' => 'GitHub'
                         ],
                         3 => [
@@ -453,7 +453,7 @@ return [
             ],
             'copyright-6042' => [
                 'attributes' => [
-                    'owner' => 'RedChili Joomla 6 Template by <a href="https://joomlead.com/" target="_blank">Joomlead</a>'
+                    'owner' => 'SPICE BITES  by <a href="#" target="_blank">BITES</a>'
                 ]
             ]
         ]

@@ -2,7 +2,7 @@
 return [
     '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
     'filename' => 'D:\\Apache24\\htdocs\\Spice_Bites/templates/jl_redchili/custom/config/16/layout.yaml',
-    'modified' => 1775742205,
+    'modified' => 1775745802,
     'data' => [
         'version' => 2,
         'preset' => [
@@ -436,8 +436,8 @@ return [
                         2 => [
                             'icon' => 'fab fa-github',
                             'text' => 'Github',
-                            'title' => '',
-                            'link' => '#',
+                            'title' => 'SPICE',
+                            'link' => 'https://github.com/opeeny/Spice_Bites.git',
                             'name' => 'GitHub'
                         ],
                         3 => [

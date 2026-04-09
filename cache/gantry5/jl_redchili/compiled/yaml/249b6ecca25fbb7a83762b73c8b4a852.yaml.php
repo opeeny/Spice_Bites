@@ -2,10 +2,10 @@
 return [
     '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
     'filename' => 'D:\\Apache24\\htdocs\\Spice_Bites/templates/jl_redchili/custom/config/17/index.yaml',
-    'modified' => 1775741629,
+    'modified' => 1775745754,
     'data' => [
         'name' => 17,
-        'timestamp' => 1775741629,
+        'timestamp' => 1775745754,
         'version' => 7,
         'preset' => [
             'image' => 'gantry-admin://images/layouts/default.png',

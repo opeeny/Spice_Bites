@@ -1,17 +1,17 @@
 <?php
 return [
     '@class' => 'Gantry\\Component\\Config\\CompiledConfig',
-    'timestamp' => 1775741645,
-    'checksum' => 'aec9e7534bf3f69cf1cf6bab7be483a7',
+    'timestamp' => 1775745743,
+    'checksum' => '7e151d86a79e23b7226624113c2e87e6',
     'files' => [
         'templates/jl_redchili/custom/config/default' => [
             'index' => [
                 'file' => 'templates/jl_redchili/custom/config/default/index.yaml',
-                'modified' => 1775741629
+                'modified' => 1775745740
             ],
             'layout' => [
                 'file' => 'templates/jl_redchili/custom/config/default/layout.yaml',
-                'modified' => 1775741629
+                'modified' => 1775745740
             ]
         ],
         'templates/jl_redchili/config/default' => [
@@ -1656,7 +1656,7 @@ return [
         ],
         'index' => [
             'name' => 'default',
-            'timestamp' => 1775741629,
+            'timestamp' => 1775745740,
             'version' => 7,
             'preset' => [
                 'image' => 'gantry-admin://images/layouts/default.png',
@@ -2174,7 +2174,7 @@ return [
                                 'icon' => 'fab fa-github',
                                 'text' => 'Github',
                                 'title' => '',
-                                'link' => '#',
+                                'link' => 'https://github.com/opeeny/Spice_Bites.git',
                                 'name' => 'GitHub'
                             ],
                             3 => [
@@ -2189,7 +2189,7 @@ return [
                 ],
                 'copyright-6042' => [
                     'attributes' => [
-                        'owner' => 'RedChili Joomla 6 Template by <a href="https://joomlead.com/" target="_blank">Joomlead</a>'
+                        'owner' => 'SPICE BITES  by <a href="#" target="_blank">BITES</a>'
                     ]
                 ]
             ]

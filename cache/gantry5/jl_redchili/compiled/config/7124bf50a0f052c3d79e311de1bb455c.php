@@ -1,27 +1,27 @@
 <?php
 return [
     '@class' => 'Gantry\\Component\\Config\\CompiledConfig',
-    'timestamp' => 1775742207,
-    'checksum' => '76d2d9b9431f79ed4c03e821ad9c17a3',
+    'timestamp' => 1775745804,
+    'checksum' => 'c0468e03d88b024789a8575f3407f1e0',
     'files' => [
         'templates/jl_redchili/custom/config/16' => [
             'index' => [
                 'file' => 'templates/jl_redchili/custom/config/16/index.yaml',
-                'modified' => 1775742205
+                'modified' => 1775745802
             ],
             'layout' => [
                 'file' => 'templates/jl_redchili/custom/config/16/layout.yaml',
-                'modified' => 1775742205
+                'modified' => 1775745802
             ]
         ],
         'templates/jl_redchili/custom/config/default' => [
             'index' => [
                 'file' => 'templates/jl_redchili/custom/config/default/index.yaml',
-                'modified' => 1775742135
+                'modified' => 1775745754
             ],
             'layout' => [
                 'file' => 'templates/jl_redchili/custom/config/default/layout.yaml',
-                'modified' => 1775742135
+                'modified' => 1775745754
             ]
         ],
         'templates/jl_redchili/config/default' => [
@@ -1666,7 +1666,7 @@ return [
         ],
         'index' => [
             'name' => '16',
-            'timestamp' => 1775742205,
+            'timestamp' => 1775745802,
             'version' => 7,
             'preset' => [
                 'image' => 'gantry-admin://images/layouts/default.png',
@@ -2182,8 +2182,8 @@ return [
                             2 => [
                                 'icon' => 'fab fa-github',
                                 'text' => 'Github',
-                                'title' => '',
-                                'link' => '#',
+                                'title' => 'SPICE',
+                                'link' => 'https://github.com/opeeny/Spice_Bites.git',
                                 'name' => 'GitHub'
                             ],
                             3 => [
