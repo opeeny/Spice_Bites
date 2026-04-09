@@ -1,0 +1,209 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+<style>.tm-video-item{position:relative}.jl-light .tm-video-player .btn-video{background-color: rgba(255,255,255,.15); color: rgba(255,255,255,.5);}.jl-light .tm-video-player .btn-video:before{border-color:rgba(255,255,255,0.65)}.btn-video{text-align:center;height:60px;width:60px;z-index:1;font-size:17px;color:#fff;border:0;border-radius:100%;display:inline-block;position:relative}.btn-video i{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:20px}.btn-video:hover{color:#fff}.btn-video .ripple,.btn-video .ripple:before,.btn-video .ripple:after{position:absolute;top:50%;left:50%;width:100px;height:100px;border-radius:50%;-ms-border-radius:50%;transform:translate(-50%,-50%);-ms-box-shadow:0 0 0 0 rgba(255,255,255,0.6);-o-box-shadow:0 0 0 0 rgba(255,255,255,0.6);box-shadow:0 0 0 0 rgba(255,255,255,0.6);-webkit-animation:ripple 3s infinite;animation:ripple 3s infinite}.tm-video-player{position:relative;line-height:1}.tm-video-player .btn-video{transition:all .5s ease;-moz-transition:all .5s ease;-webkit-transition:all .5s ease;-ms-transition:all .5s ease;-o-transition:all .5s ease}.tm-video-player .btn-video:before{content:"";position:absolute;left:-8px;top:-8px;right:-8px;bottom:-8px;border:1px solid rgba(0,0,0,0.3);border-radius:50%}.tm-video-player .btn-video:hover{background:#fff;}.tm-video-item:hover .btn-video{background:#fff}.btn-video .ripple:before{-webkit-animation-delay:.9s;animation-delay:.9s;content:"";position:absolute}.btn-video .ripple:after{-webkit-animation-delay:.6s;animation-delay:.6s;content:"";position:absolute}@-webkit-keyframes ripple{70%{box-shadow:0 0 0 40px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}@keyframes ripple{70%{box-shadow:0 0 0 40px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+{%- if particle.particle_title_color or particle.particle_title_fontsize %}
+#el-{{ id }}.g5-title { {% if particle.particle_title_color %}color: {{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size: {{particle.particle_title_fontsize}}px;{% endif %} }
+{% endif -%}
+{%- if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty %}#{{ id }}-particle .g-container {max-width: {{ particle.bg_container_width|e }};}{% endif -%}
+.tm-video-player .btn-video {background-color: {{ particle.button_background|default('#2d2d32')}};color: {{ particle.button_color|default('#ffffff')}};}.btn-video:hover {color: {{ particle.button_hover_color|default('#ffffff')}};}.tm-video-player .btn-video:hover {background: {{ particle.button_background_hover|default('#ffffff')}};}.tm-video-item:hover .btn-video i {color: {{ particle.icon_hover_color|default('#2d2d32')}};}</style>
+{% endblock %}
+
+{% block javascript %}
+{% if particle.popup_type == 'lightbox' %}
+<script src="{{ url('gantry-theme://js/jlcomponents/lightbox.min.js') }}"></script>
+<script src="{{ url('gantry-theme://js/jlcomponents/lightbox-panel.min.js') }}"></script>
+{% endif %}
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{% set image_dimensions = (particle.image_width ? ' width="' ~ particle.image_width ~ '"' : '') ~ (particle.image_height ? ' height="' ~ particle.image_height ~ '"' : '') %}
+{% set image_size = particle.image_width is empty and particle.image_height is empty and particle.posterimage ? ' ' ~ particle.posterimage|imagesize : '' %}
+
+{% set video_width = particle.video_frame_width ? ' width="' ~ particle.video_frame_width ~ '"' : '' %}
+{% set video_height = particle.video_frame_height ? ' height="' ~ particle.video_frame_height ~ '"' : '' %}
+
+{% if particle.source == 'youtube' %}
+{% set video_width = particle.video_frame_height and particle.video_frame_width is empty ? ' width="' ~ particle.video_frame_height * 16 // 9 ~ '"' : video_width %}
+{% set video_height = particle.video_frame_width and particle.video_frame_height is empty ? ' height="' ~ particle.video_frame_width * 9 // 16 ~ '"' : video_height %}
+{% endif %}
+
+{% set controls = particle.controls == 'enabled' ? ' controls' : '' %}
+{% set loop = particle.loop == 'enabled' ? ' loop' : '' %}
+{% set muted = particle.muted == 'enabled' ? ' muted' : '' %}
+{% set play_inline = particle.play_inline == 'enabled' ? ' playsinline' : '' %}
+{% set video_autoplay = particle.autoplay == 'on' ? ' autoplay' : '' %}
+
+{% set video_loading = particle.loading == 'lazy' ? ' preload' : '' %}
+
+{% set image_border_cls = particle.border != 'none' ? ' jl-border-' ~ particle.border|e : '' %}
+{% set img_box_shadow = particle.box_shadow != 'none' ? ' jl-box-shadow-' ~ particle.box_shadow|e : '' %}
+{% set img_box_shadow_hover = particle.box_shadow_hover != 'none' ? ' jl-box-shadow-hover-' ~ particle.box_shadow_hover|e : '' %}
+{% set video_boxshadow = particle.video_box_shadow != 'none' ? 'jl-box-shadow-' ~ particle.video_box_shadow|e : '' %}
+
+{% set image_transition = particle.image_transition != 'none' ? ' jl-transition-' ~ particle.image_transition|e ~ ' jl-transition-opaque' : '' %}
+{% set transition_attr = particle.image_transition != 'none' ? ' tabindex="0"' : '' %}
+{% set transition_cls = particle.image_transition != 'none' and particle.link_frame ? ' jl-transition-toggle' : '' %}
+
+{% set image_transition_cls = particle.image_transition != 'none' and not particle.link_frame ? ' jl-transition-toggle' : '' %}
+
+{# Set Link Frame html element #}
+{% set link_type = is_local ? 'video' : (is_youtube ? 'youtube' : 'vimeo') %}
+
+{% set link_frame_element = particle.link_frame ? 'a' : 'div' %}
+
+{# Overlay styling #}
+{% set overlay_padding_init = '' %}
+{% if particle.overlay_style == 'none' and particle.overlay_padding == 'default' %}
+    {% set overlay_padding_init = ' jl-padding' %}
+{% elseif particle.overlay_style == 'none' and particle.overlay_padding == 'remove' %}
+    {% set overlay_padding_init = '' %}
+{% elseif particle.overlay_padding != 'default' %}
+    {% set overlay_padding_init = ' jl-padding-' ~ particle.overlay_padding|e %}
+{% endif %}
+
+{% set overlay_margin_init = particle.overlay_style != 'none' and particle.overlay_margin != 'none' ? ' jl-position-' ~ particle.overlay_margin|e : '' %}
+{% set overlay_styles_int = particle.overlay_style != 'none' ? 'jl-overlay' : 'jl-panel' %}
+{% set image_loading = not particle.image_loading ? ' loading="lazy"' : '' %}
+{% set particle_classes = [
+    id,
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% set play_icon %}
+<i class="jl-icon" jl-icon="play; ratio: 2"><svg width="40" height="40" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polygon fill="none" stroke="#000" points="6.5,5 14.5,10 6.5,15"></polygon></svg></i>
+{% endset %}
+
+{% block particle %}
+{% if particle.enabled %}
+
+{# ── Computed once, reused below ─────────────────────────────────────────── #}
+{%- set is_local   = particle.source == 'local' -%}
+{%- set is_youtube = particle.source == 'youtube' -%}
+{%- set autoplay_on = particle.autoplay -%}
+
+{%- set youtube_id = particle.video|replace({
+    'https://www.youtube.com/watch?v=': '',
+    'http://www.youtube.com/watch?v=': '',
+    'https://www.youtube.com/watch?time_continue=3&v=': '',
+    'https://www.youtube.com/embed': '',
+    'https://www.youtube-nocookie.com/embed/': '',
+    'https://youtu.be/': '',
+    'http://youtu.be/': ''
+}) -%}
+
+{%- set vimeo_id = particle.video|replace({
+    'https://vimeo.com/': '',
+    'https://vimeo.com/ondemand/': '',
+    'https://vimeo.com/channels/staffpicks/': '',
+    'https://player.vimeo.com/video/': ''
+}) -%}
+
+{%- set video_init = particle.autoplay in ['inview', 'hover'] ? ' jl-video="autoplay: '~ particle.autoplay|e ~';"' : ' jl-video' -%}
+{%- set yt_params = autoplay_on ? '?rel=0&autoplay=1&mute=1' : '' -%}
+{%- set vimeo_params = autoplay_on ? '?autoplay=1&muted=1' : '' -%}
+
+{%- set is_modal    = particle.popup_type == 'modal' -%}
+{%- set is_lightbox = particle.popup_type == 'lightbox' -%}
+
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+
+<div id="{{ id }}" class="{{ particle_classes }}"{% if is_lightbox and (particle.posterimage or particle.link_button ) %} jl-lightbox="toggle: a[data-type]{{ particle.autoplay == 'on' ? '; video-autoplay: true;' : '' }}"{% endif %}{{ Macros.animation_render(particle, true)|raw }} {{- attr_extra|raw }}>
+
+{% if particle.posterimage or particle.link_button %}
+
+{# Link-frame opening tag #}
+{% if is_local %}
+    <{{ link_frame_element|raw }}{{ particle.link_frame and is_lightbox ? ' data-type="' ~ link_type ~ '"' : '' }} class="tm-video-item{{ particle.link_button ? '' : ' jl-inline-clip' }}{{ particle.link_frame ? ' jl-link-toggle' : '' }}{{ image_border_cls ~ img_box_shadow ~ img_box_shadow_hover ~ transition_cls }}"{% if particle.link_frame %}{% if is_modal %} href="#{{ id }}-modal" jl-toggle{% else %} href="{{ url(particle.local_video)|e }}"{% endif %}{{ transition_attr|raw }} aria-label="Open Video"{% endif %}>
+{% elseif is_youtube %}
+    <{{ link_frame_element|raw }}{{ particle.link_frame and is_lightbox ? ' data-type="' ~ link_type ~ '"' : '' }} class="tm-video-item{{ particle.link_button ? '' : ' jl-inline-clip' }}{{ particle.link_frame ? ' jl-link-toggle' : '' }}{{ image_border_cls ~ img_box_shadow ~ img_box_shadow_hover ~ transition_cls }}"{% if particle.link_frame %}{% if is_modal %} href="#{{ id }}-modal" jl-toggle{% else %} href="https://www.youtube.com/watch?v={{ youtube_id ~ yt_params }}"{% endif %}{{ transition_attr|raw }} aria-label="Open Video"{% endif %}>
+{% else %}
+    <{{ link_frame_element|raw }}{{ particle.link_frame and is_lightbox ? ' data-type="' ~ link_type ~ '"' : '' }} class="tm-video-item{{ particle.link_button ? '' : ' jl-inline-clip' }}{{ particle.link_frame ? ' jl-link-toggle' : '' }}{{ image_border_cls ~ img_box_shadow ~ img_box_shadow_hover ~ transition_cls }}"{% if particle.link_frame %}{% if is_modal %} href="#{{ id }}-modal" jl-toggle{% else %} href="https://vimeo.com/{{ vimeo_id ~ vimeo_params }}"{% endif %}{{ transition_attr|raw }} aria-label="Open Video"{% endif %}>
+{% endif %}
+
+{% if particle.posterimage and not particle.link_button %}
+    <img src="{{ url(particle.posterimage)|e }}"{{ image_dimensions|raw }}{{ image_size|raw }} alt="{{ particle.alt_text|default('Video poster image')|e }}" class="tm-image{{ image_transition }}"{{ image_loading|raw }}>
+    <div class="jl-position-cover{% if particle.overlay_style != 'none' %} {{ particle.overlay_style|e }}{% endif %}{{ overlay_margin_init|e }}"></div>
+{% endif %}
+
+{% if particle.link_button and particle.button_text %}
+    <div class="jl-child-width-expand jl-flex-middle jl-grid" jl-grid>
+        <div class="jl-width-1-4">
+            {% else %}
+    {% if particle.overlay_position in ['center', 'center-left', 'center-right', 'top-center', 'bottom-center'] %}
+    <div class="jl-position-{{ particle.overlay_position|e ~ overlay_margin_init|e }}">
+    {% endif %}
+    <div class="{{ overlay_styles_int|e ~ overlay_padding_init|e }}{% if particle.overlay_position not in ['center', 'center-left', 'center-right', 'top-center', 'bottom-center'] %} jl-position-{{ particle.overlay_position|e }}{{ overlay_margin_init|e }}{% endif %} jl-margin-remove-first-child">
+        {% endif %}
+        <div class="tm-video-player">
+            <div class="btn-video-wrap">
+                {% if particle.link_frame %}
+                    <span class="btn-video jl-icon-button" role="button" tabindex="0">{{ play_icon|raw }}{% if not particle.hide_ripple %}<i class="ripple"></i>{% endif %}</span>
+                {% elseif is_modal %}
+                    <a class="btn-video jl-icon-button" href="#{{ id }}-modal" jl-toggle aria-label="Open Video">{{ play_icon|raw }}{% if not particle.hide_ripple %}<i class="ripple"></i>{% endif %}</a>
+                {% elseif is_local %}
+                    <a data-type="video" class="btn-video jl-icon-button" href="{{ url(particle.local_video)|e }}" aria-label="Open Video">{{ play_icon|raw }}{% if not particle.hide_ripple %}<i class="ripple"></i>{% endif %}</a>
+                {% elseif is_youtube %}
+                    <a data-type="youtube" class="btn-video jl-icon-button" href="https://www.youtube.com/watch?v={{ youtube_id ~ yt_params }}" aria-label="Open Video">{{ play_icon|raw }}{% if not particle.hide_ripple %}<i class="ripple"></i>{% endif %}</a>
+                {% else %}
+                    <a data-type="vimeo" class="btn-video jl-icon-button" href="https://vimeo.com/{{ vimeo_id ~ vimeo_params }}" aria-label="Open Video">{{ play_icon|raw }}{% if not particle.hide_ripple %}<i class="ripple"></i>{% endif %}</a>
+                {% endif %}
+            </div>
+        </div>
+
+    {% if particle.link_button and particle.button_text %}
+        </div>
+        <div class="jl-margin-remove-first-child">
+            {{ particle.button_text|raw }}
+        </div>
+    </div>
+    {% else %}
+        </div>
+    {{ particle.overlay_position in ['center', 'center-left', 'center-right', 'top-center', 'bottom-center'] ? '</div>' : '' }}
+    {% endif %}
+
+{% if is_modal %}
+<div id="{{ id }}-modal" class="jl-flex-top" jl-modal>
+    <div class="jl-modal-dialog jl-width-auto{% if particle.centermodal %} jl-margin-auto-vertical{% endif %}">
+        <button class="jl-modal-close-{{ particle.close }}" type="button" jl-close aria-label="Close video"></button>
+        {% if is_local %}
+            <video{{ video_width|raw }}{{ video_height|raw }} src="{{ url(particle.local_video)|e }}"{{ controls ~ loop ~ muted ~ play_inline ~ video_autoplay }}{{ video_init|raw }}></video>
+        {% elseif is_youtube %}
+            <iframe{{ video_width|raw }}{{ video_height|raw }} src="https://www.youtube.com/embed/{{ youtube_id ~ yt_params }}" frameborder="0" allowfullscreen jl-responsive{{ muted }}{{ video_autoplay }} jl-video></iframe>
+        {% else %}
+            <iframe class="{{ video_boxshadow }}"{{ video_width|raw }}{{ video_height|raw }} src="https://player.vimeo.com/video/{{ vimeo_id ~ vimeo_params }}" frameborder="0" allowfullscreen jl-responsive{{ video_autoplay }}></iframe>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+</{{ link_frame_element|raw }}>
+
+{% else %}
+
+{% if is_local %}
+    <video {{ video_width|raw }}{{ video_height|raw }} src="{{ url(particle.local_video)|e }}"{{ controls ~ video_loading ~ loop ~ muted ~ play_inline ~ video_autoplay }}{{ video_init|raw }}></video>
+{% elseif is_youtube %}
+    <iframe{{ video_width|raw }}{{ video_height|raw }} class="{{ video_boxshadow }}" src="https://www.youtube.com/embed/{{ youtube_id ~ yt_params }}" frameborder="0" allowfullscreen jl-responsive{{ muted }}{{ video_autoplay }}></iframe>
+{% else %}
+    <iframe class="{{ video_boxshadow }}"{{ video_width|raw }}{{ video_height|raw }} src="https://player.vimeo.com/video/{{ vimeo_id ~ vimeo_params }}" frameborder="0" allowfullscreen jl-responsive jl-video="false" allow="autoplay"{{ video_autoplay }}></iframe>
+{% endif %}
+
+{% endif %}
+
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}

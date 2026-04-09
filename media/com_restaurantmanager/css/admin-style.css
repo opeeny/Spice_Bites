@@ -1,0 +1,398 @@
+/* Restaurant Manager - Admin Styles for Joomla 6 */
+
+.rbm-admin-container {
+    padding: 20px;
+}
+
+/* Server Clock */
+.rbm-server-clock {
+    text-align: right;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    color: #fff;
+    min-width: 180px;
+}
+
+.rbm-clock-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.rbm-clock-time {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+/* Modal for Order Details */
+.rbm-modal {
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rbm-modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.rbm-modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+}
+
+.rbm-modal-header h3 {
+    margin: 0;
+    color: #fff;
+}
+
+.rbm-modal-close {
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+}
+
+.rbm-modal-close:hover {
+    opacity: 0.7;
+}
+
+.rbm-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.rbm-order-detail-item {
+    padding: 15px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+}
+
+.rbm-order-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.rbm-order-detail-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 16px;
+}
+
+.rbm-order-detail-price {
+    color: #28a745;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.rbm-order-detail-info {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.rbm-order-detail-notes {
+    margin-top: 8px;
+    padding: 8px;
+    background: #fff;
+    border-left: 3px solid #667eea;
+    font-size: 13px;
+    color: #666;
+}
+
+.rbm-order-detail-total {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid #333;
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Settings Page */
+.rbm-settings-section {
+    margin: 20px 0;
+}
+
+.rbm-settings-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+}
+
+.rbm-setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.rbm-setting-row:last-child {
+    border-bottom: none;
+}
+
+.rbm-setting-label {
+    flex: 1;
+    margin: 0;
+}
+
+.rbm-setting-label strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.rbm-setting-desc {
+    display: block;
+    color: #666;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.rbm-setting-input {
+    width: 200px;
+}
+
+.rbm-setting-input input {
+    width: 100%;
+}
+
+/* Stats Row */
+.rbm-stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.rbm-stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.rbm-stat-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.rbm-stat-value {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+/* Menu Editor */
+.rbm-menu-editor {
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.rbm-menu-editor table {
+    width: 100%;
+}
+
+.rbm-menu-editor table input[type="text"],
+.rbm-menu-editor table input[type="number"],
+.rbm-menu-editor table textarea {
+    width: 100%;
+}
+
+.rbm-menu-editor table td {
+    vertical-align: middle;
+    padding: 8px;
+}
+
+/* Tables Grid */
+.rbm-tables-section {
+    margin: 30px 0;
+}
+
+.rbm-tables-section h3 {
+    margin-bottom: 20px;
+}
+
+.rbm-tables-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.rbm-table-card {
+    background: #fff;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.rbm-table-card.occupied {
+    border-color: #dc3545;
+    box-shadow: 0 0 10px rgba(220, 53, 69, 0.2);
+}
+
+.rbm-table-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.rbm-table-amount {
+    font-size: 20px;
+    font-weight: 600;
+    color: #28a745;
+    margin: 10px 0;
+}
+
+.rbm-table-status {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.rbm-table-card:not(.occupied) .rbm-table-status {
+    background: #d4edda;
+    color: #155724;
+}
+
+.rbm-table-card.occupied .rbm-table-status {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.rbm-mark-paid {
+    margin-top: 10px;
+}
+
+/* Reports */
+.rbm-reports-section {
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.rbm-reports-section h3 {
+    margin-bottom: 15px;
+}
+
+/* Footer */
+.rbm-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.rbm-footer a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.rbm-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Messages */
+#rbm-message {
+    margin: 20px 0;
+}
+
+#rbm-message.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+#rbm-message.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .rbm-stats-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .rbm-tables-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    
+    .rbm-stat-value {
+        font-size: 28px;
+    }
+}
+
+/* Kitchen status styles */
+.rbm-table-status.status-in-progress {
+    background: #fbbf24;
+    color: #78350f;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.rbm-table-status.status-completed {
+    background: #10b981;
+    color: white;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+}

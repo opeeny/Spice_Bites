@@ -1,0 +1,11 @@
+#g-hero {
+	background-color: $hero-background;
+	color: $hero-text-color;
+}
+
+@media print {
+	#g-hero {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

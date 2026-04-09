@@ -1,0 +1,168 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+{% if particle.particle_title_color or particle.particle_title_fontsize or particle.title_color or particle.title_fontsize or particle.subtitle_color or particle.subtitle_fontsize or (particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty) %}
+<style>
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}
+#el-{{ id }}.g5-title{ {%- if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.title_color or particle.title_fontsize -%}
+.{{ id }} .tm-title{ {%- if particle.title_color %}color:{{ particle.title_color }};{% endif %}{% if particle.title_fontsize %}font-size:{{ particle.title_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.subtitle_color or particle.subtitle_fontsize -%}
+.{{ id }} .tm-content{ {%- if particle.subtitle_color %}color:{{ particle.subtitle_color }};{% endif %}{% if particle.subtitle_fontsize %}font-size:{{ particle.subtitle_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty -%}
+#{{ id }}-particle .g-container{max-width:{{ particle.bg_container_width|e }};}
+{%- endif -%}
+</style>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+{% if particle.closebutton == '1' and particle.expires is not empty %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('gantry-theme://js/js.cookie.min.js') }}"></script>
+{% endif %}
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{# Set Title/Content Text Transform #}
+{% set title_inline = particle.alerttitle and particle.title_inline ? ' jl-display-inline jl-text-middle' %}
+{% set title_text_transform = particle.title_text_transform ? ' jl-text-' ~ particle.title_text_transform|e %}
+{% set title_text_color = particle.pre_title_color != 'default' ? ' jl-text-' ~ particle.pre_title_color|e %}
+
+{% set content_style = particle.content_style ? ' jl-text-' ~ particle.content_style %}
+{% set content_color = particle.content_color != 'default' ? ' jl-text-' ~ particle.content_color|e %}
+{% set content_text_transform = particle.content_text_transform ? ' jl-text-' ~ particle.content_text_transform|e %}
+
+{# Set Animation #}
+{% set animation = '' %}
+{% if particle.animation == 'parallax' %}
+    {% set parallax_parts = [] %}
+
+    {% if particle.pa_horizontal_start is not empty or particle.pa_horizontal_end is not empty %}
+        {% set parallax_parts = parallax_parts|merge(['x: ' ~ (particle.pa_horizontal_start|default('0')) ~ ',' ~ (particle.pa_horizontal_end|default('0'))]) %}
+    {% endif %}
+    
+    {% if particle.pa_vertical_start is not empty or particle.pa_vertical_end is not empty %}
+        {% set parallax_parts = parallax_parts|merge(['y: ' ~ (particle.pa_vertical_start|default('0')) ~ ',' ~ (particle.pa_vertical_end|default('0'))]) %}
+    {% endif %}
+    
+    {% if particle.scale_start is not empty or particle.scale_end is not empty %}
+        {% set parallax_parts = parallax_parts|merge(['scale: ' ~ (particle.scale_start|default('1')) ~ ',' ~ (particle.scale_end|default('1'))]) %}
+    {% endif %}
+    
+    {% if particle.rotate_start is not empty or particle.rotate_end is not empty %}
+        {% set parallax_parts = parallax_parts|merge(['rotate: ' ~ (particle.rotate_start|default('0')) ~ ',' ~ (particle.rotate_end|default('0'))]) %}
+    {% endif %}
+    
+    {% if particle.opacity_start is not empty or particle.opacity_end is not empty %}
+        {% set parallax_parts = parallax_parts|merge(['opacity: ' ~ (particle.opacity_start|default('1')) ~ ',' ~ (particle.opacity_end|default('1'))]) %}
+    {% endif %}
+    
+    {% if particle.blur_start is not empty %}
+        {% set blur = 'blur: ' ~ particle.blur_start %}
+        {% if particle.blur_end is not empty %}
+            {% set blur = blur ~ ' ' ~ particle.blur_end ~ '%' %}
+        {% endif %}
+        {% set parallax_parts = parallax_parts|merge([blur]) %}
+    {% endif %}
+    
+    {# Add configuration parameters if we have parallax parts #}
+    {% if parallax_parts|length > 0 %}
+        {% if particle.easing is not empty %}
+            {% set parallax_parts = parallax_parts|merge(['easing: ' ~ particle.easing]) %}
+        {% else %}
+            {% set parallax_parts = parallax_parts|merge(['easing: 0']) %}
+        {% endif %}
+        
+        {% if particle.parallax_start %}
+            {% set parallax_parts = parallax_parts|merge(['start: ' ~ particle.parallax_start]) %}
+        {% endif %}
+        
+        {% if particle.parallax_end %}
+            {% set parallax_parts = parallax_parts|merge(['end: ' ~ particle.parallax_end]) %}
+        {% endif %}
+        
+        {% if particle.pa_breakpoint is not empty and particle.pa_breakpoint != 'always' %}
+            {% set parallax_parts = parallax_parts|merge(['media: @' ~ particle.pa_breakpoint]) %}
+        {% endif %}
+        
+        {# Create attribute with single join operation #}
+        {% set animation = ' jl-parallax="' ~ parallax_parts|join('; ') ~ '"' %}
+    {% endif %}
+{% elseif particle.animation != 'inherit' %}
+    {% set delay = particle.delay_element_animations ? particle.animation_delay|default('300') : 'false' %}
+    {% set repeat = particle.animation_repeat == 'enabled' ? ' repeat: true;' : '' %}
+    {% set animation = ' jl-scrollspy="cls: jl-animation-' ~ particle.animation ~ ';' ~ repeat ~ ' delay: ' ~ delay ~ '"' %}
+{% endif %}
+
+{# Set Link Scroll #}
+{% set linkscroll = particle.alert_link matches '/#/' and particle.alert_linktarget != '_blank' ? ' jl-scroll' : '' %}
+{%- set particle_classes = [
+    id,
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.alertstyle != 'default' ? 'jl-alert-' ~ particle.alertstyle|e : '',
+    particle.alert_size ? 'jl-padding' : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim -%}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }} jl-alert {{- attr_extra|raw }}>
+
+    {% if particle.alert_link %}
+        <a class="el-link jl-link-reset" href="{{ particle.alert_link|e }}" target="{{ particle.alert_linktarget|default('_self')|e }}"{{ linkscroll }}>
+    {% endif %}
+
+    {{ particle.closebutton ? '<a class="jl-alert-close" jl-close></a>' : '' }}
+
+    {% if particle.alerttitle %}
+        <{{ particle.title_element|e }} class="tm-title jl-margin-remove-bottom{{ title_inline ~ title_text_color ~ title_text_transform }}">{{ particle.alerttitle|raw }}</{{ particle.title_element|e }}>
+    {% endif %}
+
+    <div class="tm-content jl-panel{{ content_style ~ content_color ~ title_inline ~ content_text_transform }} jl-margin-{{ particle.content_margin_top == 'default' ? 'top' : particle.content_margin_top|e ~ '-top' }}">
+    {% set alert_content = particle.twig ? gantry.theme.compile(particle.alertcontent) : particle.alertcontent %}
+    {{ (particle.filter ? gantry.platform.filter(alert_content) : alert_content)|html|raw }}
+    </div>
+
+{{ particle.alert_link ? '</a>' : '' }}
+
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}
+
+{% block javascript_footer %}
+{% if particle.closebutton == '1' and particle.expires is not empty %}
+<script type="text/javascript">
+    (function($){
+        $(document).ready(function () {
+            jlAlert();
+        });
+        if ( Cookies.get('{{ id }}-particle') == 'true') {
+            var el = '#{{ id }}-particle';
+            $(el).hide();
+        }     
+        function jlAlert(){
+            $('#{{ id }}-particle .jl-alert-close').on('click',function(){
+                Cookies.set('{{ id }}-particle', true, { expires: {{ particle.expires|e }} }); 
+            });
+        }
+    })(jQuery);
+</script>
+{% endif %}
+{% endblock %}

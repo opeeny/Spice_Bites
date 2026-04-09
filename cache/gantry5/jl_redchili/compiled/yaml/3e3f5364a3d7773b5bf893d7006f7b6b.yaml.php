@@ -1,0 +1,824 @@
+<?php
+return [
+    '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
+    'filename' => 'D:/Apache24/htdocs/Spice_Bites/templates/jl_redchili/gantry/presets.yaml',
+    'modified' => 1775728762,
+    'data' => [
+        'preset1' => [
+            'image' => 'gantry-admin://images/preset1.png',
+            'description' => 'Preset 1',
+            'colors' => [
+                0 => '#4b5140',
+                1 => '#ffe6b6'
+            ],
+            'styles' => [
+                'base' => [
+                    'text-color' => '#444444',
+                    'background' => '#e0e0e0',
+                    'heading-color' => '#111010'
+                ],
+                'accent' => [
+                    'color-1' => '#4b5140',
+                    'color-2' => '#ffe6b6'
+                ],
+                'font' => [
+                    'family-title' => 'family=Marcellus',
+                    'family-default' => 'Inter'
+                ],
+                'menustyle' => [
+                    'font-families' => '2',
+                    'text-color' => '#ffffff',
+                    'text-color-active' => 'rgba(255, 255, 255, 0.85)',
+                    'item-gap' => '30px',
+                    'item-height' => '80px',
+                    'sublevel-background' => '#ffffff',
+                    'sublevel-text-color' => '#6f6f6f',
+                    'sublevel-background-hover' => 'rgba(255, 255, 255, 0)',
+                    'sublevel-text-color-hover' => '#4b5140',
+                    'sublevel-text-color-active' => '#4b5140'
+                ],
+                'top' => [
+                    'background' => '#ffe6b6',
+                    'text-color' => '#4b3e3a'
+                ],
+                'navigation' => [
+                    'background' => '#4b5140',
+                    'background-image' => '',
+                    'text-color' => '#ffffff',
+                    'overlay' => 'rgba(0, 0, 0, 0.4)'
+                ],
+                'hero' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'slideshow' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'header' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'above' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'feature' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'showcase' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'utility' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'main' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'expanded' => [
+                    'background' => '#f7f8fa',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'extension' => [
+                    'background' => '#171816',
+                    'background-image' => 'gantry-media://booking-bg.png',
+                    'text-color' => '#ffffff'
+                ],
+                'bottom' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'below' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'footer' => [
+                    'background' => '#f0edea',
+                    'background-image' => '',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#4b5140'
+                ],
+                'copyright' => [
+                    'background' => '#f0edea',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#4b5140'
+                ],
+                'offcanvas' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515',
+                    'text-color-active' => '#4b5140',
+                    'toggle-color' => '#ffffff',
+                    'toggle-color-active' => 'rgba(255, 255, 255, 0.8)',
+                    'width' => '13rem',
+                    'toggle-visibility' => '1'
+                ],
+                'breakpoints' => [
+                    'large-desktop-container' => '1600px',
+                    'desktop-container' => '1200px',
+                    'tablet-container' => '960px',
+                    'large-mobile-container' => '640px',
+                    'mobile-menu-breakpoint' => '960px'
+                ],
+                'menu' => [
+                    'col-width' => '180px',
+                    'animation' => 'g-fade',
+                    'hide-on-mobile' => '0'
+                ]
+            ]
+        ],
+        'preset2' => [
+            'image' => 'gantry-admin://images/preset2.png',
+            'description' => 'Preset 2',
+            'colors' => [
+                0 => '#d2ab74',
+                1 => '#ffe6b6'
+            ],
+            'styles' => [
+                'base' => [
+                    'text-color' => '#444444',
+                    'background' => '#e0e0e0',
+                    'heading-color' => '#111010'
+                ],
+                'accent' => [
+                    'color-1' => '#d2ab74',
+                    'color-2' => '#ffe6b6'
+                ],
+                'font' => [
+                    'family-title' => 'family=Marcellus',
+                    'family-default' => 'Inter'
+                ],
+                'menustyle' => [
+                    'font-families' => '2',
+                    'text-color' => '#ffffff',
+                    'text-color-active' => 'rgba(255, 255, 255, 0.85)',
+                    'item-gap' => '30px',
+                    'item-height' => '80px',
+                    'sublevel-background' => '#ffffff',
+                    'sublevel-text-color' => '#6f6f6f',
+                    'sublevel-background-hover' => 'rgba(255, 255, 255, 0)',
+                    'sublevel-text-color-hover' => '#d2ab74',
+                    'sublevel-text-color-active' => '#d2ab74'
+                ],
+                'top' => [
+                    'background' => '#ffe6b6',
+                    'text-color' => '#4b3e3a'
+                ],
+                'navigation' => [
+                    'background' => '#d2ab74',
+                    'background-image' => '',
+                    'text-color' => '#ffffff',
+                    'overlay' => 'rgba(0, 0, 0, 0.4)'
+                ],
+                'hero' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'slideshow' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'header' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'above' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'feature' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'showcase' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'utility' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'main' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'expanded' => [
+                    'background' => '#f7f8fa',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'extension' => [
+                    'background' => '#171816',
+                    'background-image' => 'gantry-media://booking-bg.png',
+                    'text-color' => '#ffffff'
+                ],
+                'bottom' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'below' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'footer' => [
+                    'background' => '#f0edea',
+                    'background-image' => '',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#d2ab74'
+                ],
+                'copyright' => [
+                    'background' => '#f0edea',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#d2ab74'
+                ],
+                'offcanvas' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515',
+                    'text-color-active' => '#d2ab74',
+                    'toggle-color' => '#ffffff',
+                    'toggle-color-active' => 'rgba(255, 255, 255, 0.8)',
+                    'width' => '13rem',
+                    'toggle-visibility' => '1'
+                ],
+                'breakpoints' => [
+                    'large-desktop-container' => '1600px',
+                    'desktop-container' => '1200px',
+                    'tablet-container' => '960px',
+                    'large-mobile-container' => '640px',
+                    'mobile-menu-breakpoint' => '960px'
+                ],
+                'menu' => [
+                    'col-width' => '180px',
+                    'animation' => 'g-fade',
+                    'hide-on-mobile' => '0'
+                ]
+            ]
+        ],
+        'preset3' => [
+            'image' => 'gantry-admin://images/preset3.png',
+            'description' => 'Preset 3',
+            'colors' => [
+                0 => '#4b3e3a',
+                1 => '#ffe6b6'
+            ],
+            'styles' => [
+                'base' => [
+                    'text-color' => '#444444',
+                    'background' => '#e0e0e0',
+                    'heading-color' => '#111010'
+                ],
+                'accent' => [
+                    'color-1' => '#4b3e3a',
+                    'color-2' => '#ffe6b6'
+                ],
+                'font' => [
+                    'family-title' => 'family=Marcellus',
+                    'family-default' => 'Inter'
+                ],
+                'menustyle' => [
+                    'font-families' => '2',
+                    'text-color' => '#ffffff',
+                    'text-color-active' => 'rgba(255, 255, 255, 0.85)',
+                    'item-gap' => '30px',
+                    'item-height' => '80px',
+                    'sublevel-background' => '#ffffff',
+                    'sublevel-text-color' => '#6f6f6f',
+                    'sublevel-background-hover' => 'rgba(255, 255, 255, 0)',
+                    'sublevel-text-color-hover' => '#4b3e3a',
+                    'sublevel-text-color-active' => '#4b3e3a'
+                ],
+                'top' => [
+                    'background' => '#ffe6b6',
+                    'text-color' => '#4b3e3a'
+                ],
+                'navigation' => [
+                    'background' => '#4b3e3a',
+                    'background-image' => '',
+                    'text-color' => '#ffffff',
+                    'overlay' => 'rgba(0, 0, 0, 0.4)'
+                ],
+                'hero' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'slideshow' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'header' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'above' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'feature' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'showcase' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'utility' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'main' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'expanded' => [
+                    'background' => '#f7f8fa',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'extension' => [
+                    'background' => '#171816',
+                    'background-image' => 'gantry-media://booking-bg.png',
+                    'text-color' => '#ffffff'
+                ],
+                'bottom' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'below' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'footer' => [
+                    'background' => '#f0edea',
+                    'background-image' => '',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#4b3e3a'
+                ],
+                'copyright' => [
+                    'background' => '#f0edea',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#4b3e3a'
+                ],
+                'offcanvas' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515',
+                    'text-color-active' => '#4b3e3a',
+                    'toggle-color' => '#ffffff',
+                    'toggle-color-active' => 'rgba(255, 255, 255, 0.8)',
+                    'width' => '13rem',
+                    'toggle-visibility' => '1'
+                ],
+                'breakpoints' => [
+                    'large-desktop-container' => '1600px',
+                    'desktop-container' => '1200px',
+                    'tablet-container' => '960px',
+                    'large-mobile-container' => '640px',
+                    'mobile-menu-breakpoint' => '960px'
+                ],
+                'menu' => [
+                    'col-width' => '180px',
+                    'animation' => 'g-fade',
+                    'hide-on-mobile' => '0'
+                ]
+            ]
+        ],
+        'preset4' => [
+            'image' => 'gantry-admin://images/preset4.png',
+            'description' => 'Preset 4',
+            'colors' => [
+                0 => '#cc8b47',
+                1 => '#e8f8da'
+            ],
+            'styles' => [
+                'base' => [
+                    'text-color' => '#444444',
+                    'background' => '#e0e0e0',
+                    'heading-color' => '#111010'
+                ],
+                'accent' => [
+                    'color-1' => '#cc8b47',
+                    'color-2' => '#e8f8da'
+                ],
+                'font' => [
+                    'family-title' => 'family=Marcellus',
+                    'family-default' => 'Inter'
+                ],
+                'menustyle' => [
+                    'font-families' => '2',
+                    'text-color' => '#ffffff',
+                    'text-color-active' => 'rgba(255, 255, 255, 0.85)',
+                    'item-gap' => '30px',
+                    'item-height' => '80px',
+                    'sublevel-background' => '#ffffff',
+                    'sublevel-text-color' => '#6f6f6f',
+                    'sublevel-background-hover' => 'rgba(255, 255, 255, 0)',
+                    'sublevel-text-color-hover' => '#cc8b47',
+                    'sublevel-text-color-active' => '#cc8b47'
+                ],
+                'top' => [
+                    'background' => '#e8f8da',
+                    'text-color' => '#4b3e3a'
+                ],
+                'navigation' => [
+                    'background' => '#4b3e3a',
+                    'background-image' => '',
+                    'text-color' => '#ffffff',
+                    'overlay' => 'rgba(0, 0, 0, 0.4)'
+                ],
+                'hero' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'slideshow' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'header' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'above' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'feature' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'showcase' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'utility' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'main' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'expanded' => [
+                    'background' => '#f7f8fa',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'extension' => [
+                    'background' => '#171816',
+                    'background-image' => 'gantry-media://booking-bg.png',
+                    'text-color' => '#ffffff'
+                ],
+                'bottom' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'below' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'footer' => [
+                    'background' => '#f0edea',
+                    'background-image' => '',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#cc8b47'
+                ],
+                'copyright' => [
+                    'background' => '#f0edea',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#cc8b47'
+                ],
+                'offcanvas' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515',
+                    'text-color-active' => '#cc8b47',
+                    'toggle-color' => '#ffffff',
+                    'toggle-color-active' => 'rgba(255, 255, 255, 0.8)',
+                    'width' => '13rem',
+                    'toggle-visibility' => '1'
+                ],
+                'breakpoints' => [
+                    'large-desktop-container' => '1600px',
+                    'desktop-container' => '1200px',
+                    'tablet-container' => '960px',
+                    'large-mobile-container' => '640px',
+                    'mobile-menu-breakpoint' => '960px'
+                ],
+                'menu' => [
+                    'col-width' => '180px',
+                    'animation' => 'g-fade',
+                    'hide-on-mobile' => '0'
+                ]
+            ]
+        ],
+        'preset5' => [
+            'image' => 'gantry-admin://images/preset5.png',
+            'description' => 'Preset 5',
+            'colors' => [
+                0 => '#58b8a1',
+                1 => '#ffe6b6'
+            ],
+            'styles' => [
+                'base' => [
+                    'text-color' => '#444444',
+                    'background' => '#e0e0e0',
+                    'heading-color' => '#111010'
+                ],
+                'accent' => [
+                    'color-1' => '#58b8a1',
+                    'color-2' => '#ffe6b6'
+                ],
+                'font' => [
+                    'family-title' => 'family=Marcellus',
+                    'family-default' => 'Inter'
+                ],
+                'menustyle' => [
+                    'font-families' => '2',
+                    'text-color' => '#ffffff',
+                    'text-color-active' => 'rgba(255, 255, 255, 0.85)',
+                    'item-gap' => '30px',
+                    'item-height' => '80px',
+                    'sublevel-background' => '#ffffff',
+                    'sublevel-text-color' => '#6f6f6f',
+                    'sublevel-background-hover' => 'rgba(255, 255, 255, 0)',
+                    'sublevel-text-color-hover' => '#58b8a1',
+                    'sublevel-text-color-active' => '#58b8a1'
+                ],
+                'top' => [
+                    'background' => '#ffe6b6',
+                    'text-color' => '#4b3e3a'
+                ],
+                'navigation' => [
+                    'background' => '#58b8a1',
+                    'background-image' => '',
+                    'text-color' => '#ffffff',
+                    'overlay' => 'rgba(0, 0, 0, 0.4)'
+                ],
+                'hero' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'slideshow' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'header' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'above' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'feature' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'showcase' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'utility' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'main' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'expanded' => [
+                    'background' => '#f7f8fa',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'extension' => [
+                    'background' => '#171816',
+                    'background-image' => 'gantry-media://booking-bg.png',
+                    'text-color' => '#ffffff'
+                ],
+                'bottom' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'below' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'footer' => [
+                    'background' => '#f0edea',
+                    'background-image' => '',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#58b8a1'
+                ],
+                'copyright' => [
+                    'background' => '#f0edea',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#58b8a1'
+                ],
+                'offcanvas' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515',
+                    'text-color-active' => '#58b8a1',
+                    'toggle-color' => '#ffffff',
+                    'toggle-color-active' => 'rgba(255, 255, 255, 0.8)',
+                    'width' => '13rem',
+                    'toggle-visibility' => '1'
+                ],
+                'breakpoints' => [
+                    'large-desktop-container' => '1600px',
+                    'desktop-container' => '1200px',
+                    'tablet-container' => '960px',
+                    'large-mobile-container' => '640px',
+                    'mobile-menu-breakpoint' => '960px'
+                ],
+                'menu' => [
+                    'col-width' => '180px',
+                    'animation' => 'g-fade',
+                    'hide-on-mobile' => '0'
+                ]
+            ]
+        ],
+        'preset6' => [
+            'image' => 'gantry-admin://images/preset6.png',
+            'description' => 'Preset 6',
+            'colors' => [
+                0 => '#ff8345',
+                1 => '#dfe7e8'
+            ],
+            'styles' => [
+                'base' => [
+                    'text-color' => '#444444',
+                    'background' => '#e0e0e0',
+                    'heading-color' => '#111010'
+                ],
+                'accent' => [
+                    'color-1' => '#ff8345',
+                    'color-2' => '#dfe7e8'
+                ],
+                'font' => [
+                    'family-title' => 'family=Marcellus',
+                    'family-default' => 'Inter'
+                ],
+                'menustyle' => [
+                    'font-families' => '2',
+                    'text-color' => '#ffffff',
+                    'text-color-active' => 'rgba(255, 255, 255, 0.85)',
+                    'item-gap' => '30px',
+                    'item-height' => '80px',
+                    'sublevel-background' => '#ffffff',
+                    'sublevel-text-color' => '#6f6f6f',
+                    'sublevel-background-hover' => 'rgba(255, 255, 255, 0)',
+                    'sublevel-text-color-hover' => '#ff8345',
+                    'sublevel-text-color-active' => '#ff8345'
+                ],
+                'top' => [
+                    'background' => '#dfe7e8',
+                    'text-color' => '#4b3e3a'
+                ],
+                'navigation' => [
+                    'background' => '#ff8345',
+                    'background-image' => '',
+                    'text-color' => '#ffffff',
+                    'overlay' => 'rgba(0, 0, 0, 0.4)'
+                ],
+                'hero' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'slideshow' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'header' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'above' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'feature' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'showcase' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'utility' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'main' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'expanded' => [
+                    'background' => '#f7f8fa',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'extension' => [
+                    'background' => '#171816',
+                    'background-image' => 'gantry-media://booking-bg.png',
+                    'text-color' => '#ffffff'
+                ],
+                'bottom' => [
+                    'background' => '#ebe6da',
+                    'background-image' => '',
+                    'text-color' => '#141515'
+                ],
+                'below' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515'
+                ],
+                'footer' => [
+                    'background' => '#f0edea',
+                    'background-image' => '',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#ff8345'
+                ],
+                'copyright' => [
+                    'background' => '#f0edea',
+                    'text-color' => '#5d5d5c',
+                    'link-color' => '#5d5d5c',
+                    'link-hover-color' => '#ff8345'
+                ],
+                'offcanvas' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#141515',
+                    'text-color-active' => '#ff8345',
+                    'toggle-color' => '#ffffff',
+                    'toggle-color-active' => 'rgba(255, 255, 255, 0.8)',
+                    'width' => '13rem',
+                    'toggle-visibility' => '1'
+                ],
+                'breakpoints' => [
+                    'large-desktop-container' => '1600px',
+                    'desktop-container' => '1200px',
+                    'tablet-container' => '960px',
+                    'large-mobile-container' => '640px',
+                    'mobile-menu-breakpoint' => '960px'
+                ],
+                'menu' => [
+                    'col-width' => '180px',
+                    'animation' => 'g-fade',
+                    'hide-on-mobile' => '0'
+                ]
+            ]
+        ]
+    ]
+];

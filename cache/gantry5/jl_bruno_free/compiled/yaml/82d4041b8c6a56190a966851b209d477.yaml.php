@@ -1,0 +1,128 @@
+<?php
+return [
+    '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
+    'filename' => 'D:\\Apache24\\htdocs\\Spice_Bites/templates/jl_bruno_free/config/default/styles.yaml',
+    'modified' => 1775727461,
+    'data' => [
+        'preset' => 'preset1',
+        'base' => [
+            'background' => '#ffffff',
+            'background-image' => '',
+            'text-color' => '#666666',
+            'body-font' => 'family=Barlow',
+            'heading-font' => 'family=Barlow:600',
+            'menu-font' => 'family=Barlow'
+        ],
+        'accent' => [
+            'color-1' => '#c59d5f',
+            'color-2' => '#eb6a5a'
+        ],
+        'menustyle' => [
+            'text-color' => 'rgba(255, 255, 255, 0.8)',
+            'text-color-active' => '#ffffff',
+            'item-gap' => '30px',
+            'item-height' => '80px',
+            'sublevel-background' => '#ffffff',
+            'sublevel-text-color' => '#030303',
+            'sublevel-background-hover' => 'rgba(255, 255, 255, 0)',
+            'sublevel-text-color-hover' => '#c59d5f',
+            'sublevel-text-color-active' => '#c59d5f'
+        ],
+        'navigation' => [
+            'background' => '#000000',
+            'text-color' => '#ffffff',
+            'overlay' => 'rgba(0, 0, 0, 0.4)',
+            'height' => '80px'
+        ],
+        'slideshow' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'hero' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'topa' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'topb' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'topc' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'topd' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'above' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'main' => [
+            'background' => '#ffffff',
+            'text-color' => '#030303'
+        ],
+        'below' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'bottoma' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'bottomb' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'bottomc' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'bottomd' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'extended' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303'
+        ],
+        'footer' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'background-image' => '',
+            'text-color' => '#030303',
+            'link-color' => '#030303',
+            'link-hover-color' => '#c59d5f'
+        ],
+        'copyright' => [
+            'background' => 'rgba(255, 255, 255, 0)',
+            'text-color' => '#030303',
+            'link-color' => '#030303',
+            'link-hover-color' => '#c59d5f'
+        ],
+        'offcanvas' => [
+            'background' => '#ffffff',
+            'text-color' => '#1c1c1c',
+            'text-color-active' => '#c59d5f',
+            'toggle-color' => '#ffffff',
+            'toggle-color-active' => 'rgba(255, 255, 255, 0.5)',
+            'width' => '17rem',
+            'toggle-visibility' => '1'
+        ],
+        'breakpoints' => [
+            'large-desktop-container' => '75rem',
+            'desktop-container' => '60rem',
+            'tablet-container' => '51rem',
+            'large-mobile-container' => '48rem',
+            'mobile-menu-breakpoint' => '51rem'
+        ],
+        'menu' => [
+            'col-width' => '200px',
+            'animation' => 'g-zoom',
+            'hide-on-mobile' => '0'
+        ]
+    ]
+];

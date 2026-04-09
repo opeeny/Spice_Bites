@@ -1,0 +1,39 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ url('gantry-theme://css/jquery.mb.YTPlayer.min.css') }}" type="text/css"/>
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script defer src="{{ url('gantry-theme://js/jquery.mb.YTPlayer.min.js') }}"></script>
+<script>
+jQuery(function ($) {
+    {% for item in particle.items %}
+    (function () {
+        var opacity = {{ item.opacity matches '/^[-+]?[0-9]*\.?[0-9]+$/' ? item.opacity : 1 }};
+        var config = {
+            videoURL:        '{{ item.url|e('js') }}',
+            containment:     '#{{ item.element|e('js') }}',
+            startAt:         {{ item.start matches '/^[0-9]+$/' ? item.start : 0 }},
+            vol:             {{ item.vol matches '/^[0-9]+$/' ? item.vol : 50 }},
+            opacity:         opacity,
+            ratio:           '{{ item.ratio in ['16/9','4/3','1/1'] ? item.ratio : '16/9' }}',
+            autoPlay:        {{ item.autoplay ? 'true' : 'false' }},
+            loop:            {{ item.loop ? 'true' : 'false' }},
+            addRaster:       {{ item.addraster == 1 ? 'true' : 'false' }},
+            showControls:    {{ item.controls ? 'true' : 'false' }},
+            showYTLogo:      {{ item.logo ? 'true' : 'false' }},
+            stopMovieOnBlur: {{ item.stopvideo ? 'true' : 'false' }},
+            {% if item.mute %}mute: true,{% endif %}
+            {% if particle.optimizedisplay %}optimizeDisplay: true{% endif %}
+        };
+        $('<div>', {
+            id: 'jl-background-container-{{ item.element|e('js') }}',
+            'data-property': JSON.stringify(config)
+        }).appendTo('body').YTPlayer();
+    })();
+    {% endfor %}
+});
+</script>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+{% if particle.enabled %}
+
+{% if particle.preloader_type is empty %}
+    {% set inline_css %}{{ particle.element|default('#g-page-surround')|e }} {display:none;}{% endset %}
+{% else %}
+    {% set inline_css %}.preloader-wrapper{height:100%;width:100%;background-color:{{ particle.background|default('#2d4059')|e }};color:{{ particle.color|default('#ffffff')|e }};position:fixed;top:0;left:0;z-index:999;}.preloader-wrapper .preloader{position:absolute;top:50%;left:50%;font-size:20px;transform:translate(-50%,-50%)}{% endset %}
+{% endif %}
+{% do gantry.document.addInlineStyle(inline_css, 0) %}
+
+{% if particle.preloader_type is not empty %}
+    {% set image_width  = particle.image_width  ? ' width="'  ~ particle.image_width|e  ~ '"' : '' %}
+    {% set image_height = particle.image_height ? ' height="' ~ particle.image_height|e ~ '"' : '' %}
+    {% pageblock body_top %}
+    <div class="preloader-wrapper">
+        <div class="preloader">
+            {% if particle.image %}
+                <img{{ image_width|raw }}{{ image_height|raw }} class="tm-image" src="{{ url(particle.image)|e }}" alt="">
+            {% else %}
+                <div jl-spinner="ratio: 2"></div>
+            {% endif %}
+        </div>
+    </div>
+    {% endpageblock %}
+{% endif %}
+
+{% endif %}
+{% endblock %}
+
+{% block javascript_footer %}
+{% if particle.enabled %}
+
+{% set target_selector = particle.element|default('#g-page-surround') %}
+{% set fade_duration   = particle.fadeout|int > 0 ? particle.fadeout|int : 400 %}
+
+{% if particle.preloader_type is empty %}
+<script src="{{ url('gantry-theme://js/topbar.min.js') }}"></script>
+{% endif %}
+
+<script>
+(function() {
+    'use strict';
+
+    {% if particle.preloader_type is empty %}
+
+    {% set bar_color_entries = [] %}
+    {% if particle.barColor0   %}{% set bar_color_entries = bar_color_entries|merge(["'0'   : '" ~ particle.barColor0   ~ "'"]) %}{% endif %}
+    {% if particle.barColor25  %}{% set bar_color_entries = bar_color_entries|merge(["'.25' : '" ~ particle.barColor25  ~ "'"]) %}{% endif %}
+    {% if particle.barColor50  %}{% set bar_color_entries = bar_color_entries|merge(["'.50' : '" ~ particle.barColor50  ~ "'"]) %}{% endif %}
+    {% if particle.barColor75  %}{% set bar_color_entries = bar_color_entries|merge(["'.75' : '" ~ particle.barColor75  ~ "'"]) %}{% endif %}
+    {% if particle.barColor100 %}{% set bar_color_entries = bar_color_entries|merge(["'1.0' : '" ~ particle.barColor100 ~ "'"]) %}{% endif %}
+
+    topbar.config({
+        autoRun      : true,
+        barThickness : {{ particle.bar_thickness|default('3')|int }},
+        barColors    : { {{ bar_color_entries|join(', ')|raw }} },
+        shadowBlur   : {{ particle.shadowBlur|default('10')|int }},
+        shadowColor  : '{{ particle.shadowColor|default('rgba(186, 0, 6, 0.6)') }}',
+        className    : 'topbar'
+    });
+
+    topbar.show();
+
+    setTimeout(function() {
+        var el = document.querySelector('{{ target_selector }}');
+        if (el) {
+            el.style.transition = 'opacity 600ms';
+            el.style.opacity    = '0';
+            el.style.display    = 'block';
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    el.style.opacity = '1';
+                });
+            });
+        }
+        topbar.hide();
+    }, 1500);
+
+    {% else %}
+
+    var FADE_MS = {{ fade_duration }};
+
+    window.addEventListener('load', function() {
+        var wrapper = document.querySelector('.preloader-wrapper');
+        if (!wrapper) { return; }
+        setTimeout(function() {
+            wrapper.style.transition = 'opacity ' + FADE_MS + 'ms';
+            wrapper.style.opacity    = '0';
+            setTimeout(function() {
+                if (wrapper.parentNode) { wrapper.parentNode.removeChild(wrapper); }
+            }, FADE_MS);
+        }, 300);
+    });
+
+    {% endif %}
+
+}());
+</script>
+
+{% endif %}
+{% endblock %}

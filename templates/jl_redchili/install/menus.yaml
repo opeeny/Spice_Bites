@@ -1,0 +1,9 @@
+redchili-theme:
+  title: 'Redchili Theme'
+  description: 'Sample menu for the theme.'
+
+  items:
+    redchili:
+      title: 'Home'
+      outline: home
+      home: 1

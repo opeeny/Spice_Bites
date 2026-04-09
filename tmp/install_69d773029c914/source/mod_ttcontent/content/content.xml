@@ -1,0 +1,671 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitecontent>
+  <menu>
+    <menu_item>
+      <menu_item_title>Home</menu_item_title>
+      <menu_item_path>home</menu_item_path>
+      <menu_item_id>home</menu_item_id>
+      <menu_item_articlename>Home</menu_item_articlename>
+      <menu_item_articletype>article</menu_item_articletype>
+      <menu_item_slug>home</menu_item_slug>
+      <menu_item_status>1</menu_item_status>
+    </menu_item>
+    <menu_item>
+      <menu_item_title>Menu</menu_item_title>
+      <menu_item_path>menu</menu_item_path>
+      <menu_item_id>new-page2</menu_item_id>
+      <menu_item_articlename>Menu</menu_item_articlename>
+      <menu_item_articletype>article</menu_item_articletype>
+      <menu_item_slug>new-page</menu_item_slug>
+      <menu_item_status>1</menu_item_status>
+    </menu_item>
+    <menu_item>
+      <menu_item_title>About Us</menu_item_title>
+      <menu_item_path>about us</menu_item_path>
+      <menu_item_id>About Us</menu_item_id>
+      <menu_item_articlename>About Us</menu_item_articlename>
+      <menu_item_articletype>article</menu_item_articletype>
+      <menu_item_slug>about-us</menu_item_slug>
+      <menu_item_status>1</menu_item_status>
+    </menu_item>
+    <menu_item>
+      <menu_item_title>Contact</menu_item_title>
+      <menu_item_path>contact</menu_item_path>
+      <menu_item_id>Contact</menu_item_id>
+      <menu_item_articlename>Contact</menu_item_articlename>
+      <menu_item_articletype>article</menu_item_articletype>
+      <menu_item_slug>contact</menu_item_slug>
+      <menu_item_status>1</menu_item_status>
+    </menu_item>
+    <menu_item>
+      <menu_item_title>Blog</menu_item_title>
+      <menu_item_path>blog</menu_item_path>
+      <menu_item_id>Blog</menu_item_id>
+      <menu_item_articlename>Blog</menu_item_articlename>
+      <menu_item_articletype>category</menu_item_articletype>
+      <menu_item_slug>blog</menu_item_slug>
+      <menu_item_status>0</menu_item_status>
+    </menu_item>
+  </menu>
+  <pages>
+    <content>
+      <meta_ID>tt_page1</meta_ID>
+      <page_title>Home</page_title>
+      <alias>home</alias>
+      <page_name>Home</page_name>
+      <page_header_id>home</page_header_id>
+      <state>1</state>
+      <featured>1</featured>
+      <created>08/02/2021 00:00:00</created>
+      <created_by_alias>SuperUser</created_by_alias>
+      <page_title_visibility>false</page_title_visibility>
+      <introtext><![CDATA[<div class="ttr_home_html_row0 row" >
+<div class="post_column col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column00">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.7em;"><span style="font-size:1.067em;color:rgba(53,58,66,1);">Meals and Memories</span></h2><h2 style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:0.79em;"><span style="font-weight:300;font-size:0.533em;color:rgba(105,105,105,1);">T</span><span style="font-weight:300;font-size:0.533em;color:rgba(105,105,105,1);">est link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem. Aliquam libero nisi imperdiet at tincidunt nec gravida vehicula nisl.Praesent mattis</span></h2></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column01">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.7em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:64px;max-width:64px;" src="<?php echo $template_path; ?>/images/16.png" /></span></span><span style="font-size:0.733em;color:rgba(53,58,66,1);">Quality Foods </span></h2><p style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:2.29em;"><span style="font-weight:300;font-size:1.143em;">Lorem ipsum dolor sit amet, test link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem.</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column02">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.7em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:64px;max-width:64px;" src="<?php echo $template_path; ?>/images/17.png" /></span></span><span style="font-size:0.733em;color:rgba(53,58,66,1);">Original Recipes </span></h2><p style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:2.29em;"><span style="font-weight:300;font-size:1.143em;">Lorem ipsum dolor sit amet, test link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem.</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column03">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.73em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:64px;max-width:64px;" src="<?php echo $template_path; ?>/images/18.png" /></span></span><span style="font-size:0.733em;color:rgba(53,58,66,1);">Fastest Delivery</span></h2><p style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:2.26em;"><span style="font-weight:300;font-size:1.143em;">Lorem ipsum dolor sit amet, test link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem.</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+<div class="ttr_home_html_row1 row" >
+<div class="post_column col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column10">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.73em;"><span style="font-size:1.067em;color:rgba(243,243,243,1);">O</span><span style="font-size:1.067em;color:rgba(243,243,243,1);">ur </span><span style="font-size:1.067em;color:rgba(243,243,243,1);">B</span><span style="font-size:1.067em;color:rgba(243,243,243,1);">est </span><span style="font-size:1.067em;color:rgba(243,243,243,1);">O</span><span style="font-size:1.067em;color:rgba(243,243,243,1);">ffers</span></h2><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;color:rgba(177,184,196,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column11">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; line-height:1.57em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/19.png" /></span></span><span style="font-size:1.286em;color:rgba(243,243,243,1);">HUNGER DISH</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.47em;"><span style="font-weight:300;color:rgba(177,184,196,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.47em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-sm btn-primary">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column12">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.73em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/20.png" /></span></span><span style="font-size:0.6em;color:rgba(243,243,243,1);">HUNGER DISH</span></h2><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.49em;"><span style="font-weight:300;color:rgba(177,184,196,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.49em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-sm btn-primary">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column13">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.73em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/21.png" /></span></span><span style="font-size:0.6em;color:rgba(243,243,243,1);">HUNGER DISH</span></h2><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.49em;"><span style="font-weight:300;color:rgba(177,184,196,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.49em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-sm btn-primary">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column14">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/22.png" /></span></span><span style="font-size:1.286em;color:rgba(243,243,243,1);">HUNGER DISH</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.49em;"><span style="font-weight:300;color:rgba(177,184,196,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.49em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-sm btn-primary">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column15">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.73em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/23.png" /></span></span><span style="font-size:0.6em;color:rgba(243,243,243,1);">HUNGER DISH</span></h2><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.47em;"><span style="font-weight:300;color:rgba(177,184,196,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.47em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-sm btn-primary">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column16">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.73em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/24.png" /></span></span><span style="font-size:0.6em;color:rgba(243,243,243,1);">HUNGER DISH</span></h2><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.47em;"><span style="font-weight:300;color:rgba(177,184,196,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.47em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-sm btn-primary">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column17">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.73em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/25.png" /></span></span><span style="font-size:0.6em;color:rgba(243,243,243,1);">HUNGER DISH</span></h2><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.47em;"><span style="font-weight:300;color:rgba(177,184,196,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.47em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-sm btn-primary">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column18">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.73em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/26.png" /></span></span><span style="font-size:0.6em;color:rgba(243,243,243,1);">HUNGER DISH</span></h2><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.47em;"><span style="font-weight:300;color:rgba(177,184,196,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.47em;"><span><a href="http://templatetoaster.com" target="_self" class="btn btn-sm btn-primary">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+<div class="ttr_home_html_row2 row" >
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column20">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; line-height:1.57em;"><span style="font-size:2.571em;color:rgba(53,58,66,1);">240</span></p><p style="text-align:Center; display:block; line-height:1.57em;"><span style="font-size:1.857em;color:rgba(53,58,66,1);">Menu Items</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column21">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="margin:5px 0px 5px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:2.571em;color:rgba(53,58,66,1);">500+</span></p><p style="margin:5px 0px 5px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:1.857em;color:rgba(53,58,66,1);">Visitors Daily</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column22">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="margin:5px 0px 5px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:2.571em;color:rgba(53,58,66,1);">15</span></p><p style="margin:5px 0px 5px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:1.857em;color:rgba(53,58,66,1);">Years of Experience</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+<div class="ttr_home_html_row3 row" >
+<div class="post_column col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column30">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.73em;"><span style="font-size:0.8em;">Our Customer Says</span><br style="font-size:0.8em;" /></h2><p style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:1.69em;"><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">T</span><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">est link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem. Aliquam libero nisi imperdiet at tincidunt nec gravida vehicula nisl.Praesent mattis</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column31">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:1.05em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 10px 0px;"><span><img class="ttr_uniform" style="max-height:80px;max-width:80px;" src="<?php echo $template_path; ?>/images/27.png" /></span></span><span style="font-size:0.533em;color:rgba(52,52,52,1);">Jonny Jackman</span></h2><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:1.05em;"><span style="font-weight:300;font-size:0.533em;color:rgba(105,105,105,1);">Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui</span><span style="font-weight:300;font-size:0.533em;color:rgba(105,105,105,1);"> </span><span style="font-weight:300;font-size:0.533em;color:rgba(105,105,105,1);">am sit amet</span><span style="font-weight:300;font-size:0.533em;color:rgba(105,105,105,1);">.</span></h2></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column32">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:1.05em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 10px 0px;"><span><img class="ttr_uniform" style="max-height:80px;max-width:80px;" src="<?php echo $template_path; ?>/images/28.png" /></span></span><span style="font-size:0.533em;color:rgba(52,52,52,1);">Anna Faris</span></h2><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:1.05em;"><span style="font-weight:300;font-size:0.533em;color:rgba(105,105,105,1);">Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit convallis</span><span style="font-weight:300;font-size:0.533em;color:rgba(105,105,105,1);"> </span><span style="font-weight:300;font-size:0.533em;color:rgba(105,105,105,1);">dui.</span></h2></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_home_html_column33">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:1.05em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 10px 0px;"><span><img class="ttr_uniform" style="max-height:80px;max-width:80px;" src="<?php echo $template_path; ?>/images/29.png" /></span></span><span style="font-size:0.533em;color:rgba(52,52,52,1);">Lora Mani</span></h2><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:1.05em;"><span style="font-weight:300;font-size:0.533em;color:rgba(105,105,105,1);">Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui sit amet sem.</span></h2></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+]]></introtext>
+    </content>
+    <content>
+      <meta_ID>tt_page2</meta_ID>
+      <page_title>About Us</page_title>
+      <alias>about-us</alias>
+      <page_name>About Us</page_name>
+      <page_header_id>about us</page_header_id>
+      <state>1</state>
+      <featured>1</featured>
+      <created>08/02/2021 00:00:00</created>
+      <created_by_alias>SuperUser</created_by_alias>
+      <page_title_visibility>false</page_title_visibility>
+      <introtext><![CDATA[<div class="ttr_about-us_html_row0 row" >
+<div class="post_column col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column00">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; line-height:1.49em;"><span style="font-size:2.286em;">About Us</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+<div class="ttr_about-us_html_row1 row" >
+<div class="post_column col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column10">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p><span class="ttr_image" style="float:Left;overflow:hidden;margin:0px 0px 0px 0px;"><span><img class="ttr_uniform" style="max-height:700px;max-width:1000px;" src="<?php echo $template_path; ?>/images/33.jpg" /></span></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column11">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;line-height:0.7em;"><span style="font-size:1.067em;">About Hunger Food Restaurant</span></h2><p style="margin:20px 0px 0px 0px;line-height:1.99em;"><span style="font-weight:300;font-size:1.143em;color:rgba(78,78,78,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus.Maecenas ornare tortor.</span></p><p style="margin:20px 0px 0px 0px;line-height:1.99em;"><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem. Aliquam libero nisi, imperdiet at</span><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">.</span></p><br style="margin:20px 0px 0px 0px;line-height:1.49em;" /></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+<div class="ttr_about-us_html_row2 row" >
+<div class="post_column col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column20">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; line-height:1.57em;"><span style="font-size:2.286em;">Our Team</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column21">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:450px;max-width:350px;" src="<?php echo $template_path; ?>/images/34.jpg" /></span></span><span style="font-size:1.143em;">Mark Polo</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column22">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:Left;overflow:hidden;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:450px;max-width:350px;" src="<?php echo $template_path; ?>/images/35.jpg" /></span></span><span style="font-size:1.143em;">John Doe</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column23">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:Left;overflow:hidden;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:450px;max-width:350px;" src="<?php echo $template_path; ?>/images/36.jpg" /></span></span><span style="font-size:1.143em;">Ronald Doe</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column24">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:450px;max-width:350px;" src="<?php echo $template_path; ?>/images/37.jpg" /></span></span><span style="font-size:1.143em;">Alba Kerry</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+<div class="ttr_about-us_html_row3 row" >
+<div class="post_column col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column30">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="margin:5px 0px 5px 0px;text-align:Center; display:block; "><span style="font-size:2.286em;">Our Branches</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column31">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:1.57em;"><span class="ttr_image" style="float:Left;overflow:hidden;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:300px;max-width:450px;" src="<?php echo $template_path; ?>/images/38.jpg" /></span></span><span style="font-size:1.714em;">New York</span></p><p style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">123 ABC Ave Street View #456 XYZ</span></p><p style="margin:0px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">New York City,</span><span style="font-weight:300;font-size:1.143em;"> </span><span style="font-weight:300;font-size:1.143em;">NY 100005, USA</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column32">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:Left;overflow:hidden;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:300px;max-width:450px;" src="<?php echo $template_path; ?>/images/39.jpg" /></span></span></p><p style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:1.714em;">California</span></p><p style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">123 ABC Ave Street View #456 XYZ</span></p><p style="margin:0px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">New York City,</span><span style="font-weight:300;font-size:1.143em;"> </span><span style="font-weight:300;font-size:1.143em;">NY 100005, USA</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_about-us_html_column33">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:300px;max-width:450px;" src="<?php echo $template_path; ?>/images/40.jpg" /></span></span><span style="font-size:1.714em;">San Francisco</span></p><p style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">123 ABC Ave Street View #456 XYZ</span></p><p style="margin:0px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">New York City,</span><span style="font-weight:300;font-size:1.143em;"> </span><span style="font-weight:300;font-size:1.143em;">NY 100005, USA</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+]]></introtext>
+    </content>
+    <content>
+      <meta_ID>tt_page3</meta_ID>
+      <page_title>Contact</page_title>
+      <alias>contact</alias>
+      <page_name>Contact</page_name>
+      <page_header_id>contact</page_header_id>
+      <state>1</state>
+      <featured>1</featured>
+      <created>08/02/2021 00:00:00</created>
+      <created_by_alias>SuperUser</created_by_alias>
+      <page_title_visibility>false</page_title_visibility>
+      <introtext><![CDATA[<div class="ttr_contact_html_row0 row" >
+<div class="post_column col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_contact_html_column00">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; line-height:1.57em;"><span style="font-size:2.286em;">Contact Us</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+<div class="ttr_contact_html_row1 row" >
+<div class="post_column col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12 col-12">
+<div class="ttr_contact_html_column10">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="margin:2px 0px 0px 0px;"><span style="font-size:2.286em;">Address:</span></p><p style="margin:20px 0px 0px 0px;line-height:1.97em;"><span style="font-size:1em;">123 ABC Ave Street View #456 XYZ</span></p><p style="margin:2px 0px 0px 0px;line-height:1.97em;"><span style="font-size:1em;">New York City,</span></p><p style="margin:2px 0px 0px 0px;line-height:1.97em;"><span style="font-size:1em;">NY 100005, USA</span></p><p style="margin:2px 0px 0px 0px;line-height:1.97em;"><span style="font-weight:700;font-size:1em;">PHONES:</span><span style="font-size:1em;"> (800) 123-4567-890; (800) 123-0046-7890</span></p><p style="margin:2px 0px 0px 0px;line-height:1.97em;"><span style="font-weight:700;font-size:1em;">WE ARE OPEN:</span><span style="font-size:1em;"> Mon-Fri: 10 am - 8 pm</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-7 col-lg-7 col-md-7 col-sm-12 col-xs-12 col-12">
+<div class="ttr_contact_html_column11">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p><span style="font-size:2.286em;">Let's Get in Touch </span></p><p><div style="width:100%;" xmlns="contactformparentdiv"><div class="contactformdiv" style="margin:0px 0px 0px 0px;">{loadmoduleid 4b5f9d83-58e9-49a4-a67d-d8bc0e16e991}</div></div></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+<div class="ttr_contact_html_row2 row" >
+<div class="post_column col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_contact_html_column20">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span style="font-size:2.286em;">Our Branches</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_contact_html_column21">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><h2 style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:0.73em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:300px;max-width:450px;" src="<?php echo $template_path; ?>/images/41.jpg" /></span></span><span style="font-size:0.8em;">New York</span></h2><p style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">123 ABC Ave Street View #456 XYZ</span></p><p style="margin:0px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">New York City,</span><span style="font-weight:300;font-size:1.143em;"> </span><span style="font-weight:300;font-size:1.143em;">NY 100005, USA</span></p><p style="margin:20px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-md btn-default">Order Now</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_contact_html_column22">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:300px;max-width:450px;" src="<?php echo $template_path; ?>/images/42.jpg" /></span></span></p><p style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:1.714em;">California</span></p><p style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">123 ABC Ave Street View #456 XYZ</span></p><p style="margin:0px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">New York City,</span><span style="font-weight:300;font-size:1.143em;"> </span><span style="font-weight:300;font-size:1.143em;">NY 100005, USA</span></p><p style="margin:20px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-md btn-default">Order Now</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_contact_html_column23">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:1.57em;"><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:300px;max-width:450px;" src="<?php echo $template_path; ?>/images/43.jpg" /></span></span><span style="font-size:1.714em;">San Francisco</span></p><p style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">123 ABC Ave Street View #456 XYZ</span></p><p style="margin:0px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;">New York City,</span><span style="font-weight:300;font-size:1.143em;"> </span><span style="font-weight:300;font-size:1.143em;">NY 100005, USA</span></p><p style="margin:20px 0px 0px 0px;text-align:Center; display:block; line-height:1.67em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-md btn-default">Order Now</a></span></p><br style="text-align:Center; display:block; " /></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+]]></introtext>
+      <contactforms><contactform id="4b5f9d83-58e9-49a4-a67d-d8bc0e16e991" BrowseButtonVisibility="Visible" msg_name="Message"><ListViewItem HorizontalContentAlignment="Left" VerticalContentAlignment="Center" IsTabStop="False" x:Uid="NoValidation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">Name</ListViewItem><ListViewItem ContentStringFormat="Email" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" IsTabStop="False" Tag="Mandate" x:Uid="Email" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">Email</ListViewItem><ListViewItem HorizontalContentAlignment="Left" VerticalContentAlignment="Center" IsTabStop="False" x:Uid="NoValidation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">Subject</ListViewItem></contactform></contactforms>
+    </content>
+    <content>
+      <meta_ID>tt_page4</meta_ID>
+      <page_title>Menu</page_title>
+      <alias>new-page</alias>
+      <page_name>Menu</page_name>
+      <page_header_id>new-page</page_header_id>
+      <state>1</state>
+      <featured>1</featured>
+      <created>08/02/2021 00:00:00</created>
+      <created_by_alias>SuperUser</created_by_alias>
+      <page_title_visibility>false</page_title_visibility>
+      <introtext><![CDATA[<div class="ttr_new-page_html_row0 row" >
+<div class="post_column col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_new-page_html_column00">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:2.286em;color:rgba(53,58,66,1);">O</span><span style="font-size:2.286em;color:rgba(53,58,66,1);">ur </span><span style="font-size:2.286em;color:rgba(53,58,66,1);">B</span><span style="font-size:2.286em;color:rgba(53,58,66,1);">est </span><span style="font-size:2.286em;color:rgba(53,58,66,1);">O</span><span style="font-size:2.286em;color:rgba(53,58,66,1);">ffers</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">Lorem ipsum dolor sit amet, test link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl.</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_new-page_html_column01">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span style="line-height:1.57em;"><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/44.png" /></span></span></p><p style="margin:5px 0px 5px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:1.286em;color:rgba(53,58,66,1);">HUNGER DISH</span></p><p style="margin:0px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;color:rgba(105,105,105,1);">Lorem ipsum dolor sit amet, test link adipiscing elit</span><span style="font-weight:300;color:rgba(105,105,105,1);"> </span><span style="font-weight:300;color:rgba(105,105,105,1);">ipsum dolor sit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-xs btn-success">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_new-page_html_column02">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/45.png" /></span></span></p><p style="margin:5px 0px 5px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:1.286em;color:rgba(53,58,66,1);">HUNGER DISH</span></p><p style="margin:0px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;color:rgba(105,105,105,1);">Lorem ipsum dolor sit amet, test link adipiscing elit</span><span style="font-weight:300;color:rgba(105,105,105,1);"> </span><span style="font-weight:300;color:rgba(105,105,105,1);">ipsum dolor sit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-xs btn-success">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_new-page_html_column03">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/46.png" /></span></span></p><p style="margin:5px 0px 5px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:1.286em;color:rgba(53,58,66,1);">HUNGER DISH</span></p><p style="margin:0px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;color:rgba(105,105,105,1);">Lorem ipsum dolor sit amet, test link adipiscing elit</span><span style="font-weight:300;color:rgba(105,105,105,1);"> </span><span style="font-weight:300;color:rgba(105,105,105,1);">ipsum dolor sit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-xs btn-success">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_new-page_html_column04">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/47.png" /></span></span></p><p style="margin:5px 0px 5px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:1.286em;color:rgba(53,58,66,1);">HUNGER DISH</span></p><p style="margin:0px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;color:rgba(105,105,105,1);">Lorem ipsum dolor sit amet, test link adipiscing elit</span><span style="font-weight:300;color:rgba(105,105,105,1);"> </span><span style="font-weight:300;color:rgba(105,105,105,1);">ipsum dolor sit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-md btn-success">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_new-page_html_column05">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/48.png" /></span></span></p><p style="margin:5px 0px 5px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:1.286em;color:rgba(53,58,66,1);">HUNGER DISH</span></p><p style="margin:0px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;color:rgba(105,105,105,1);">Lorem ipsum dolor sit amet, test link adipiscing elit</span><span style="font-weight:300;color:rgba(105,105,105,1);"> </span><span style="font-weight:300;color:rgba(105,105,105,1);">ipsum dolor sit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-xs btn-success">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 col-12">
+<div class="ttr_new-page_html_column06">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:200px;max-width:200px;" src="<?php echo $template_path; ?>/images/49.png" /></span></span></p><p style="margin:5px 0px 5px 0px;text-align:Center; display:block; line-height:1.57em;"><span style="font-size:1.286em;color:rgba(53,58,66,1);">HUNGER DISH</span></p><p style="margin:0px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span style="font-weight:300;color:rgba(105,105,105,1);">Lorem ipsum dolor sit amet, test link adipiscing elit</span><span style="font-weight:300;color:rgba(105,105,105,1);"> </span><span style="font-weight:300;color:rgba(105,105,105,1);">ipsum dolor sit.</span></p><p style="margin:10px 0px 0px 8px;text-align:Center; display:block; line-height:1.67em;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-xs btn-success">ORDER NOW</a></span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+<div class="ttr_new-page_html_row1 row" >
+<div class="post_column col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+<div class="ttr_new-page_html_column10">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span style="font-size:1.714em;color:rgba(53,58,66,1);">Our Customer Says</span></p><p style="margin:10px 0px 0px 0px;text-align:Center; display:block; line-height:2.03em;"><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">T</span><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">est link adipiscing elit.Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem. Aliquam libero nisi imperdiet at tincidunt nec gravida vehicula nisl.Praesent mattis</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_new-page_html_column11">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:80px;max-width:80px;" src="<?php echo $template_path; ?>/images/50.png" /></span></span></p><p style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:2.26em;"><span style="font-size:1.143em;color:rgba(52,52,52,1);">Jonny Jackman</span></p><p style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:2.26em;"><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui</span><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);"> </span><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">am sit amet</span><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">.</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_new-page_html_column12">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:80px;max-width:80px;" src="<?php echo $template_path; ?>/images/51.png" /></span></span></p><p style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:2.26em;"><span style="font-size:1.143em;color:rgba(52,52,52,1);">Anna Faris</span></p><p style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:2.26em;"><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit convallis</span><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);"> </span><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">dui.</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+<div class="post_column col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 col-12">
+<div class="ttr_new-page_html_column13">
+<div class="margin_collapsetop"></div>
+<div class="html_content"><p style="text-align:Center; display:block; "><span class="ttr_image" style="float:none;display:block;overflow:hidden;text-align:center;margin:0px 0px 20px 0px;"><span><img class="ttr_uniform" style="max-height:80px;max-width:80px;" src="<?php echo $template_path; ?>/images/52.png" /></span></span></p><p style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:2.26em;"><span style="font-size:1.143em;color:rgba(52,52,52,1);">Lora Mani</span></p><p style="margin:2px 0px 0px 0px;text-align:Center; display:block; line-height:2.26em;"><span style="font-weight:300;font-size:1.143em;color:rgba(105,105,105,1);">Nullam dignissim convallis est.Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui sit amet sem.</span></p></div>
+<div class="margin_collapsetop"></div>
+<div style="clear:both;width:0px;"></div>
+</div>
+</div>
+<div class=" visible-lg-block d-xl-block d-lg-block visible-md-block d-md-block visible-sm-block d-sm-block visible-xs-block d-block" style="clear: both;width:0px;"></div>
+</div>
+]]></introtext>
+    </content>
+  </pages>
+  <sidebars />
+  <footers>
+    <footer name="abc0">
+      <block name="footercellcolumn0" tt_blockID="footer_cell0" title="footertext1">
+        <content><![CDATA[<div class="html_content"><p style="margin:5px 0px 5px 0px;"><span style="font-size:1.286em;color:rgba(255,255,255,1);">Our Address</span></p><p style="margin:10px 0px 5px 0px;"><span style="color:rgba(179,179,179,1);">242, First Street, New Tower</span></p><p style="margin:5px 0px 5px 0px;"><span style="color:rgba(179,179,179,1);">New York 10025</span></p></div>]]></content>
+        <widget_pages>
+          <widget_page>home</widget_page>
+          <widget_page>about-us</widget_page>
+          <widget_page>contact</widget_page>
+          <widget_page>new-page</widget_page>
+        </widget_pages>
+      </block>
+    </footer>
+    <footer name="abc1">
+      <block name="footercellcolumn1" tt_blockID="footer_cell1" title="footertext2">
+        <content><![CDATA[<div class="html_content"><p style="margin:5px 0px 5px 0px;"><span style="font-size:1.286em;color:rgba(255,255,255,1);">Reservation</span></p><p style="margin:10px 0px 5px 0px;"><span style="color:rgba(179,179,179,1);">Tel: +1 (0)987654321</span></p><p style="margin:10px 0px 5px 0px;"><span style="color:rgba(179,179,179,1);">Fax: +1 (0)620154874</span></p><p style="margin:10px 0px 5px 0px;"><span style="color:rgba(179,179,179,1);">revs@hungerfood.com</span></p></div>]]></content>
+        <widget_pages>
+          <widget_page>home</widget_page>
+          <widget_page>about-us</widget_page>
+          <widget_page>contact</widget_page>
+          <widget_page>new-page</widget_page>
+        </widget_pages>
+      </block>
+    </footer>
+    <footer name="abc2">
+      <block name="footercellcolumn2" tt_blockID="footer_cell2" title="footertext3">
+        <content><![CDATA[<div class="html_content"><p style="margin:5px 0px 5px 0px;"><span style="font-size:1.286em;color:rgba(255,255,255,1);">Get in Touch</span></p><p style="margin:10px 0px 5px 0px;"><span style="color:rgba(179,179,179,1);">Facebook</span></p><p style="margin:10px 0px 5px 0px;"><span style="color:rgba(179,179,179,1);">Twitter</span></p><p style="margin:10px 0px 5px 0px;"><span style="color:rgba(179,179,179,1);">Zomato</span></p></div>]]></content>
+        <widget_pages>
+          <widget_page>home</widget_page>
+          <widget_page>about-us</widget_page>
+          <widget_page>contact</widget_page>
+          <widget_page>new-page</widget_page>
+        </widget_pages>
+      </block>
+    </footer>
+    <footer name="abc3">
+      <block name="footercellcolumn3" tt_blockID="footer_cell3" title="footertext4">
+        <content><![CDATA[<div class="html_content"><p style="margin:5px 0px 5px 0px;"><span style="font-size:1.286em;color:rgba(255,255,255,1);">Services</span></p><p style="margin:10px 0px 5px 0px;"><span style="color:rgba(179,179,179,1);">Food Dish</span></p><p style="margin:10px 0px 5px 0px;"><span style="color:rgba(179,179,179,1);">Special Menu</span></p><p style="margin:10px 0px 5px 0px;"><span style="color:rgba(179,179,179,1);">Italian Food</span></p></div>]]></content>
+        <widget_pages>
+          <widget_page>home</widget_page>
+          <widget_page>about-us</widget_page>
+          <widget_page>contact</widget_page>
+          <widget_page>new-page</widget_page>
+        </widget_pages>
+      </block>
+    </footer>
+  </footers>
+  <Shapes>
+    <headershapes />
+    <slideshowshapes>
+      <slideshow name="slideshowshape01">
+        <block name="slideshowshape01" tt_blockID="slideshow_cell000" title="slideshowshape001">
+          <content><![CDATA[<div class="html_content"><p style="margin:20px 0px 5px 20px;"><span style="font-weight:600;font-size:2.857em;color:rgba(53,58,66,1);">Meals and Memories</span><span style="font-weight:600;font-size:2.857em;color:rgba(53,58,66,1);"> </span><span style="font-weight:600;font-size:2.857em;color:rgba(53,58,66,1);">Are</span></p><p style="margin:5px 0px 5px 20px;"><span style="font-weight:600;font-size:2.857em;color:rgba(53,58,66,1);">Made Here</span></p><p style="margin:5px 0px 5px 20px;"><span style="font-size:1.143em;color:rgba(78,78,78,1);">Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem. Aliquam libero nisi</span><span style="font-size:1.143em;color:rgba(78,78,78,1);">.</span></p><p style="margin:10px 0px 5px 20px;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-md btn-default">Order Now</a></span></p></div>]]></content>
+          <widget_pages>
+            <widget_page>home</widget_page>
+            <widget_page>about-us</widget_page>
+            <widget_page>contact</widget_page>
+            <widget_page>new-page</widget_page>
+            <widget_page>blog</widget_page>
+          </widget_pages>
+        </block>
+      </slideshow>
+      <slideshow name="slideshowshape11">
+        <block name="slideshowshape11" tt_blockID="slideshow_cell100" title="slideshowshape011">
+          <content><![CDATA[<div class="html_content"><p><span style="font-weight:600;font-size:2.857em;color:rgba(53,58,66,1);">Food tastes better when</span></p><p><span style="font-weight:600;font-size:2.857em;color:rgba(53,58,66,1);">when eaten with family.</span></p><p><span style="font-size:1.143em;color:rgba(78,78,78,1);">Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem. Aliquam libero nisi</span><span style="font-size:1.143em;color:rgba(78,78,78,1);">.</span></p><p style="margin:10px 0px 5px 0px;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-md btn-default">Order Now</a></span></p><p><span></span></p></div>]]></content>
+          <widget_pages>
+            <widget_page>home</widget_page>
+            <widget_page>about-us</widget_page>
+            <widget_page>contact</widget_page>
+            <widget_page>new-page</widget_page>
+            <widget_page>blog</widget_page>
+          </widget_pages>
+        </block>
+      </slideshow>
+      <slideshow name="slideshowshape21">
+        <block name="slideshowshape21" tt_blockID="slideshow_cell200" title="slideshowshape021">
+          <content><![CDATA[<div class="html_content"><p><span style="font-weight:600;font-size:2.857em;color:rgba(53,58,66,1);">Surprise Yourself</span><span style="font-weight:600;font-size:2.857em;color:rgba(53,58,66,1);"> </span><span style="font-weight:600;font-size:2.857em;color:rgba(53,58,66,1);">with</span></p><p><span style="font-weight:600;font-size:2.857em;color:rgba(53,58,66,1);">Good Food</span></p><p><span style="font-size:1.143em;color:rgba(78,78,78,1);">Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui.Nam sit amet sem. Aliquam libero nisi</span><span style="font-size:1.143em;color:rgba(78,78,78,1);">.</span></p><p style="margin:10px 0px 5px 0px;"><span><a href="<?php echo get_url('home');?>" target="_self" class="btn btn-md btn-default">Order Now</a></span></p><p><span></span></p></div>]]></content>
+          <widget_pages>
+            <widget_page>home</widget_page>
+            <widget_page>about-us</widget_page>
+            <widget_page>contact</widget_page>
+            <widget_page>new-page</widget_page>
+            <widget_page>blog</widget_page>
+          </widget_pages>
+        </block>
+      </slideshow>
+    </slideshowshapes>
+    <menushapes />
+    <footershapes />
+  </Shapes>
+</sitecontent>

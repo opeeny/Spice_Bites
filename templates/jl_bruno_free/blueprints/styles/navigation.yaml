@@ -1,0 +1,26 @@
+name: Navigation Section
+description: Customizing style for Navigation section
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background
+      default: "#000000"
+    text-color:
+      type: input.colorpicker
+      label: Text
+      default: "#ffffff"
+    overlay:
+      type: input.colorpicker
+      label: Overlay
+      description: Set the color of the page overlay when the certain menu modes are active.
+      default: "rgba(0, 0, 0, 0.4)"
+    height:
+      type: input.text
+      label: Navigation Height
+      description: Specify the default width of menu dropdowns for simple mode in rem, em or px units. This width can be overridden on each individual menu item from the menu editor.
+      default: "80px"
+      pattern: '\d+(\.\d+){0,1}(rem|em|px)'

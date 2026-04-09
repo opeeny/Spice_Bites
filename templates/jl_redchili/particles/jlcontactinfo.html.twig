@@ -1,0 +1,127 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+{% set has_styles = particle.particle_title_color or particle.particle_title_fontsize or particle.title_color or particle.title_link_color or particle.title_link_hover_color or particle.title_fontsize %}
+{% if has_styles %}
+<style>
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}
+#el-{{ id }}.g5-title{ {%- if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.contact_style == 'subnav' -%}
+{%- if particle.title_fontsize -%}#{{ id }} .jl-subnav>*>:first-child{font-size:{{ particle.title_fontsize|default('15')|e }}px;text-transform:none;}{%- endif -%}
+{%- if particle.title_color -%}#{{ id }} .jl-subnav>*>:first-child{color:{{ particle.title_color|e }};}{%- endif -%}
+{%- if particle.title_link_hover_color -%}
+#{{ id }} .jl-subnav>*>a:focus,#{{ id }} .jl-subnav>*>a:hover{color:{{ particle.title_link_hover_color|e }};}
+{%- endif -%}
+{%- endif -%}
+{%- if particle.contact_style == 'default' -%}
+{%- if particle.title_color -%}#{{ id }}{color:{{ particle.title_color|e }};}{%- endif -%}
+{%- if particle.title_link_color -%}
+#{{ id }} a{color:{{ particle.title_link_color|e }};}
+{%- endif -%}
+{%- if particle.title_link_hover_color -%}
+#{{ id }} a:hover,#{{ id }} a:focus,#{{ id }} a:active{color:{{ particle.title_link_hover_color|e }};}
+{%- endif -%}
+{%- endif -%}
+</style>
+{% endif %}
+{% endblock %}
+
+{# Set Animation #}
+{% set animation = particle.animation != 'inherit' ? ' jl-scrollspy="cls: jl-animation-' ~ particle.animation|e ~ (particle.animation_repeat == 'enabled' ? '; repeat: true' : '') ~ (particle.animation_delay ? '; delay: ' ~ particle.animation_delay|e : '') ~ ';"' : '' %}
+
+{# Set Particle Subnav Alignment #}
+{% set subnav_alignment %}
+{% if particle.align != 'inherit' %} jl-flex-{{particle.align|e}}{% if particle.breakpoint != 'always' %}@{{particle.breakpoint|e}}{% endif %}{% endif %}{% if particle.align != 'inherit' and particle.breakpoint != 'always' %} {% if particle.fallback != 'inherit' %} jl-flex-{{particle.fallback|e}}{% endif %}{% endif %}
+{% endset %}
+
+{% set total = particle.items ? particle.items|length : 0 %}
+
+{% set breakpoint_suffix = particle.breakpoint != 'always' ? '@' ~ particle.breakpoint : '' %}
+{% set fallback_class = particle.fallback != 'inherit' and particle.breakpoint != 'always' ? ' jl-' ~ (total > 1 ? 'flex' : 'text') ~ '-' ~ particle.fallback : '' %}
+{% set particle_alignment = particle.align != 'inherit' ? 'jl-' ~ (total > 1 ? 'flex' : 'text') ~ '-' ~ particle.align ~ breakpoint_suffix ~ fallback_class : '' %}
+
+{# set Particle Title Style #}
+{% set particle_title_style %}
+{% if particle.particle_title %}
+<{{ particle.particle_title_element|e }} id="el-{{ id }}" class="g5-title{{ particle.particle_title_align != 'inherit' ? ' jl-text-' ~ particle.particle_title_align : '' }}{{ particle.particle_predefined_color != 'default' ? ' jl-text-' ~ particle.particle_predefined_color : '' }}{{ particle.particle_title_style != 'default' ? ' jl-' ~ particle.particle_title_style : '' }}{{ particle.particle_title_decoration != 'none' ? ' jl-heading-' ~ particle.particle_title_decoration : '' }}{{ particle.particle_title_text_transform ? ' jl-text-' ~ particle.particle_title_text_transform : '' }}{{ particle.particle_title_font_weight ? ' jl-text-' ~ particle.particle_title_font_weight : '' }}">
+{% if particle.particle_title_decoration == 'line' %}<span>{{ particle.particle_title|raw }}</span>{% else %}{{ particle.particle_title|raw }}{% endif %}
+</{{ particle.particle_title_element|e }}>
+{% endif %}
+{% endset %}
+
+{# Set Image columns/rows gap #}
+{% set grid_column_gap = particle.grid_column_gap != 'default' ? ' jl-grid-column-' ~ particle.grid_column_gap %}
+{% set grid_row_gap = particle.grid_row_gap != 'default' ? ' jl-grid-row-' ~ particle.grid_row_gap %}
+
+{% if ( particle.grid_column_gap == particle.grid_row_gap ) and not (particle.grid_column_gap == 'default' and particle.grid_row_gap == 'default') %}
+    {% set grid_cr_gap = ' jl-grid-' ~ particle.grid_column_gap %}
+{% else %}
+    {% set grid_cr_gap = grid_column_gap ~ grid_row_gap %}
+{% endif %}
+
+{# Set Item Content #}
+{% set item_content %}
+{% if particle.contact_style == 'default' %}
+<div class="{% if total > 1 %}jl-flex-middle{{ grid_cr_gap ~ subnav_alignment }}{% else %}tm-item{% endif %}"{% if total > 1 %} jl-grid{% endif %}>
+
+{% for item in particle.items %}
+{% if total > 1 %}
+<div class="tm-item{% if item.item_class %} {{ item.item_class }}{% endif %}">
+{% endif %}
+{% if item.link %}
+<a href="{{ item.link|e }}" target="{{ item.link_target|default('_self')|e }}">
+{% endif %}
+{% if item.icon %}<span class="{{item.icon}} jl-margin-small-right" aria-hidden="true"></span> {% endif %}
+{{ item.title|raw }}
+{% if item.link %}
+</a>
+{% endif %}
+{% if total > 1 %}
+</div>
+{% endif %}
+{% endfor %}
+
+</div>
+
+{% else %}
+<ul class="jl-subnav jl-margin-remove-bottom{% if particle.subnav_style != 'default' %} jl-subnav-{{ particle.subnav_style }}{% endif %}{{ subnav_alignment }}" jl-margin>
+{% for item in particle.items %}
+<li class="tm-item{% if item.item_class %} {{ item.item_class }}{% endif %}">
+{% if item.link %}
+<a href="{{ item.link|e }}" target="{{ item.link_target|default('_self')|e }}">
+{% else %}
+<span>
+{% endif %}
+{% if item.icon %}<span class="{{ item.icon }}" aria-hidden="true"> </span> {% endif %}
+{{ item.title|raw }}
+{% if item.link %}
+</a>
+{% else %}
+</span>
+{% endif %}
+</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% endset %}
+
+{%- set particle_classes = [
+    id,
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle_alignment,
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim -%}
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{ particle_title_style }}
+<div id="{{ id }}" class="{{ particle_classes }}"{{ animation|raw }} {{- attr_extra|raw }}>
+    {{ item_content }}
+</div>
+{% endif %}
+{% endblock %}

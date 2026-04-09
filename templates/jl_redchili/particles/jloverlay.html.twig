@@ -1,0 +1,260 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+{%- set hasStyles = particle.particle_title_color or particle.particle_title_fontsize or particle.title_color or particle.title_fontsize or particle.customize_content_color or particle.customize_content_fontsize or particle.meta_color or particle.meta_fontsize or (particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty) -%}
+{%- if hasStyles -%}
+<style>
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}#el-{{ id }}.g5-title{ {%- if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %}}{%- endif -%}
+{%- if particle.title_color or particle.title_fontsize -%}.{{ id }} .tm-title{ {%- if particle.title_color %}color:{{ particle.title_color }} !important;{% endif %}{% if particle.title_fontsize %}font-size:{{ particle.title_fontsize }}px;{% endif %}}{%- endif -%}
+{%- if particle.customize_content_color or particle.customize_content_fontsize -%}.{{ id }} .tm-content{ {%- if particle.customize_content_color %}color:{{ particle.customize_content_color }} !important;{% endif %}{% if particle.customize_content_fontsize %}font-size:{{ particle.customize_content_fontsize }}px;{% endif %}}{%- endif -%}
+{%- if particle.meta_color or particle.meta_fontsize -%}.{{ id }} .tm-meta{ {%- if particle.meta_color %}color:{{ particle.meta_color }};{% endif %}{% if particle.meta_fontsize %}font-size:{{ particle.meta_fontsize }}px;{% endif %}}{%- endif -%}
+{%- if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty -%}#{{ id }}-particle .g-container{max-width:{{ particle.bg_container_width|e }};}{%- endif -%}
+</style>
+{%- endif -%}
+{% endblock %}
+
+{% block javascript %}
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{# Set Text Styles #}
+{% set title_text_transform = particle.title_text_transform and particle.title_text_transform != 'default' ? ' jl-text-' ~ particle.title_text_transform : '' %}
+{% set meta_text_transform = particle.meta_text_transform and particle.meta_text_transform != 'default' ? ' jl-text-' ~ particle.meta_text_transform : '' %}
+{% set content_text_transform = particle.content_text_transform and particle.content_text_transform != 'default' ? ' jl-text-' ~ particle.content_text_transform : '' %}
+
+{% set content_style = particle.content_style and particle.content_style != 'default' 
+  ? (particle.content_style in ['lead', 'meta', 'small', 'large'] 
+    ? ' jl-text-' ~ particle.content_style 
+    : ' jl-' ~ particle.content_style) 
+  : '' %}
+
+{% set title_font_weight = particle.title_font_weight and particle.title_font_weight != 'default' ? ' jl-text-' ~ particle.title_font_weight : '' %}
+{% set meta_font_weight = particle.meta_font_weight and particle.meta_font_weight != 'default' ? ' jl-text-' ~ particle.meta_font_weight : '' %}
+{% set content_font_weight = particle.content_font_weight and particle.content_font_weight != 'default' ? ' jl-text-' ~ particle.content_font_weight : '' %}
+
+{# Set Transition for title/meta/content/link if overlay on hover is set #}
+{% if particle.overlay_hover %}
+    {% set title_transition = particle.title_transition != 'none' ? ' jl-transition-' ~ particle.title_transition : '' %}
+    {% set meta_transition = particle.meta_transition != 'none' ? ' jl-transition-' ~ particle.meta_transition : '' %}
+    {% set content_transition = particle.content_transition != 'none' ? ' jl-transition-' ~ particle.content_transition : '' %}
+    {% set link_transition = particle.link_transition != 'none' ? ' jl-transition-' ~ particle.link_transition : '' %}
+{% endif %}
+
+{# Set title_flex_class #}
+{% set title_flex_class = (not particle.content and (not particle.meta or particle.meta_alignment == 'top') and particle.content_expand) ? ' jl-flex-1' : '' %}
+
+{# Set meta_flex_class #}
+{% set meta_flex_class = (particle.meta_alignment == 'content' or (not particle.content and particle.meta_alignment in ['content', 'bottom'])) and particle.content_expand ? ' jl-flex-1' : '' %}
+
+{# Set content_flex_class #}
+{% set content_flex_class = particle.content_expand and (not (particle.meta and particle.meta_alignment == 'content')) ? ' jl-flex-1' : '' %}
+
+{# Image Dimensions #}
+{% set image_dimensions = (particle.image_width ? ' width="' ~ particle.image_width ~ '"' : '') ~ (particle.image_height ? ' height="' ~ particle.image_height ~ '"' : '') %}
+{# Transitions #}
+{% set overlay_transition = particle.overlay_hover ? ' jl-transition-' ~ particle.overlay_transition %}
+{% set image_transition = particle.image_transition != 'none' ? ' jl-transition-' ~ particle.image_transition %}
+{% set image_hover_transition = particle.image_transition != 'none' ? image_transition : ' jl-transition-fade' %}
+
+{# Box Shadows #}
+{% set image_boxshadow = particle.box_shadow != 'none' ? ' jl-box-shadow-' ~ particle.box_shadow %}
+{% set image_boxshadow_hover = particle.box_shadow_hover != 'none' ? ' jl-box-shadow-hover-' ~ particle.box_shadow_hover %}
+
+{# Set Link Scroll #}
+{% set linkscroll = '#' in particle.link and particle.target != '_blank' ? ' jl-scroll' : '' %}
+{# Set Title Hover #}
+{% set title_hover = particle.title_hover != 'reset' ? ' class="' ~ (particle.title_hover == 'heading' ? 'jl-link-' ~ particle.title_hover : 'jl-link') ~ '"' : '' %}
+
+{# Meta Content #}
+{% if particle.meta %}
+    {% set meta_content %}
+        <{{ particle.meta_element|e }} class="tm-meta{{ meta_text_transform ~ meta_font_weight }}{{ particle.meta_margin != 'default' ? ' jl-margin-' ~ particle.meta_margin ~ '-top' : ' jl-margin-top' }}{% if particle.pre_meta_color != 'default' %} jl-text-{{ particle.pre_meta_color }}{% endif %}{% if particle.meta_style != 'default' %} jl-{{ particle.meta_style }}{% endif %}{{ meta_transition }}{{ meta_flex_class }}">{{ particle.meta|raw }}</{{ particle.meta_element|e }}>
+    {% endset %}
+{% endif %}
+
+{# Button Size and Weight #}
+{% set button_size = particle.link_button_size != 'default' ? ' jl-button-' ~ particle.link_button_size : '' %}
+{% set btn_font_weight = particle.btn_font_weight ? ' jl-text-' ~ particle.btn_font_weight : '' %}
+
+{# Button Class #}
+{% set button_cls = particle.buttonclass in ['link', 'link-muted', 'link-text'] ? 'jl-' ~ particle.buttonclass ~ btn_font_weight : 'jl-button jl-button-' ~ particle.buttonclass ~ button_size ~ btn_font_weight %}
+
+{# Button #}
+{% set button %}
+{% set targetAttrib = ' target="' ~ particle.target|e ~ '"' ~ (particle.target == '_blank' ? ' rel="noopener noreferrer"' : '') %}
+<a class="{{ button_cls }}"{% if particle.link_label and not particle.link_overlay %} aria-label="{{ particle.link_label|e }}"{% endif %} href="{{ particle.link|e }}"{{ targetAttrib|raw }}{{ linkscroll }}>{{ particle.buttontext|raw }}</a>
+{% endset %}
+
+{% set content_expand = particle.content_expand %}
+{% set height_expand = particle.height_expand %}
+{% set overlay_position = particle.overlay_position %}
+
+{# Adjust overlay positions #}
+{% if content_expand %}
+    {% set overlay_map = {
+        'top': 'cover', 'bottom': 'cover',
+        'top-center': 'center-horizontal', 'center': 'center-horizontal', 'bottom-center': 'center-horizontal',
+        'top-left': 'left', 'center-left': 'left', 'bottom-left': 'left',
+        'top-right': 'right', 'center-right': 'right', 'bottom-right': 'right'
+    } %}
+    {% set overlay_position = overlay_map[overlay_position] | default(overlay_position) %}
+{% endif %}
+
+{% set flex_column_align = '' %}
+{% set flex_column_align_fallback = '' %}
+
+{% if height_expand %}
+    {% set alignment_map = {
+        'left': 'top',
+        'center': 'middle',
+        'right': 'bottom'
+    } %}
+    
+    {% set align_not_inherit = particle.align != 'inherit' %}
+    
+    {% if align_not_inherit %}
+        {% set flex_column_align = alignment_map[particle.align]|default(particle.align) %}
+        
+        {% if particle.fallback != 'inherit' %}
+            {% set flex_column_align_fallback = alignment_map[particle.fallback]|default(particle.fallback) %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+{# Set Overlay Padding #}
+{% set overlay_padding_init = particle.overlay_style == 'none' ? (particle.overlay_padding == 'default' ? ' jl-padding' : (particle.overlay_padding == 'remove' ? '' : ' jl-padding-' ~ particle.overlay_padding)) : (particle.overlay_padding != 'default' ? ' jl-padding-' ~ particle.overlay_padding : '') %}
+
+{# Set Overlay Margin #}
+{% set overlay_margin_init = particle.overlay_style != 'none' and particle.overlay_margin != 'none' ? ' jl-position-' ~ particle.overlay_margin : '' %}
+
+{# Set Overlay style #}
+{% set overlay_styles_int = particle.overlay_style != 'none' ? 'jl-overlay' : 'jl-panel' %}
+{% set overlay_maxwidth = overlay_position not in ['top', 'bottom'] and particle.overlay_maxwidth != 'none' ? ' jl-width-' ~ particle.overlay_maxwidth %}
+
+{# Set Link overlay html element #}
+{% set has_link = particle.link and particle.link_overlay %}
+{% set link_overlay_element = has_link ? 'a' : 'div' %}
+{% set overlay_cover = particle.overlay_style != 'none' and particle.overlay_mode == 'cover' %}
+
+{% set has_transition = particle.overlay_hover or particle.image_transition != 'none' or particle.hover_image %}
+{% set toggle_transition = has_transition ? ' jl-transition-toggle' %}
+{% set has_animate_bg = particle.overlay_mode == 'cover' and particle.overlay_hover and particle.animate_background %}
+
+{# Custom inverse cls #}
+{% set overlay_inverse = particle.overlay_style in ['jl-overlay-primary', 'jl-tile-primary', 'jl-tile-secondary'] ? ' jl-light' : '' %}
+
+{# Set Overlay Background Color #}
+{% set overlay_bg_color = particle.image and particle.background ? ' style="background-color: ' ~ particle.background ~ ';"' : '' %}
+
+{# Set Background Overlay Div #}
+{% set bg_overlay_color = particle.background_overlay ? '<div class="jl-position-cover" style="background-color: ' ~ particle.background_overlay ~ ';"></div>' : '' %}
+
+{# Set Image Loading Attribute #}
+{% set image_loading = not particle.image_loading ? ' loading="lazy"' : '' %}
+
+{# Set Image Size Attributes #}
+{% set image_size = (particle.image_width is empty and particle.image_height is empty) ? ' ' ~ particle.image|imagesize : '' %}
+{% set hover_image_size = (particle.image_width is empty and particle.image_height is empty) ? ' ' ~ particle.hover_image|imagesize : '' %}
+
+{# Set Inverse Toggle for Hover Effects #}
+{% set inverse_toggle = '' %}
+{% if particle.text_color_hover and ((particle.overlay_style == 'none' and particle.hover_image) or (overlay_cover and particle.overlay_hover and particle.animate_background)) %}
+    {% set inverse = particle.overlay_color == 'light' ? 'dark' : 'light' %}
+    {% set inverse_toggle = ' jl-toggle="cls: jl-' ~ inverse ~ ' jl-' ~ particle.overlay_color ~ '; mode: hover; target: !*"' %}
+{% endif %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{%- set particle_classes = [
+    id,
+    height_expand ? 'jl-flex-1 jl-flex jl-flex-column' : '',
+    height_expand and flex_column_align 
+        ? 'jl-flex-' ~ flex_column_align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (flex_column_align_fallback ? ' jl-flex-' ~ flex_column_align_fallback : '') : '') 
+        : '',
+    particle.g_maxwidth != 'inherit' 
+        ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) 
+        : '',
+    particle.align != 'inherit' 
+        ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') 
+        : '',
+    particle.animation == 'parallax' and particle.pa_z_index 
+        ? 'jl-position-z-index jl-position-relative' 
+        : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' 
+        ? 'jl-transform-origin-' ~ particle.parallax_transform_origin 
+        : '',
+    particle.margin != 'inherit' 
+        ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') 
+        : '',
+    particle.visibility != 'inherit' 
+        ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) 
+        : '',
+    particle.overlay_color != 'default' and (particle.overlay_style == 'none' or overlay_cover) 
+        ? 'jl-' ~ particle.overlay_color 
+        : '',
+    particle.class|default('')
+] | filter(v => v) | join(' ') | trim -%}
+
+{% block particle %}
+{% if particle.enabled %}
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }}{{ attr_extra|raw }}>
+<{{ link_overlay_element|e }} class="tm-item jl-inline-clip{{ toggle_transition ~ (height_expand ? ' jl-flex-1 jl-flex jl-flex-column' : '') ~ image_boxshadow ~ image_boxshadow_hover }}{{ has_link ? ' jl-link-toggle' : '' }}"{{ overlay_bg_color|raw }}{{ inverse_toggle|raw }}{% if has_link %} href="{{ particle.link|e }}"{% if particle.link_label %} aria-label="{{particle.link_label|e}}"{% endif %} target="{{ particle.target|default('_self')|e }}"{{ linkscroll }}{% endif %}{{ not has_link and has_transition ? ' tabindex="0"' : '' }}>
+    {% if particle.image %}
+        <img src="{{ url(particle.image)|e }}"{{ image_dimensions|raw }}{{ image_size|raw }} class="tm-image{% if particle.blend_mode != 'inherit' and particle.image and particle.background %} jl-blend-{{ particle.blend_mode }}{% endif %}{{ image_transition }} jl-transition-opaque" alt="{{ particle.image_alt|e }}"{{ image_loading|raw }}>
+    {% endif %}
+    {% if particle.hover_image %}
+        <img src="{{ url(particle.hover_image)|e }}"{{ image_dimensions|raw }}{{ hover_image_size|raw }} class="tm-hover-image{{ image_hover_transition }}" alt="{{ particle.image_alt|e }}"{{ particle.image ? ' jl-cover' : '' }}{{ image_loading|raw }}>
+    {% endif %}
+    {{ bg_overlay_color|raw }}
+    {%- if particle.title or particle.meta or particle.content %}
+        {% if overlay_cover %}
+            <div class="{% if particle.overlay_style != 'none' %}{{ particle.overlay_style }} {% endif %}jl-position-cover{{ overlay_transition ~ overlay_margin_init }}"></div>
+        {% endif %}
+        <div class="jl-position-{{ overlay_position ~ overlay_margin_init }}{{ content_expand ? ' jl-flex' : '' }}{% if particle.overlay_mode == 'caption' and particle.overlay_style != 'none' %} {{ particle.overlay_style ~ overlay_inverse }}{% endif %}{% if not has_animate_bg %}{{ overlay_transition }}{% endif %}">
+            <div class="{{ overlay_styles_int ~ overlay_padding_init ~ overlay_maxwidth }} jl-margin-remove-first-child{{ content_expand ? ' jl-flex-1 jl-flex jl-flex-column' : '' }}">
+                {% if particle.meta_alignment == 'top' %}
+                    {{ meta_content }}
+                {% endif %}
+                {%- if particle.title %}
+                    <{{ particle.title_element|e }} class="tm-title jl-margin-remove-bottom{{ title_text_transform ~ title_font_weight }} jl-margin-{{ particle.title_margin == 'default' ? 'top' : particle.title_margin ~ '-top' }}{% if particle.title_style != 'default' %} jl-{{ particle.title_style }}{% endif %}{% if particle.predefined_title_color != 'default' %} jl-text-{{ particle.predefined_title_color }}{% endif %}{% if particle.title_decoration != 'none' %} jl-heading-{{ particle.title_decoration }}{% endif %}{{ title_transition }}{{ title_flex_class }}">
+                        {% if particle.title_decoration == 'line' or (particle.link_overlay and particle.title_hover != 'reset') %}<span{{ particle.link_overlay and particle.title_hover != 'reset' ? title_hover|raw : '' }}>{% endif %}
+                        {% if particle.link_title and particle.link and not particle.link_overlay %}<a{{ title_hover|raw }} href="{{ particle.link|e }}" title="{{ particle.buttontext|e }}" target="{{ particle.target|default('_self')|e }}"{{ linkscroll }}>{% endif %}
+                        {{ particle.title|raw }}
+                        {% if particle.link_title and particle.link and not particle.link_overlay %}</a>{% endif %}
+                        {% if particle.title_decoration == 'line' or (particle.link_card and particle.title_hover != 'reset') %}</span>{% endif %}
+                    </{{ particle.title_element|e }}>
+                {% endif -%}
+                {% if particle.meta_alignment == 'bottom' %}
+                    {{ meta_content }}
+                {% endif %}
+                {% if particle.content %}
+                    <div class="tm-content jl-panel{{ content_style ~ content_text_transform ~ content_font_weight }} jl-margin-{{ particle.content_margin_top == 'default' ? 'top' : particle.content_margin_top ~ '-top' }}{% if particle.content_text_color != 'default' %} jl-text-{{ particle.content_text_color }}{% endif %}{{ content_transition }}{{ content_flex_class }}">
+                        {% set content = particle.twig ? gantry.theme.compile(particle.content) : particle.content %}
+                        {{ (particle.filter ? gantry.platform.filter(content) : content)|html|raw }}
+                    </div>
+                {% endif %}
+                {% if particle.meta_alignment == 'content' %}
+                    {{ meta_content }}
+                {% endif %}
+                {% if particle.buttontext and particle.link %}
+                    <div class="jl-margin-{{ particle.link_margin_top == 'default' ? 'top' : particle.link_margin_top ~ '-top' }}{{ link_transition }}">
+                        {% if particle.link_overlay %}
+                            <div class="{{ button_cls }}">{{ particle.buttontext|e }}</div>
+                        {% else %}
+                            {{ button }}
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif -%}
+</{{ link_overlay_element|e }}>
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}

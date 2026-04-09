@@ -1,0 +1,6 @@
+<?php
+defined('_JEXEC') or die;
+return array (
+  'LIB_GANTRY5' => 'Gantry 5 Framework',
+  'LIB_GANTRY5_DESCRIPTION' => 'Gantry 5 Framework libraries. Needs to be enabled at all times.',
+);

@@ -1,0 +1,30 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+{% if particle.enabled %}
+
+{% set url = url(particle.url)|default(gantry.siteUrl()) %}
+{% if (url == gantry.siteUrl()) %}{% set rel='rel="home"' %}{% endif %}
+{% set logo_init = particle.image or particle.text %}
+{% set logo_render %}
+    {% set height = particle.height ? 'style="max-height: ' ~ particle.height ~ '"' %}
+    {% if particle.image %}
+        <img src="{{ url(particle.image)|e }}" {{ height|default('')|raw }} alt="{{ particle.text }}"{{ particle.logo_type == 'svg' ? ' jl-svg' : '' }}>
+    {% else %}
+        {{ particle.text|raw }} 
+    {% endif %}
+{% endset %}
+{% if logo_init %}
+    <a class="jl-logo{% if particle.class %} {{ particle.class }}{% endif %}" href="{{ url }}"{% if particle.text %} title="{{ particle.text|striptags }}"{% endif %} aria-label="Back to the homepage" rel="home" {{ class|default('')|raw }}>
+        {{ logo_render }}
+    </a>
+{% endif %}
+{% if logo_init and particle.logo_description %}
+<div class="jl-width-large" jl-drop="pos: {{particle.description_position}};{% if particle.description_animation != 'inherit' %} animation: jl-animation-{{particle.description_animation}}; duration: 500{% endif %}">
+    <div class="jl-drop-grid jl-width-{{ particle.description_grid_width }}@{{ particle.description_grid_breakpoint|e }}" jl-grid>
+        <div class="jl-card jl-card-{{ particle.style }}{% if particle.cardsize != 'default' %} jl-card-{{ particle.cardsize }}{% endif %} jl-card-body jl-margin-remove-first-child">{{particle.logo_description|raw}}</div>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+{% endblock %}

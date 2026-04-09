@@ -1,0 +1,114 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+{%- if particle.particle_title_color or particle.particle_title_fontsize or particle.title_color or particle.title_fontsize or particle.title_line_height or particle.subtitle_color or particle.subtitle_fontsize or (particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty) -%}
+<style>
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}
+#el-{{ id }}.g5-title{ {%- if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.title_color or particle.title_fontsize or particle.title_line_height -%}
+#{{ id }} .jl-countdown-number{ {%- if particle.title_color %}color:{{ particle.title_color }};{% endif %}{% if particle.title_fontsize %}font-size:{{ particle.title_fontsize }}px;{% endif %}{% if particle.title_line_height %}line-height:{{ particle.title_line_height }};{% endif %}}#{{ id }} .jl-countdown-separator{ {%- if particle.title_color %}color:{{ particle.title_color }};{% endif %}{% if particle.title_fontsize %}font-size:{{ particle.title_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.subtitle_color or particle.subtitle_fontsize -%}
+#{{ id }} .jl-countdown-label{ {%- if particle.subtitle_color %}color:{{ particle.subtitle_color }};{% endif %}{% if particle.subtitle_fontsize %}font-size:{{ particle.subtitle_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty -%}
+#{{ id }}-particle .g-container{max-width:{{ particle.bg_container_width|e }};}
+{%- endif -%}
+</style>
+{%- endif %}
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url('gantry-theme://js/jlcomponents/countdown.min.js') }}"></script>
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{% set separator = particle.separators ? '<div class="jl-countdown-separator">:</div>' : '' %}
+
+{% set grid_column_gap = particle.grid_column_gap != 'default' ? 'jl-grid-column-' ~ particle.grid_column_gap : '' %}
+{% set grid_row_gap = particle.grid_row_gap != 'default' ? ' jl-grid-row-' ~ particle.grid_row_gap : '' %}
+
+{% if particle.grid_column_gap == particle.grid_row_gap and not (particle.grid_column_gap == 'default' and particle.grid_row_gap == 'default') %}
+    {% set grid_cr_gap = 'jl-grid-' ~ particle.grid_column_gap %}
+{% else %}
+    {% set grid_cr_gap = grid_column_gap ~ grid_row_gap %}
+{% endif %}
+
+{% set date_style = particle.date_style != 'default' ? ' jl-' ~ particle.date_style : '' %}
+{% set date_font_weight = particle.date_font_weight ? ' jl-text-' ~ particle.date_font_weight %}
+{% set date_color = particle.date_color != 'default' ? ' jl-text-' ~ particle.date_color : '' %}
+{% set date_cls = date_style ~ date_font_weight ~ date_color %}
+
+{% set label_style = particle.label_style != 'default' ? ' jl-' ~ particle.label_style : '' %}
+{% set label_color = particle.label_color != 'default' ? ' jl-text-' ~ particle.label_color : '' %}
+{% set label_text_transform = particle.subtitle_text_transform ? ' jl-text-' ~ particle.subtitle_text_transform : '' %}
+{% set label_font_weight = particle.label_font_weight ? ' jl-text-' ~ particle.label_font_weight %}
+{% set label_margin = particle.label_margin != 'default' ? ' jl-margin-' ~ particle.label_margin : '' %}
+
+{% set label_cls = label_style ~ label_color ~ label_text_transform ~ label_font_weight ~ label_margin %}
+
+{% set particle_classes = [
+    id,
+    'jl-child-width-auto',
+    grid_cr_gap,
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-flex-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-flex-' ~ particle.fallback : '') : '') : '',
+    particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div id="{{ id }}" class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }} jl-countdown="date: {{ particle.date_time|e }}" jl-grid {{- attr_extra|raw }}>
+  <div>
+    <div class="jl-countdown-number jl-countdown-days{{ date_cls }}"></div>
+    <div class="jl-countdown-label jl-text-center jl-visible@s{{ label_cls }}">{{ particle.days }}</div>
+  </div>
+  {% if particle.date_style != 'default' %}
+   <div class="jl-{{ particle.date_style|e }}{{ date_font_weight }}">
+  {% endif %}
+  {{ separator|raw }}
+  {% if particle.date_style != 'default' %}
+   </div>
+  {% endif %}
+  <div>
+    <div class="jl-countdown-number jl-countdown-hours{{ date_cls }}"></div>
+    <div class="jl-countdown-label jl-text-center jl-visible@s{{ label_cls }}">{{ particle.hours }}</div>
+  </div>
+  {% if particle.date_style != 'default' %}
+   <div class="jl-{{ particle.date_style|e }}{{ date_font_weight }}">
+  {% endif %}
+  {{ separator|raw }}
+  {% if particle.date_style != 'default' %}
+   </div>
+  {% endif %}
+  <div>
+    <div class="jl-countdown-number jl-countdown-minutes{{ date_cls }}"></div>
+    <div class="jl-countdown-label jl-text-center jl-visible@s{{ label_cls }}">{{ particle.minutes }}</div>
+  </div>
+  {% if particle.date_style != 'default' %}
+   <div class="jl-{{ particle.date_style|e }}{{ date_font_weight }}">
+  {% endif %}
+  {{ separator|raw }}
+  {% if particle.date_style != 'default' %}
+   </div>
+  {% endif %}
+  <div>
+    <div class="jl-countdown-number jl-countdown-seconds{{ date_cls }}"></div>
+    <div class="jl-countdown-label jl-text-center jl-visible@s{{ label_cls }}">{{ particle.seconds }}</div>
+  </div>
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}

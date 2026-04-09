@@ -1,0 +1,47 @@
+#g-footer {
+    background-color: $footer-background;
+    color: $footer-text-color;
+    [id^="module-"][id$="-particle"] {
+        color: $base-text-color;
+    }
+    .jl-card-title {
+        font-size: 22px;
+    }
+    .jl-panel.moduletable {
+        margin-bottom: 20px;
+    }
+    @if $footer-background-image {
+        background-image: url($footer-background-image);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    a {
+        &.jl-icon-button {
+            &:hover,
+            &:focus,
+            &:active {
+                color: darken($color: $accent-color-1, $amount: 20);
+            }
+        }
+        color: $footer-link-color;
+        &:hover,
+        &:focus,
+        &:active {
+            color: $footer-link-hover-color;
+        }
+    }
+    .jl-light {
+        .jl-input,
+        .jl-select,
+        .jl-textarea {
+            border: none;
+        }
+    }
+}
+
+@media print {
+    #g-container-footer {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

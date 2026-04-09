@@ -1,0 +1,45 @@
+<?php
+return [
+    '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
+    'filename' => 'D:\\Apache24\\htdocs\\Spice_Bites/templates/jl_bruno_free/blueprints/styles/base.yaml',
+    'modified' => 1775727461,
+    'data' => [
+        'name' => 'Base Styles',
+        'description' => 'Base styles for the theme',
+        'type' => 'core',
+        'form' => [
+            'fields' => [
+                'background' => [
+                    'type' => 'input.colorpicker',
+                    'label' => 'Base Background',
+                    'default' => '#ffffff'
+                ],
+                'background-image' => [
+                    'type' => 'input.imagepicker',
+                    'label' => 'Background Image',
+                    'description' => 'Upload an optional background image that covers the page. It will be fixed while scrolling.'
+                ],
+                'text-color' => [
+                    'type' => 'input.colorpicker',
+                    'label' => 'Base Text Color',
+                    'default' => '#666666'
+                ],
+                'body-font' => [
+                    'type' => 'input.fonts',
+                    'label' => 'Body Font',
+                    'default' => 'family=Barlow'
+                ],
+                'heading-font' => [
+                    'type' => 'input.fonts',
+                    'label' => 'Heading Font',
+                    'default' => 'family=Barlow:600'
+                ],
+                'menu-font' => [
+                    'type' => 'input.fonts',
+                    'label' => 'Menu Font',
+                    'default' => 'family=Barlow'
+                ]
+            ]
+        ]
+    ]
+];

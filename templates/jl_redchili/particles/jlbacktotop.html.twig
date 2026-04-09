@@ -1,0 +1,15 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+<style>.back-to-top{bottom:{{ particle.bottom_pos|default('40')|e }}px;{{ gantry.page.direction == 'rtl' ? 'left' : 'right' }}:{{ particle.right_pos|default('15')|e }}px;height:45px;width:45px;z-index:999;background-color:{{ particle.background|default('#2b3138')|e }};-webkit-animation:fadeInRight 1s both;animation:fadeInRight 1s both}.back-to-top span,.jl-totop{color:{{ particle.color|default('#fff')|e }}}.back-to-top:hover,.back-to-top:active{background-color:{{ particle.backgroundhover|default('#20242a')|e }}}.back-to-top:hover span,.back-to-top:active span,.jl-totop:hover,.jl-totop:focus,.jl-totop:active{color:{{ particle.icon_color|default('rgba(255,255,255,0.8)')|e }}}.back-to-top.jl-icon-button{transition:none}.backHide{-webkit-animation-name:fadeOutRight;animation-name:fadeOutRight}@-webkit-keyframes fadeInRight{from{opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}to{opacity:1;-webkit-transform:none;transform:none}}@keyframes fadeInRight{from{opacity:0;transform:translate3d(100%,0,0)}to{opacity:1;transform:none}}@-webkit-keyframes fadeOutRight{from{opacity:1}to{opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}}@keyframes fadeOutRight{from{opacity:1}to{opacity:0;transform:translate3d(100%,0,0)}}</style>
+{% endblock %}
+
+{% pageblock bottom %}
+<a id="back-top" href="{{ particle.sec_id ? particle.sec_id|e : '#top' }}"{% if particle.icon %} role="button" aria-label="{{ particle.title_label|raw|default('Back to top')}}" {% endif %}class="back-to-top jl-icon-button jl-position-fixed"{% if particle.sec_id %} href="{{ particle.sec_id|e }}"{% endif %} aria-label="{{ particle.title_label|raw|default('Back to top')}}" jl-scroll{% if not particle.icon %} jl-totop{% endif %}>
+    {% if particle.icon %}<span class="{{ particle.icon|e }}" aria-hidden="true"></span>{% endif %}
+</a>
+{% endpageblock %}
+
+{% block javascript_footer %}
+<script>document.addEventListener('DOMContentLoaded',function(){const t=document.getElementById('back-top');if(t){const e=20,n=()=>{const n=document.documentElement.scrollTop||document.body.scrollTop;t.hidden=n<=e};n(),jlUIkit.util.on(window,'scroll',n)}});</script>
+{% endblock %}

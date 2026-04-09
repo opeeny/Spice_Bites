@@ -1,0 +1,11 @@
+#g-extended {
+	background: $extended-background;
+	color: $extended-text-color;
+}
+
+@media print {
+	#g-extended {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

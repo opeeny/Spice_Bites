@@ -1,0 +1,11 @@
+#g-bottoma {
+	background-color: $bottoma-background;
+	color: $bottoma-text-color;
+}
+
+@media print {
+	#g-bottoma {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

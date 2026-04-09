@@ -1,0 +1,57 @@
+<?php
+return [
+    '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
+    'filename' => 'D:\\Apache24\\htdocs\\Spice_Bites/templates/jl_bruno_free/blueprints/styles/offcanvas.yaml',
+    'modified' => 1775727461,
+    'data' => [
+        'name' => 'Offcanvas Styles',
+        'description' => 'Paramters for the Off Canvas sidepanel section.',
+        'type' => 'section',
+        'form' => [
+            'fields' => [
+                'background' => [
+                    'type' => 'input.colorpicker',
+                    'label' => 'Background',
+                    'default' => '#ffffff'
+                ],
+                'text-color' => [
+                    'type' => 'input.colorpicker',
+                    'label' => 'Text',
+                    'default' => '#1c1c1c'
+                ],
+                'text-color-active' => [
+                    'type' => 'input.colorpicker',
+                    'label' => 'Hover & Active Text',
+                    'default' => '#c59d5f'
+                ],
+                'toggle-color' => [
+                    'type' => 'input.colorpicker',
+                    'label' => 'Toggle Color',
+                    'default' => 'rgba(255, 255, 255, 0.5)'
+                ],
+                'toggle-color-active' => [
+                    'type' => 'input.colorpicker',
+                    'label' => 'Toggle Hover',
+                    'default' => '#ffffff'
+                ],
+                'width' => [
+                    'type' => 'input.text',
+                    'label' => 'Panel Width',
+                    'description' => 'Set offcanvas size in rem, em, px, or percentage unit values',
+                    'default' => '14rem',
+                    'pattern' => '\\d+(\\.\\d+){0,1}(rem|em|ex|ch|vw|vh|vmin|vmax|%|px|cm|mm|in|pt|pc)'
+                ],
+                'toggle-visibility' => [
+                    'type' => 'select.selectize',
+                    'label' => 'Toggle Visibility',
+                    'description' => 'Choose the OffCanvas Toggle Visibility.',
+                    'default' => 1,
+                    'options' => [
+                        1 => 'Mobile Menu',
+                        2 => 'Always'
+                    ]
+                ]
+            ]
+        ]
+    ]
+];

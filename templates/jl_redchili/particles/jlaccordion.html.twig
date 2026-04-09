@@ -1,0 +1,243 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+{% set has_styles =
+    particle.dividers
+    or particle.remove_spacing
+    or particle.particle_title_color
+    or particle.particle_title_fontsize
+    or particle.title_color
+    or particle.title_hover_color
+    or particle.title_fontsize
+    or particle.subtitle_color
+    or particle.subtitle_fontsize
+    or particle.title_padding
+    or particle.title_background_color
+    or particle.content_background_color
+    or particle.content_padding
+    or particle.icon_alignment
+    or particle.icon_type
+    or (particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty)
+%}
+{% if has_styles %}
+<style>
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}
+#el-{{ id }}.g5-title{ {%- if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.title_background_color or particle.title_fontsize or particle.title_padding -%}
+.{{ id }} .jl-accordion-title{ {% if particle.title_fontsize %}font-size:{{ particle.title_fontsize }}px;{% endif %}{% if particle.title_background_color %}background-color:{{ particle.title_background_color }};{% endif %}{% if particle.title_padding %}padding:{{ particle.title_padding }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.title_color -%}.{{ id }} .jl-accordion-title,.{{ id }} .jl-accordion-icon { color:{{ particle.title_color|e }};}{%- endif -%}
+{%- if particle.title_hover_color -%}.{{ id }} .jl-accordion-title:hover{ color:{{ particle.title_hover_color|e }};}{%- endif -%}
+{%- if particle.subtitle_color or particle.subtitle_fontsize or particle.content_background_color or particle.content_padding -%}
+.{{ id }} .jl-accordion-content{ {%- if particle.subtitle_color %}color:{{ particle.subtitle_color }};{% endif %}{% if particle.subtitle_fontsize %}font-size:{{ particle.subtitle_fontsize }}px;{% endif %}{% if particle.content_background_color %}background-color:{{ particle.content_background_color }};{% endif %}{% if particle.content_padding %}padding:{{ particle.content_padding }}px;{% endif %}}
+{%- if particle.remove_spacing -%}.{{ id }} .jl-accordion-content{margin-top:0;}{%- endif -%}
+{%- endif -%}
+{%- if particle.icon_alignment -%}
+.{{ id }} .jl-accordion-title::before{margin-right:8px;margin-left:-{{ particle.title_background_color ? '8' : '4' }}px;float:left;}
+{%- endif -%}
+{%- if particle.icon_type -%}
+.{{ id }} .jl-open .jl-accordion-icon {transform: rotate(-180deg);}
+{%- endif -%}
+{%- if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty -%}
+#{{ id }}-particle .g-container{max-width:{{ particle.bg_container_width|e }};}
+{%- endif -%}
+{%- if particle.dividers -%}
+.{{ id }}.jl-accordion>:nth-child(n+2){margin-top:15px;padding-top:15px;border-top:1px solid #ededed;}
+{%- endif -%}
+</style>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{# Set Text Transform #}
+{% set title_text_transform = particle.title_text_transform ? ' jl-text-' ~ particle.title_text_transform|e %}
+
+{% set content_text_transform = particle.content_text_transform ? ' jl-text-' ~ particle.content_text_transform|e %}
+{% set btn_text_transform = particle.btn_text_transform ? ' jl-text-' ~ particle.btn_text_transform|e %}
+
+{# Set Text Font Weight #}
+{% set title_font_weight = particle.title_font_weight ? ' jl-text-' ~ particle.title_font_weight|e %}
+{% set content_font_weight = particle.content_font_weight ? ' jl-text-' ~ particle.content_font_weight|e %}
+{% set btn_font_weight = particle.btn_font_weight ? ' jl-text-' ~ particle.btn_font_weight|e %}
+
+{# Accordion Settings #}
+{% set multiple = particle.multiple ? 'multiple: 1;' : '' %}
+{% set collapsible = particle.closed ? 'collapsible: true;' : 'collapsible: false;' %}
+
+{# Button Size and Class Generation #}
+{% set button_size = particle.link_button_size != 'default' ? ' jl-button-' ~ particle.link_button_size|e : '' %}
+
+{% set button_cls = particle.buttonclass in ['link', 'link-muted', 'link-text'] 
+    ? 'jl-' ~ particle.buttonclass|e ~ btn_font_weight ~ btn_text_transform
+    : 'jl-button jl-button-' ~ particle.buttonclass|e ~ button_size ~ btn_font_weight ~ btn_text_transform 
+%}
+
+{# Image Attributes #}
+{% set image_dimensions = (particle.image_width ? ' width="' ~ particle.image_width ~ '"' : '') ~ (particle.image_height ? ' height="' ~ particle.image_height ~ '"' : '') %}
+
+{# Image Classes #}
+{% set img_border_cls = particle.border != 'none' ? ' jl-border-' ~ particle.border|e : '' %}
+{% set img_box_shadow = particle.box_shadow != 'none' ? ' jl-box-shadow-' ~ particle.box_shadow|e : '' %}
+
+{# Image Margin Top for Specific Alignments #}
+{% set img_margin_top = (particle.image_alignment in ['bottom', 'between']) 
+    ? ' jl-margin' ~ (particle.image_margin_top != 'default' ? '-' ~ particle.image_margin_top|e ~ '-top' : '-top') 
+    : '' 
+%}
+
+{# Image Grid Gap #}
+{% set image_grid_cr_gap = 
+    particle.image_grid_column_gap == particle.image_grid_row_gap
+        ? (particle.image_grid_column_gap != 'default' ? ' jl-grid-' ~ particle.image_grid_column_gap : '')
+        : (particle.image_grid_column_gap != 'default' ? ' jl-grid-column-' ~ particle.image_grid_column_gap : '') ~
+          (particle.image_grid_row_gap != 'default' ? ' jl-grid-row-' ~ particle.image_grid_row_gap : '')
+%}
+
+{% set content_style = particle.content_style != 'default' ? ' jl-text-' ~ particle.content_style|e : '' %}
+{% set content_dropcap = particle.content_dropcap ? ' jl-dropcap' : '' %}
+{% set content_column = particle.content_column ? ' jl-column-' ~ particle.content_column|e ~ (particle.content_column_breakpoint ? '@' ~ particle.content_column_breakpoint|e : '') ~ (particle.content_column_divider ? ' jl-column-divider' : '') : '' %}
+{% set content_margin = ' jl-margin-' ~ (particle.content_margin_top == 'default' ? 'top' : particle.content_margin_top|e ~ '-top') %}
+{% set img_grid_breakpoint = particle.image_grid_breakpoint != 'default' ? '@' ~ particle.image_grid_breakpoint|e : '' %}
+{% set link_image_transition = particle.image_transition != 'none' ? ' jl-transition-toggle' : '' %}
+
+{% set image_loading = not particle.image_loading ? ' loading="lazy"' : '' %}
+{% set icon_inverse = particle.icon_inverse != 'default' ? 'jl-' ~ particle.icon_inverse|e : '' %}
+
+{%- set particle_classes = [
+    id,
+    icon_inverse,
+    'jl-accordion-default',
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim -%}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled and particle.accordion %}
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div class="{{ particle_classes }}"{{ Macros.animation_render(particle, true)|raw }} jl-accordion="{{ collapsible ~ multiple }}" {{- attr_extra|raw }}>
+
+{% for item in particle.accordion %}
+
+{# Set Link Scroll #}
+{%- set linkscroll = (item.buttonlink matches '/#/' and particle.buttontarget != '_blank') ? ' jl-scroll' : '' -%}
+
+{# Determine image link and effects -#}
+{%- set img_link = item.buttonlink and particle.link_image -%}
+{%- set image_transition = img_link and particle.image_transition != 'none'
+    ? ' jl-transition-' ~ particle.image_transition ~ ' jl-transition-opaque'
+    : '' -%}
+{%- set img_box_shadow_hover = img_link and particle.box_shadow_hover != 'none'
+    ? ' jl-box-shadow-hover-' ~ particle.box_shadow_hover
+    : '' -%}
+{% set has_img_transition = img_link and particle.image_transition != 'none' %}
+
+{# Render Image -#}
+{%- set item_image -%}
+{%- if item.image -%}
+    {%- set image_size = image_dimensions is empty ? ' ' ~ item.image|imagesize : '' -%}
+    {%- if img_link -%}
+        <a class="jl-display-block" href="{{ item.buttonlink }}" target="{{ particle.buttontarget|default('_self') }}"{{ linkscroll }}>
+    {%- endif -%}
+    {%- if particle.image_transition != 'none' and img_link -%}
+        <div class="jl-inline-clip{{ link_image_transition ~ img_border_cls ~ img_box_shadow ~ img_box_shadow_hover ~ img_margin_top }}">
+    {%- endif -%}
+    <img src="{{ url(item.image) }}"
+         alt="{{ item.image_alt|default('', true) }}"
+         class="tm-image{{ image_transition }}{% if not has_img_transition %}{{ img_border_cls ~ img_box_shadow ~ img_box_shadow_hover ~ img_margin_top }}{% endif %}"
+         {{ image_dimensions|raw }}{{ image_size|raw }}{{ image_loading|raw }}>
+    {%- if particle.image_transition != 'none' and img_link -%}</div>{%- endif -%}
+    {%- if img_link -%}</a>{%- endif -%}
+{%- endif -%}
+{%- endset -%}
+
+{%- set content -%}
+{% if item.content %}
+    <div class="tm-content jl-panel{{ content_style ~ content_dropcap ~ content_column ~ content_text_transform ~ content_font_weight ~ content_margin }}">
+      {% set content = particle.twig ? gantry.theme.compile(item.content) : item.content %}
+      {{ (particle.filter ? gantry.platform.filter(item.content) : item.content)|html|raw }}
+    </div>
+ {% endif %}
+{%- endset -%}
+
+{# Set Button #}
+{% set item_button %}
+  {% if item.buttonlink and particle.buttontext %}
+    {%- set targetAttrib = ' target="' ~ particle.buttontarget ~ '"' ~ (particle.buttontarget == '_blank' ? ' rel="noopener noreferrer"' : '') -%}
+    <div class="jl-margin-{{ particle.link_margin_top == 'default' ? 'top' : particle.link_margin_top|e ~ '-top' }}">
+      <a class="{{ button_cls }}" href="{{ item.buttonlink|e }}"{{ targetAttrib|raw }}{{ linkscroll }}>
+        {{ particle.buttontext|e }}
+      </a>
+    </div>
+  {% endif %}
+{% endset %}
+
+<div class="tm-item{% if item.item_class %} {{ item.item_class }}{% endif %}"{{ Macros.animation_child(particle)|raw }}>
+
+  <a class="jl-accordion-title" href>
+    {% if (particle.title_font_weight or particle.title_text_transform) %}<span class="tm-item-inner{{ title_font_weight ~ title_text_transform }}">{% endif %}
+      {{ item.title|e }}
+    {% if particle.title_font_weight or particle.title_text_transform %}</span>{% endif %}
+    {%- if particle.icon_type -%}
+    <span class="jl-icon jl-accordion-icon" jl-icon="chevron-down"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><polyline fill="none" stroke="#000" stroke-width="1.03" points="16 7 10 13 4 7"></polyline></svg></span>
+    {% else %}
+    <span jl-accordion-icon></span>
+    {%- endif -%}
+  </a>
+
+  <div class="jl-accordion-content jl-margin-remove-first-child">
+
+  {% if particle.image_alignment in ['left', 'right'] and item.image %}
+  <div class="jl-child-width-expand{{ image_grid_cr_gap }}{{ particle.image_vertical_alignment ? ' jl-flex-middle' : '' }}" jl-grid>
+    <div class="jl-width-{{ particle.image_grid_width ~ img_grid_breakpoint }}{{ particle.image_alignment == 'right' ? ' jl-flex-last' ~ img_grid_breakpoint : '' }}">
+  {% endif %}
+
+    {%- if particle.image_alignment in ['left', 'right', 'top'] and item.image -%}
+      {{ item_image }}
+    {%- endif -%}
+
+    {%- if particle.image_alignment in ['left', 'right'] and item.image %}
+        </div>
+        <div class="jl-margin-remove-first-child">
+    {% endif -%}
+
+    {{- content -}}
+
+    {%- if particle.image_alignment == 'between' %}
+      {{ item_image }}
+    {% endif -%}
+
+    {{ item_button }}
+
+    {% if particle.image_alignment == 'bottom' %}
+      {{ item_image }}
+    {% endif %}
+
+  {%- if particle.image_alignment in ['left', 'right'] and item.image %}
+    </div>
+  </div>
+  {% endif -%}
+
+  </div>
+
+</div>
+{% endfor %}
+
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}

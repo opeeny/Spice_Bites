@@ -1,0 +1,11 @@
+#g-topb {
+	background-color: $topb-background;
+	color: $topb-text-color;
+}
+
+@media print {
+	#g-topb {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

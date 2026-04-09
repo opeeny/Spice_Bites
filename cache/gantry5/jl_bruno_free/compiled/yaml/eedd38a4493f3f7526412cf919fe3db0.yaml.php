@@ -1,0 +1,509 @@
+<?php
+return [
+    '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
+    'filename' => 'D:/Apache24/htdocs/Spice_Bites/templates/jl_bruno_free/gantry/presets.yaml',
+    'modified' => 1775727462,
+    'data' => [
+        'preset1' => [
+            'image' => 'gantry-admin://images/preset1.png',
+            'description' => 'GANTRY5_PLATFORM_PRESET1',
+            'colors' => [
+                0 => '#c59d5f',
+                1 => '#eb6a5a'
+            ],
+            'styles' => [
+                'base' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#666666',
+                    'body-font' => 'family=Barlow',
+                    'heading-font' => 'family=Barlow:600',
+                    'menu-font' => 'family=Barlow'
+                ],
+                'accent' => [
+                    'color-1' => '#c59d5f',
+                    'color-2' => '#eb6a5a'
+                ],
+                'menustyle' => [
+                    'text-color' => 'rgba(255, 255, 255, 0.8)',
+                    'text-color-active' => '#ffffff',
+                    'item-gap' => '30px',
+                    'item-height' => '80px',
+                    'sublevel-background' => '#ffffff',
+                    'sublevel-text-color' => '#030303',
+                    'sublevel-background-hover' => 'rgba(255, 255, 255, 0)',
+                    'sublevel-text-color-hover' => '#c59d5f',
+                    'sublevel-text-color-active' => '#c59d5f'
+                ],
+                'navigation' => [
+                    'background' => '#000000',
+                    'text-color' => '#ffffff',
+                    'overlay' => 'rgba(0, 0, 0, 0.4)',
+                    'height' => '80px'
+                ],
+                'slideshow' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'hero' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topa' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topb' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topc' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topd' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'above' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'main' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#030303'
+                ],
+                'below' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottoma' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomb' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomc' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomd' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'extended' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'footer' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'background-image' => '',
+                    'text-color' => '#030303',
+                    'link-color' => '#030303',
+                    'link-hover-color' => '#c59d5f'
+                ],
+                'copyright' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303',
+                    'link-color' => '#030303',
+                    'link-hover-color' => '#c59d5f'
+                ],
+                'offcanvas' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#1c1c1c',
+                    'text-color-active' => '#c59d5f',
+                    'toggle-color' => '#ffffff',
+                    'toggle-color-active' => 'rgba(255, 255, 255, 0.5)',
+                    'width' => '17rem',
+                    'toggle-visibility' => '1'
+                ],
+                'breakpoints' => [
+                    'large-desktop-container' => '75rem',
+                    'desktop-container' => '60rem',
+                    'tablet-container' => '51rem',
+                    'large-mobile-container' => '48rem',
+                    'mobile-menu-breakpoint' => '51rem'
+                ],
+                'menu' => [
+                    'col-width' => '200px',
+                    'animation' => 'g-zoom',
+                    'hide-on-mobile' => '0'
+                ]
+            ]
+        ],
+        'preset2' => [
+            'image' => 'gantry-admin://images/preset2.png',
+            'description' => 'GANTRY5_PLATFORM_PRESET2',
+            'colors' => [
+                0 => '#f9591e',
+                1 => '#cbc1a9'
+            ],
+            'styles' => [
+                'base' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#666666',
+                    'body-font' => 'family=Barlow',
+                    'heading-font' => 'family=Barlow:600',
+                    'menu-font' => 'family=Barlow'
+                ],
+                'accent' => [
+                    'color-1' => '#f9591e',
+                    'color-2' => '#cbc1a9'
+                ],
+                'menustyle' => [
+                    'text-color' => '#ffffff',
+                    'text-color-active' => 'rgba(255, 255, 255, 0.8)',
+                    'item-gap' => '30px',
+                    'item-height' => '80px',
+                    'sublevel-background' => '#ffffff',
+                    'sublevel-text-color' => '#030303',
+                    'sublevel-background-hover' => 'rgba(255, 255, 255, 0)',
+                    'sublevel-text-color-hover' => '#f9591e',
+                    'sublevel-text-color-active' => '#f9591e'
+                ],
+                'navigation' => [
+                    'background' => '#000000',
+                    'text-color' => '#ffffff',
+                    'overlay' => 'rgba(0, 0, 0, 0.4)',
+                    'height' => '80px'
+                ],
+                'slideshow' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'hero' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topa' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topb' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topc' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topd' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'above' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'main' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#030303'
+                ],
+                'below' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottoma' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomb' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomc' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomd' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'extended' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'footer' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'background-image' => '',
+                    'text-color' => '#030303',
+                    'link-color' => '#030303',
+                    'link-hover-color' => '#f9591e'
+                ],
+                'copyright' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303',
+                    'link-color' => '#030303',
+                    'link-hover-color' => '#f9591e'
+                ],
+                'offcanvas' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#1c1c1c',
+                    'text-color-active' => '#f9591e',
+                    'toggle-color' => '#ffffff',
+                    'toggle-color-active' => 'rgba(255, 255, 255, 0.5)',
+                    'width' => '17rem',
+                    'toggle-visibility' => '1'
+                ],
+                'breakpoints' => [
+                    'large-desktop-container' => '75rem',
+                    'desktop-container' => '60rem',
+                    'tablet-container' => '51rem',
+                    'large-mobile-container' => '48rem',
+                    'mobile-menu-breakpoint' => '51rem'
+                ]
+            ]
+        ],
+        'preset3' => [
+            'image' => 'gantry-admin://images/preset3.png',
+            'description' => 'GANTRY5_PLATFORM_PRESET3',
+            'colors' => [
+                0 => '#558b2f',
+                1 => '#8bc34a'
+            ],
+            'styles' => [
+                'base' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#666666',
+                    'body-font' => 'family=Barlow',
+                    'heading-font' => 'family=Barlow:600',
+                    'menu-font' => 'family=Barlow'
+                ],
+                'accent' => [
+                    'color-1' => '#558b2f',
+                    'color-2' => '#8bc34a'
+                ],
+                'menustyle' => [
+                    'text-color' => '#ffffff',
+                    'text-color-active' => 'rgba(255, 255, 255, 0.8)',
+                    'item-gap' => '30px',
+                    'item-height' => '80px',
+                    'sublevel-background' => '#ffffff',
+                    'sublevel-text-color' => '#030303',
+                    'sublevel-background-hover' => 'rgba(255, 255, 255, 0)',
+                    'sublevel-text-color-hover' => '#558b2f',
+                    'sublevel-text-color-active' => '#558b2f'
+                ],
+                'navigation' => [
+                    'background' => '#000000',
+                    'text-color' => '#ffffff',
+                    'overlay' => 'rgba(0, 0, 0, 0.4)',
+                    'height' => '80px'
+                ],
+                'slideshow' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'hero' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topa' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topb' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topc' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topd' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'above' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'main' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#666666'
+                ],
+                'below' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottoma' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomb' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomc' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomd' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'extended' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'footer' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'background-image' => '',
+                    'text-color' => '#030303',
+                    'link-color' => '#030303',
+                    'link-hover-color' => '#558b2f'
+                ],
+                'copyright' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303',
+                    'link-color' => '#030303',
+                    'link-hover-color' => '#558b2f'
+                ],
+                'offcanvas' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#1c1c1c',
+                    'text-color-active' => '#558b2f',
+                    'toggle-color' => '#ffffff',
+                    'toggle-color-active' => 'rgba(255, 255, 255, 0.5)',
+                    'width' => '17rem',
+                    'toggle-visibility' => '1'
+                ],
+                'breakpoints' => [
+                    'large-desktop-container' => '75rem',
+                    'desktop-container' => '60rem',
+                    'tablet-container' => '51rem',
+                    'large-mobile-container' => '48rem',
+                    'mobile-menu-breakpoint' => '51rem'
+                ]
+            ]
+        ],
+        'preset4' => [
+            'image' => 'gantry-admin://images/preset4.png',
+            'description' => 'GANTRY5_PLATFORM_PRESET4',
+            'colors' => [
+                0 => '#bf383a',
+                1 => '#757575'
+            ],
+            'styles' => [
+                'base' => [
+                    'background' => '#ffffff',
+                    'background-image' => '',
+                    'text-color' => '#666666',
+                    'body-font' => 'family=Barlow',
+                    'heading-font' => 'family=Barlow:600',
+                    'menu-font' => 'family=Barlow'
+                ],
+                'accent' => [
+                    'color-1' => '#bf383a',
+                    'color-2' => '#757575'
+                ],
+                'menustyle' => [
+                    'text-color' => '#ffffff',
+                    'text-color-active' => 'rgba(255, 255, 255, 0.8)',
+                    'item-gap' => '30px',
+                    'item-height' => '80px',
+                    'sublevel-background' => '#ffffff',
+                    'sublevel-text-color' => '#030303',
+                    'sublevel-background-hover' => 'rgba(255, 255, 255, 0)',
+                    'sublevel-text-color-hover' => '#bf383a',
+                    'sublevel-text-color-active' => '#bf383a'
+                ],
+                'navigation' => [
+                    'background' => '#000000',
+                    'text-color' => '#ffffff',
+                    'overlay' => 'rgba(0, 0, 0, 0.4)',
+                    'height' => '80px'
+                ],
+                'slideshow' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'hero' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topa' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topb' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topc' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'topd' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'above' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'main' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#666666'
+                ],
+                'below' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottoma' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomb' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomc' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'bottomd' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'extended' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303'
+                ],
+                'footer' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'background-image' => '',
+                    'text-color' => '#030303',
+                    'link-color' => '#030303',
+                    'link-hover-color' => '#bf383a'
+                ],
+                'copyright' => [
+                    'background' => 'rgba(255, 255, 255, 0)',
+                    'text-color' => '#030303',
+                    'link-color' => '#030303',
+                    'link-hover-color' => '#bf383a'
+                ],
+                'offcanvas' => [
+                    'background' => '#ffffff',
+                    'text-color' => '#1c1c1c',
+                    'text-color-active' => '#bf383a',
+                    'toggle-color' => '#ffffff',
+                    'toggle-color-active' => 'rgba(255, 255, 255, 0.5)',
+                    'width' => '17rem',
+                    'toggle-visibility' => '1'
+                ],
+                'breakpoints' => [
+                    'large-desktop-container' => '75rem',
+                    'desktop-container' => '60rem',
+                    'tablet-container' => '51rem',
+                    'large-mobile-container' => '48rem',
+                    'mobile-menu-breakpoint' => '51rem'
+                ]
+            ]
+        ]
+    ]
+];

@@ -1,0 +1,94 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets -%}
+<style>
+{%- if particle.icon_style != 'default' -%}.tm-socialshare-icon .tm-share-icon a{-webkit-transition:all .5s;-o-transition:all .5s;transition:all .5s;color:#fff}.tm-socialshare-icon .tm-share-icon a:hover{-webkit-filter:saturate(1.2) brightness(1.2);filter:saturate(1.2) brightness(1.2);color:#fff}.tm-socialshare-icon .tm-share-icon .twitter{background-color:#55acee}.tm-socialshare-icon .tm-share-icon .facebook{background-color:#3b5999}.tm-socialshare-icon .tm-share-icon .linkedin{background-color:#0077B5}.tm-socialshare-icon .tm-share-icon .whatsapp{background-color:#25D366}.tm-socialshare-icon .tm-share-icon .telegram{background-color:#2ca5e0}.tm-socialshare-icon .tm-share-icon .mail{background-color:#ea4335}.tm-socialshare-icon .tm-share-icon .digg{background-color:#005be2}.tm-socialshare-icon .tm-share-icon .pinterest{background-color:#bd081c}.tm-socialshare-icon .tm-share-icon .tumblr{background-color:#eb4924}.tm-socialshare-icon .tm-share-icon .reddit{background-color:#ff4500}.tm-socialshare-icon .tm-share-icon .vk{background-color:#4c75a3}.tm-socialshare-icon .tm-share-icon .xing{background-color:#026466}.tm-socialshare-icon .tm-share-icon .weibo{background-color:#df2029}.tm-socialshare-icon .tm-share-icon .renren{background-color:#005EAC}.tm-socialshare-icon .tm-share-icon .skype{background-color:#00AFF0}{%- endif -%}
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}#el-{{ id }}.g5-title{ {{ particle.particle_title_color ? 'color:' ~ particle.particle_title_color ~ ';' : '' }}{{ particle.particle_title_fontsize ? 'font-size:' ~ particle.particle_title_fontsize ~ 'px;' : '' }} }{%- endif -%}
+#{{ id }} .tm-icons>* >a{text-align:center;line-height:36px;}
+</style>
+{% endblock %}
+
+{% block javascript %}
+{% if particle.tooltip %}
+  <script src="{{ url('gantry-theme://js/jlcomponents/tooltip.min.js') }}"></script>
+{% endif %}    
+{% endblock %}
+
+{% set datawidth = particle.datawidth ? ' data-width="' ~ particle.datawidth|e ~ '"' : '' %}
+{% set dataheight = particle.dataheight ? ' data-height="' ~ particle.dataheight|e ~ '"' : '' %}
+
+{# Set Item Content #}
+{% set icon_list %}
+{% for item in particle.items %}
+
+{% set twitter_hashtags %}
+{% if particle.twitter_hashtags and item.network == 'twitter' %} data-hashtags="{{ particle.twitter_hashtags }}"{% endif %}
+{% endset %}
+
+{% set facebook_hashtags %}
+{% if particle.facebook_hashtags and item.network == 'facebook' %} data-hashtags="{{ particle.facebook_hashtags }}"{% endif %}
+{% endset %}
+
+{% set email_attr %}
+{% if particle.email_datasubject and item.network == 'mail' %} data-subject="{{ particle.email_datasubject|e }}"{% endif %}
+{% if particle.email_datato and item.network == 'mail' %} data-to="{{ particle.email_datato|e }}"{% endif %}
+{% endset %}
+
+{% set telegram_data %}
+{% if particle.telegram_data and item.network == 'telegram' %} data-to="{{ particle.telegram_data }}"{% endif %}
+{% endset %} 
+
+{% set faVersion = gantry.config.page.fontawesome.version|default('fa5css') %}
+
+<li class="tm-share-icon{{ particle.hover_animation_item ? ' jl-animation-toggle' : '' }}"{{ particle.hover_animation_item ? ' tabindex="0"' : '' }}>
+
+{% set icon_class = '' %}
+{% if faVersion == 'fa4' %}
+    {% set icon_class = 'fa ' ~ (item.network == 'mail' ? 'fa-envelope-o' : 'fa-' ~ item.network) %}
+{% else %}
+    {% set icon_class = item.network == 'mail' ? 'far fa-envelope' : (item.network == 'twitter' ? 'fab fa-x-twitter' : 'fab fa-' ~ item.network) %}
+{% endif %}
+
+<a class="{{item.network}}{% if particle.button %} jl-icon-button{% endif %} {{ icon_class }} {% if particle.hover_animation != 'inherit' and particle.hover_animation_item %} jl-animation-{{particle.hover_animation}}{% endif %}" {% if item.network == 'mail' %} data-sharer="email"{% else %} data-sharer="{{ item.network|e }}"{% endif %}{% if item.network == 'twitter' or item.network == 'whatsapp' or item.network == 'mail' or item.network == 'telegram' or item.network == 'tumblr' or item.network == 'vk' or item.network == 'xing' or item.network == 'digg' or item.network == 'weibo' or item.network == 'renren' or item.network == 'skype' %} data-title="{{item.data_title}}"{% endif %}{{twitter_hashtags|raw}}{{facebook_hashtags|raw}}{{datawidth|raw}}{{dataheight|raw}} data-url="{{ gantry.page.url }}"{{email_attr|raw}}{{telegram_data}}{% if particle.tooltip %} jl-tooltip="title: {{item.data_title}}"{% endif %}></a>
+
+</li>
+{% endfor %}
+{% endset %}
+
+{% set particle_classes = [
+    id,
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div id="{{ id }}" class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }} {{- attr_extra|raw }}>
+{% if particle.button_style != 'default' %}
+<div class="tm-social-share">
+  <a href="#" class="jl-icon-button"><i class="fa fa-share-alt" aria-hidden="true"></i></a>
+    <div jl-drop="pos: {{particle.hover_position}};{% if particle.hover_animation != 'inherit' %} animation: jl-animation-{{particle.hover_animation}}; duration: 1000;{% endif %} boundary: .tm-social-share;shift: false; flip: false; mode: {{ particle.button_style == "showall" ? 'hover' : 'click' }}">
+      <ul class="tm-icons jl-flex-inline jl-flex-middle jl-flex-nowrap{% if particle.social_icon_gap %} jl-grid-{{particle.social_icon_gap|e}}{% endif %}{{ particle.icon_style != 'default' ? ' tm-socialshare-icon' : '' }}{{ particle.vertical_button ? ' jl-iconnav-vertical' : '' }}" jl-grid>
+      {{ icon_list }}
+      </ul>
+    </div>
+</div>
+{% else %}
+<ul class="tm-icons jl-flex-inline jl-flex-middle jl-flex-nowrap{% if particle.social_icon_gap %} jl-grid-{{particle.social_icon_gap|e}}{% endif %}{{ particle.icon_style != 'default' ? ' tm-socialshare-icon' : '' }}{{ particle.vertical_button ? ' jl-iconnav-vertical' : '' }}" jl-grid>
+  {{ icon_list }}
+</ul>
+{% endif %}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.document.addScript(url('gantry-theme://js/sharer.min.js')) %}
+{% endblock %}

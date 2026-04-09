@@ -1,0 +1,72 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block javascript_footer %}
+{% if particle.scroll_mode == 'uikit' %}
+<script>
+    jlUIkit.util.ready(function() {
+        jlUIkit.scrollspyNav('.jl-navbar-nav, .g-toplevel, .jl-nav', {closest: 'li', offset: {{ particle.offset|e }}});
+        jlUIkit.util.ready(function () {
+            document.querySelectorAll('.jl-navbar-nav li a, .g-toplevel li a, .jl-nav li a').forEach(function(el) {
+                if (location.hostname == el.hostname && location.pathname == el.pathname && el.href != '#') {
+                    jlUIkit.scroll(el, {offset: 30});
+                }
+            });
+        });
+        jlUIkit.util.on(this, 'beforescroll', function() {
+            jlUIkit.offcanvas('.jl-offcanvas').hide();
+        });
+    });
+</script>
+{% else %}
+    {% do gantry.load('jquery') %}
+    <script src="{{ url('gantry-theme://js/jquery.nav.js') }}"></script>
+    <script>
+        jQuery(function($) {
+            {% set juri = joomla.instance("JURI") %}
+            {% set base =  juri.base %}
+            var onePageUrl = '{{ base }}';
+            {% set arr = particle.exception|split(",") %}
+            var menus = [];
+            var filter = '';
+          {% for item in arr %}
+            menus.push("{{ item|trim() }}".toLowerCase());
+          {% endfor %}
+          $('.jl-navbar-nav li, .g-toplevel li, .jl-nav li').each(function(){
+              var name = $(this).find("a").eq(0).text().trim().toLowerCase();
+              if ($.inArray(name, menus) != -1){
+                $(this).addClass('no-scroll');
+              }
+          });
+            var homeSectionId = $('#g-page-surround > section:first-child').attr('id');
+            $('.jl-navbar-nav, .g-toplevel, .jl-nav').find('li:not(".no-scroll")').each(function(i, el) {
+                var $that = $(this),
+                    $anchor = $that.children('a'),
+                    url = $anchor.attr('href'),
+                    splitUrl = url.split('#');
+                if ($that.hasClass('home')) {
+                    if (homeSectionId) {
+                        $anchor.attr('href', onePageUrl + '#' + homeSectionId);
+                    } else {
+                        $anchor.attr('href', onePageUrl);
+                    }
+                } else {
+                    if (typeof splitUrl !== undefined) {
+                        $anchor.attr('href', onePageUrl + '#' + splitUrl[1]);
+                    };
+                }
+            });
+            $('.jl-parent .no-scroll').removeClass('jl-active');
+            $('.jl-navbar-nav, .g-toplevel, .jl-nav').onePageNav({
+                currentClass: '{{ particle.clsactive }}',
+                changeHash: {{ particle.changeHash ? "true" : "false" }},
+                scrollSpeed: {{ particle.scrollSpeed == "" ? 750 : particle.scrollSpeed }},
+                scrollThreshold: {{ particle.scrollThreshold == "" ? "0.5" : particle.scrollThreshold }},
+                filter: ':not(.no-scroll)'
+            });
+            $('.jl-nav li a').click(function (e) {
+                    jlUIkit.offcanvas('.jl-offcanvas').hide();
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

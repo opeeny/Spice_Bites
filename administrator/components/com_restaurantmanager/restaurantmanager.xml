@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version="5.0" method="upgrade">
+    <name>COM_RESTAURANTMANAGER</name>
+    <creationDate>February 2026</creationDate>
+    <author>Michele Bruno</author>
+    <authorEmail>info@freecmsplugins.com</authorEmail>
+    <authorUrl>https://freecmsplugins.com</authorUrl>
+    <copyright>Copyright (C) 2026 FreeCMSPlugins.com. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>1.0.0</version>
+    <description>COM_RESTAURANTMANAGER_XML_DESCRIPTION</description>
+    
+    <namespace path="src">Joomla\Component\RestaurantManager</namespace>
+    
+    <scriptfile>script.php</scriptfile>
+    
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+    
+    <media destination="com_restaurantmanager" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+    </media>
+    
+    <administration>
+        <menu img="icon-food">COM_RESTAURANTMANAGER</menu>
+        <submenu>
+            <menu link="option=com_restaurantmanager&amp;view=cashier" 
+                  img="icon-cash-register" 
+                  alt="COM_RESTAURANTMANAGER_CASHIER">COM_RESTAURANTMANAGER_CASHIER</menu>
+            <menu link="option=com_restaurantmanager&amp;view=menu" 
+                  img="icon-list" 
+                  alt="COM_RESTAURANTMANAGER_MENU">COM_RESTAURANTMANAGER_MENU</menu>
+            <menu link="option=com_restaurantmanager&amp;view=reports" 
+                  img="icon-chart" 
+                  alt="COM_RESTAURANTMANAGER_REPORTS">COM_RESTAURANTMANAGER_REPORTS</menu>
+        </submenu>
+        
+        <files folder="admin">
+            <folder>language</folder>
+            <folder>services</folder>
+            <folder>sql</folder>
+            <folder>src</folder>
+            <folder>tmpl</folder>
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+        </files>
+    </administration>
+    
+    <files folder="site">
+        <folder>language</folder>
+        <folder>src</folder>
+        <folder>tmpl</folder>
+    </files>
+    
+    <updateservers>
+        <server type="extension" priority="1" name="Restaurant Manager Update Server">
+            https://freecmsplugins.com/updates/com_restaurantmanager.xml
+        </server>
+    </updateservers>
+</extension>

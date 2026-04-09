@@ -1,0 +1,158 @@
+$menustyle-item-height: 80px !default;
+$menustyle-item-gap: 25px !default;
+
+%item-container {
+    @include responsive-font($responsive-font-size, $core-font-size, 16px, false);
+	@if $menustyle-font-families == 1 {
+		font-family: get-font-family($font-family-title);
+	}
+    font-weight: $font-weight-regular;
+    white-space: normal;
+    @include word-wrap(break-word);
+}
+
+%dropdown-column {
+    width: $menu-col-width;
+}
+// Extended style
+.jl-navbar-dropdown {
+    width: $menu-col-width;
+}
+
+// Main Nav Colors
+@mixin main-nav-colors($section-background: $navigation-background, $section-text-color: $navigation-text-color, $section-active-background: $main-background, $section-active-text-color: $main-text-color) {
+
+	h1, h2, h3, h4, h5, h6, strong {
+		color: $menustyle-text-color;
+	}
+
+	.g-toplevel {
+		> li {
+			> .g-menu-item-container {
+				color: $menustyle-text-color;
+				@extend %item-container;
+			}
+			&:not(.g-menu-item-type-particle):not(.g-menu-item-type-module) {
+				&:hover {
+                    
+					> .g-menu-item-container {
+						color: $menustyle-text-color-active;
+					}
+				}
+
+				&.active {
+					> .g-menu-item-container {
+						color: $menustyle-text-color-active;
+					}
+
+					&.g-selected {
+						> .g-menu-item-container {
+							color: $menustyle-text-color-active;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.g-dropdown {
+        background: $menustyle-sublevel-background;
+        box-shadow: 0px 1px 14px 3px rgba(76, 89, 119, 0.3);
+	}
+
+	.g-sublevel {
+		> li {
+			> .g-menu-item-container {
+				color: $menustyle-sublevel-text-color;
+			}
+            &:not(.g-go-back) + :not(.g-go-back) {
+				border-top: 1px solid if(lightness($menustyle-sublevel-background) > 50, darken(rgba($menustyle-sublevel-background, .5), 6%), lighten(rgba($menustyle-sublevel-background, .5), 7%));
+            }
+			&:not(.g-menu-item-type-particle):not(.g-menu-item-type-module) {
+				&:hover, &.active {
+					background: $menustyle-sublevel-background-hover;
+				}
+
+				&:hover {
+					> .g-menu-item-container {
+						color: $menustyle-sublevel-text-color-hover;
+					}
+				}
+				&.active {
+					> .g-menu-item-container {
+						color: $menustyle-sublevel-text-color-active;
+					}
+				}
+			}
+		}
+	}
+    .g-standard {
+        .g-parent {
+            .g-menu-parent-indicator {
+                top: inherit;
+            }
+        }
+    }
+
+}
+
+// Touch Indicators
+@mixin main-nav-indicators($section-background: $menustyle-sublevel-background, $section-text-color: $menustyle-sublevel-text-color) {
+	.g-menu-hastouch {
+		.g-toplevel {
+			> li {
+				&.g-menu-item-link-parent {
+					> .g-menu-item-container {
+						> .g-menu-parent-indicator {
+							border: 1px solid lighten($section-background, 6%);
+							background: darken($section-background, 4%);
+							&:hover {
+								background: darken($section-background, 8%);
+							}
+							border-radius: $core-border-radius;
+							margin: -0.2rem 0 -0.2rem 0.5rem;
+							padding: 0.2rem;
+							&:after {
+								text-align: center;
+							}
+						}
+					}
+				}
+				&.active {
+					&.g-menu-item-link-parent {
+						> .g-menu-item-container {
+							> .g-menu-parent-indicator {
+								color: $section-text-color;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.g-menu-hastouch .g-standard, .g-fullwidth {
+		.g-sublevel {
+			> li {
+				&.g-menu-item-link-parent {
+					> .g-menu-item-container {
+						> .g-menu-parent-indicator {
+							border: 1px solid lighten($section-background, 6%);
+							background: darken($section-background, 4%);
+							&:hover {
+								background: darken($section-background, 8%);
+							}
+							border-radius: $core-border-radius;
+                            padding: 0.4rem;
+                            margin-top: -0.4rem;
+                            margin-right: -0.4rem;
+							&:after {
+								text-align: center;
+								color: $section-text-color;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

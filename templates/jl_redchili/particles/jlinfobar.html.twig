@@ -1,0 +1,50 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+<style>.jl-notify{position:fixed;bottom:{{ particle.bottom_pos|default('25')|e }}px;{{ gantry.page.direction == 'rtl' ? 'left' : 'right' }}:{{ particle.right_pos|default('15')|e }}px;z-index:1040;box-sizing:border-box;}.jl-notify .jl-icon-button{width:45px;height:45px;color:white;}#{{ id }} .jl-icon-button{background-color:{{ particle.background_color|default('#4f4bff')|e }};}#{{ id }} .jl-icon-button svg{fill:{{ particle.icon_color|default('#ffffff')|e }};}#{{ id }} .jl-icon-button:hover,#{{ id }} .jl-icon-button:focus,#{{ id }} .jl-icon-button:active{background-color:{{ particle.background_hover_color|default('#1d18ff')|e }};}#{{ id }} .jl-drop{--jl-position-offset:10px;}
+{%- if particle.icon_hover_color %}#{{ id }} .jl-icon-button:hover svg,#{{ id }} .jl-icon-button:hover span,#{{ id }} .jl-icon-button:focus svg,#{{ id }} .jl-icon-button:focus span,#{{ id }} .jl-icon-button:active svg,#{{ id }} .jl-icon-button:active span{fill:{{ particle.icon_hover_color|e }};color:{{ particle.icon_hover_color|e }};} {% endif -%}</style>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url('gantry-theme://js/jlcomponents/lightbox.min.js') }}"></script>
+<script src="{{ url('gantry-theme://js/jlcomponents/tooltip.min.js') }}"></script>
+{% endblock %}
+
+{% pageblock bottom with { priority: -10 } %}
+{% set item_content %}
+{% if particle.items|length > 0 %}
+<ul class="jl-iconnav jl-iconnav-vertical jl-flex-middle jl-text-center">
+  {% set has_multiple = particle.items|length > 1 %}
+  {% for item in particle.items %}
+    {% if has_multiple %}
+    <li class="tm-item jl-display-inline-block{{ item.item_class ? ' ' ~ item.item_class }}"{{ item.link_target == '_lightbox' ? ' jl-lightbox' }}>
+    {% endif %}
+    
+    {% if item.link %}
+      <a class="jl-icon-button" href="{{ item.link|e }}" target="{{ item.link_target|default('_self')|e }}" jl-tooltip="title: {{ item.title|raw }}; pos: left"{{ item.link_target == '_lightbox' ? ' data-caption="' ~ item.title|raw ~ '" data-type="iframe"' }}>
+    {% endif %}
+    
+    {% if item.icon %}<span class="{{ item.icon }}" aria-hidden="true"></span>{% endif %}
+    
+    {% if item.link %}</a>{% endif %}
+    
+    {% if has_multiple %}</li>{% endif %}
+  {% endfor %}
+</ul>
+{% endif %}
+{% endset %}
+
+<div id="{{ id }}" class="jl-notify jl-notification-bottom-right jl-animation-fade">
+  <div class="tm-notify jl-inline">
+    <button class="jl-icon-button" aria-label="Open">
+      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <rect x="9" y="1" width="1" height="17"></rect>
+        <rect x="1" y="9" width="17" height="1"></rect>
+      </svg>
+    </button>
+    <div jl-drop="boundary: .tm-notify; shift: false; flip: false; pos: top-center;{{ particle.mode != 'hover' ? ' mode: ' ~ particle.mode ~ ';' }} animation: jl-animation-slide-bottom-small;">
+      {{ item_content }}
+    </div>
+  </div>
+</div>
+{% endpageblock %}

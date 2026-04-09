@@ -1,0 +1,60 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+{%- if particle.particle_title_color or particle.particle_title_fontsize or particle.divider_style in ['small','vertical','icon','default'] -%}
+<style>
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}
+#el-{{ id }}.g5-title{ {%- if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- set border = particle.divider_border|default('1')|e -%}
+{%- set color = particle.divider_color|default('#e5e5e5')|e -%}
+{%- if particle.divider_style == 'small' -%}
+#{{ id }}-particle .jl-divider-small::after{border-top:{{ border }}px solid {{ color }};}
+{%- elseif particle.divider_style == 'vertical' -%}
+#{{ id }}-particle .jl-divider-vertical{border-left:{{ border }}px solid {{ color }};}
+{%- elseif particle.divider_style == 'icon' -%}
+#{{ id }}-particle .jl-divider-icon::after,#{{ id }}-particle .jl-divider-icon::before{border-bottom:{{ border }}px solid {{ color }};}
+{%- elseif particle.divider_style == 'default' -%}
+#{{ id }}-particle .jl-hr,#{{ id }}-particle hr{border-top:{{ border }}px solid {{ color }};}
+{%- endif -%}
+</style>
+{%- endif %}
+{% endblock %}
+
+{% block javascript %}
+{% if (particle.animation == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{% set divider_suffix = particle.divider_breakpoint != 'always' ? '@' ~ particle.divider_breakpoint|e : '' %}
+{% set fallback_class = particle.divider_fallback != 'inherit' ? ' jl-text-' ~ particle.divider_fallback|e : '' %}
+{% set divider_align = particle.divider_align != 'inherit' ? ' jl-text-' ~ particle.divider_align|e ~ divider_suffix ~ fallback_class : '' %}
+{% set divider_cls = ' class="' ~ (particle.divider_style == 'default' ? 'jl-hr' : (particle.divider_style == 'icon' ? 'jl-divider-icon' : (particle.divider_style == 'vertical' ? 'jl-divider-vertical' : 'jl-divider-small' ~ divider_align))) ~ '"' %}
+
+{% set particle_classes = [
+    id,
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }} {{- attr_extra|raw }}>
+{% if particle.divider_element == 'hr' %}
+<hr{{ divider_cls|raw }}>
+{% else %}
+<div{{ divider_cls|raw }}></div>
+{% endif %}
+</div>
+{% endif %}
+{% endblock %}

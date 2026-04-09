@@ -1,0 +1,11 @@
+#g-bottomb {
+	background-color: $bottomb-background;
+	color: $bottomb-text-color;
+}
+
+@media print {
+	#g-bottomb {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

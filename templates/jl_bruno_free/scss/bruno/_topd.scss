@@ -1,0 +1,11 @@
+#g-topd {
+	background-color: $topd-background;
+	color: $topd-text-color;
+}
+
+@media print {
+	#g-topd {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

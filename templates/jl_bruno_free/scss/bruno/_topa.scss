@@ -1,0 +1,11 @@
+#g-topa {
+	background-color: $topa-background;
+	color: $topa-text-color;
+}
+
+@media print {
+	#g-topa {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

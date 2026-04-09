@@ -1,0 +1,230 @@
+// Custom container width for particle background.
+.jl-wrapper {
+  .jl-container {
+    .el-content {
+      padding: $content-padding;
+      margin: $content-margin;
+    }
+  }
+}
+.jl-wrapper,
+.tm-header,
+.tm-header-mobile {
+  .g-container {
+    box-sizing: content-box;
+    max-width: $breakpoints-desktop-container;
+    margin-left: auto;
+    margin-right: auto;
+    .el-content {
+      padding: $content-padding;
+      margin: $content-margin;
+    }
+  }
+  @include breakpoint(large-desktop-range) {
+    .g-container {
+      max-width: $breakpoints-large-desktop-container;
+    }
+  }
+  @include breakpoint(desktop-range) {
+    .g-container {
+      max-width: $breakpoints-desktop-container;
+    }
+  }
+  @include breakpoint(tablet-range) {
+    .g-container {
+      max-width: $breakpoints-tablet-container;
+    }
+  }
+  @include breakpoint(large-mobile-range) {
+    .g-container {
+      max-width: $breakpoints-large-mobile-container;
+    }
+  }
+}
+
+// Custom container width for Navbar
+.tm-header,
+.tm-header-mobile {
+  .navbar-wrapper {
+    padding: 0 $content-padding;
+    margin: 0 $content-margin;
+  }
+}
+
+// Unset main nav margin
+[id^="jlnavbar-"][id$="-particle"] {
+  padding: 0 $content-padding;
+  margin: 0 $content-margin;
+}
+
+.menu-simple {
+  .jl-container .g-main-nav {
+    padding: 0 $content-padding;
+    margin: 0 $content-margin;
+  }
+}
+
+.menu-extended {
+  .el-navbar-dropbar {
+    padding-left: $content-padding;
+    padding-right: $content-padding;
+  }
+}
+
+.el-horiz-nav {
+  padding: 0 $content-padding;
+  margin: 0 $content-margin;
+}
+
+[id^="jlnav-"][id$="-particle"] {
+  .jl-search-input {
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+// Unset Theme list style
+ul.jl-list,
+.jl-breadcrumb,
+.jl-comment-list {
+  margin-left: 0;
+}
+
+ul.jl-tab,
+.jl-subnav {
+  margin-top: 0;
+}
+
+ul.jl-list {
+  margin: 0 0 20px 0;
+}
+
+// Set default hr style
+.jl-hr,
+hr {
+  overflow: visible;
+  text-align: inherit;
+  border-top: 1px solid #e5e5e5;
+}
+
+.jl-checkbox,
+.jl-radio {
+  display: inline-block !important;
+  width: 16px !important;
+}
+.jl-modal-dialog video {
+  vertical-align: middle;
+}
+.jl-link {
+  color: $accent-color-1;
+  &:hover,
+  &:focus,
+  &:active {
+    color: darken($accent-color-1, 0.1);
+  }
+}
+
+.jl-link-heading:hover,
+.jl-link-heading a:hover,
+.jl-link-toggle:hover .jl-link-heading,
+.jl-link-toggle:focus .jl-link-heading,
+.jl-link-heading a:hover,
+.jl-link-toggle:hover .jl-link-heading,
+.jl-link-heading:hover,
+.jl-list-primary > ::before,
+.jl-text-primary {
+  color: $accent-color-1 !important;
+}
+
+.jl-notification-message-primary,
+.jl-button-link,
+.jl-navbar-toggle.jl-open,
+.jl-navbar-toggle:focus,
+.jl-navbar-toggle:hover,
+.jl-iconnav > * > a:hover,
+.jl-iconnav > .jl-active > a {
+  color: $accent-color-1;
+}
+
+.jl-search-input {
+  box-sizing: border-box !important;
+}
+
+.jl-search-navbar .jl-search-input:focus,
+.jl-tab > .jl-active > a {
+  border-color: $accent-color-1;
+}
+
+.jl-button-primary,
+.jl-card-primary.jl-card-hover:hover,
+.jl-background-primary,
+.jl-marker,
+.jl-alert-primary,
+.jl-subnav-pill > .jl-active > a,
+.jl-checkbox:checked,
+.jl-checkbox:indeterminate,
+.jl-checkbox:checked:focus,
+.jl-checkbox:indeterminate:focus,
+.jl-radio:checked,
+.jl-card-primary > .tm-timeline-arrow,
+.jl-dotnav > .jl-active > *,
+.jl-dotnav > * > :focus,
+.jl-dotnav > * > :hover,
+.jl-pagination > .jl-active > *,
+.jl-label:not(.jl-label-success, .jl-label-warning, .jl-label-danger) {
+  background-color: $accent-color-1;
+}
+
+.jl-button-primary:hover,
+.jl-button-primary:focus {
+  background-color: darken($accent-color-1, 5);
+}
+.jl-light .jl-button-primary:focus {
+  background-color: #fff;
+  color: #1c1c1c;
+}
+.jl-icon:not(.jl-preserve) [stroke*="#"]:not(.jl-preserve) {
+  stroke: currentcolor;
+}
+.jl-section-primary,
+.jl-tile-primary,
+.jl-card-primary,
+.jl-badge {
+  background: $accent-color-1;
+}
+
+.jl-text-background {
+  background-color: $accent-color-1;
+  background-image: linear-gradient(90deg, $accent-color-1 0, adjust-hue($accent-color-1, 40%) 100%);
+}
+
+.jl-checkbox:focus,
+.jl-radio:focus {
+  border-color: $accent-color-1;
+}
+
+.jl-radio:checked:focus {
+  background-color: $accent-color-1;
+}
+
+.jl-overlay-primary {
+  background: fade-out($accent-color-1, 0.2);
+}
+
+.jl-button-default {
+  background-color: rgba(255, 255, 255, 0);
+  color: $accent-color-1;
+  border-color: $accent-color-1;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $accent-color-1;
+    border-color: $accent-color-1;
+    color: #ffffff;
+  }
+}
+
+.jl-pagination > * > :hover {
+  color: #fff;
+  background-color: darken($accent-color-1, 0.1);
+}

@@ -1,0 +1,314 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/home.png'
+  name: home
+  timestamp: 1588442856
+layout:
+  navigation: {  }
+  /slideshow/: {  }
+  /hero/: {  }
+  /topa/: {  }
+  /topb/: {  }
+  /topc/: {  }
+  /topd/: {  }
+  /above/: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 25': {  }
+      -
+        'mainbar 50': {  }
+      -
+        'aside 25': {  }
+  /below/: {  }
+  /bottoma/: {  }
+  /bottomb/: {  }
+  /bottomc/: {  }
+  /bottomd/: {  }
+  /extended/: {  }
+  footer: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  slideshow:
+    type: section
+    attributes:
+      boxed: '2'
+      class: ''
+      variations: ''
+      background: ''
+      background_image_size: auto
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: ''
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  hero:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: jl-section
+      background: ''
+      background_image_size: auto
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: ''
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  topa:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: 'jl-section-xlarge jl-light'
+      background: 'gantry-media://intro-parallax.jpg'
+      background_image_size: cover
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: 'rgba(0,0,0,0.75)'
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  topb:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: jl-section
+      background: ''
+      background_image_size: auto
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: ''
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  topc:
+    type: section
+    attributes:
+      boxed: '3'
+      class: ''
+      variations: 'jl-section-muted jl-section'
+      background: ''
+      background_image_size: auto
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: ''
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  topd:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: jl-section
+      background: ''
+      background_image_size: auto
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: ''
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  above:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: jl-section-xlarge
+      background: 'gantry-media://three-img-parallax.png'
+      background_image_size: cover
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: ''
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  sidebar:
+    type: section
+  mainbar:
+    type: section
+  container-main:
+    attributes:
+      boxed: ''
+      class: jl-section
+      extra: {  }
+  below:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: jl-section
+      background: ''
+      background_image_size: auto
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: ''
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  bottoma:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: jl-section
+      background: ''
+      background_image_size: auto
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: ''
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  bottomb:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: jl-section
+      background: ''
+      background_image_size: auto
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: ''
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  bottomc:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: jl-section
+      background: 'gantry-media://hp-1-cta.jpg'
+      background_image_size: cover
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: '#ffffff'
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  bottomd:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: jl-section-xsmall
+      background: 'gantry-media://title2.jpg'
+      background_image_size: cover
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: ''
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  extended:
+    type: section
+    attributes:
+      boxed: ''
+      class: ''
+      variations: jl-section
+      background: ''
+      background_image_size: auto
+      background_position: center-center
+      background_effect: parallax
+      background_image_visibility: always
+      background_color: ''
+      background_blendmode: inherit
+      background_overlay: ''
+      horizontal_start: '0'
+      horizontal_end: '0'
+      vertical_start: '0'
+      vertical_end: '0'
+      parallax_bg_breakpoint: always
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children

@@ -1,0 +1,51 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+{% if particle.particle_title_color or particle.particle_title_fontsize or particle.customize_svg_color or (particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty) %}
+<style>
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}
+#el-{{ id }}.g5-title{ {%- if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.customize_svg_color -%}
+#{{ id }} .tm-svg-image{color:{{ particle.customize_svg_color }};}
+{%- endif -%}
+{%- if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty -%}
+#{{ id }}-particle .g-container{max-width:{{ particle.bg_container_width|e }};}
+{%- endif -%}
+</style>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{# Set Image Width/Height #}
+{% set image_dimensions = (particle.image_width ? ' width="' ~ particle.image_width ~ '"' : '') ~ (particle.image_height ? ' height="' ~ particle.image_height ~ '"' : '') %}
+
+{% set particle_classes = [
+    id,
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+{% block particle %}
+{% if particle.enabled %}
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div id="{{ id }}" class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }} {{- attr_extra|raw }}>
+	<img class="tm-svg-image{% if particle.svg_color != 'default' %} jl-text-{{particle.svg_color|e}}{% endif %}" src="{{ url(particle.svg)|e }}"{{ image_dimensions|raw }} alt="{{ particle.image_alt|e }}" jl-svg />
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}
+

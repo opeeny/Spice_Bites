@@ -1,0 +1,9 @@
+bruno-theme:
+  title: 'Bruno Theme'
+  description: 'Sample menu for the theme.'
+
+  items:
+    bruno:
+      title: 'Home'
+      outline: home
+      home: 1

@@ -1,0 +1,281 @@
+// Tooltips
+.tip-wrap {
+	color: #fff;
+	background-color: #000;
+}
+
+// Search Highlight
+.search span.highlight {
+	background-color: lighten($off-white, 2%);
+}
+
+// System Messages and Alerts
+.muted {
+	color: #999999;
+}
+
+a.muted:hover,
+a.muted:focus {
+	color: #808080;
+}
+
+.alert {
+	background-color: #efe0cc;
+	border-color: #dec099;
+	color: $warning-color;
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: inherit;
+	}
+	a,
+	a:hover,
+	.alert-link,
+	.alert-link:hover {
+		color: #452700;
+		text-decoration: underline;
+		font-weight: 500;
+	}
+}
+.text-warning {
+	color: #ad6200 !important;
+}
+.text-info {
+	color: #30638d !important;
+}
+.alert-success {
+	color: $success-color;
+	background-color: #dae6da;
+	border-color: #b4cdb4;
+	a,
+	a:hover,
+	.alert-link,
+	.alert-link:hover {
+		color: #1b341b;
+	}
+}
+
+.alert-danger {
+	color: $danger-color;
+	background-color: #edd2d1;
+	border-color: #dba5a3;
+	a,
+	a:hover,
+	.alert-link,
+	.alert-link:hover {
+		color: #420c0a;
+	}
+}
+
+.alert-info {
+	color: $info-color;
+	background-color: #d6e0e8;
+	border-color: #acc1d1;
+
+	a,
+	a:hover,
+	.alert-link,
+	.alert-link:hover {
+		color: #132838;
+	}
+}
+
+.g-system-messages {
+	#system-message-container {
+		margin: 0 1.25rem;
+		padding: 0 $content-padding;
+	}
+}
+
+@media (min-width: 1200px) {
+	dl.dl-horizontal {
+		display: grid;
+		grid-template-columns: auto 1fr;
+	}
+
+	dl.dl-horizontal dt {
+		grid-column-end: 2;
+		grid-column-start: 1;
+	}
+
+	dl.dl-horizontal dd {
+		grid-column-end: 3;
+		grid-column-start: 2;
+		margin-bottom: 0;
+		padding: 0 0 0 1em;
+	}
+	.com-users-profile dt {
+		min-width: 180px;
+	}
+}
+[class*="mod-articlesnews"] {
+	margin-left: 0;
+	figure {
+		margin-left: 0;
+	}
+}
+.mod-articleslatest {
+	margin: 0 0 20px 0;
+	li {
+		a {
+			text-decoration: none;
+		}
+		&:nth-child(n + 2) {
+			margin-top: 10px;
+			padding-top: 10px;
+			border-top: 1px solid rgba(0, 0, 0, 0.1);
+		}
+	}
+}
+ul.com-tags-tag__category {
+	margin-left: 0;
+	.list-group-item h3 {
+		margin-bottom: 0.5rem;
+	}
+}
+.tags .list-inline-item {
+	&:first-child {
+		margin-left: 0;
+	}
+	.btn {
+		border: none;
+		padding: 0.25rem 0.5rem;
+	}
+	margin: 0.25rem 0.25rem 0.5rem;
+}
+
+.mod-breadcrumbs__wrapper .mod-breadcrumbs {
+	margin-top: 0;
+	padding-top: 0 !important;
+	background-color: transparent;
+	padding-left: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+.mod-breadcrumbs > * > * {
+	font-size: 15px;
+	color: #868686;
+	&:hover {
+		color: #2c2c2c;
+	}
+}
+
+.mod-breadcrumbs > :nth-child(n + 2)::before {
+	content: "/";
+	display: inline-block;
+	margin: 0 20px 0 calc(20px - 4px);
+	float: none;
+	padding-right: 0;
+	font-size: 15px;
+	color: #868686;
+}
+
+.jl-light {
+	.mod-breadcrumbs > * > * {
+		color: rgba(255, 255, 255, 0.5);
+		&:hover {
+			color: rgba(255, 255, 255, 0.7);
+		}
+	}
+	.mod-breadcrumbs > :last-child > * {
+		color: rgba(255, 255, 255, 0.7);
+	}
+	.mod-breadcrumbs > :nth-child(n + 2)::before {
+		color: rgba(255, 255, 255, 0.5);
+	}
+	.breadcrumb-item + .breadcrumb-item::before {
+		color: rgba(255, 255, 255, 0.5);
+	}
+}
+
+.blog-featured,
+.blog {
+	.jl-article {
+		figure {
+			margin: 0 0 20px 0;
+			&.item-image {
+				float: none;
+			}
+		}
+	}
+}
+
+.jl-article {
+	figure {
+		margin: 20px 0 20px 0;
+		&.float-start {
+			margin-right: 1em;
+		}
+		&.float-end {
+			margin-left: 1em;
+		}
+	}
+	.left.item-image {
+		float: left;
+	}
+
+	.right.item-image {
+		float: right;
+	}
+
+	.icons .float-end {
+		float: none !important;
+	}
+}
+
+.mod-menu {
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+.mod-list {
+	&.nav {
+		margin-left: 0;
+	}
+	li a:hover {
+		text-decoration: none;
+	}
+}
+.el-contact-form {
+	textarea.form-control {
+		border-radius: 0;
+		&:focus {
+			border-color: #8894aa;
+		}
+	}
+}
+.contact-misc {
+	p {
+		margin-bottom: 1rem;
+		margin-top: 0;
+	}
+}
+
+// Resets
+@include breakpoint(mobile-only) {
+	body {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+// Row bs
+.platform-content {
+	&.container {
+		padding: 0;
+		box-sizing: border-box;
+		.row {
+			--gutter-x: 1.5rem;
+			--gutter-y: 0;
+			@include breakpoint(tablet-range) {
+				margin-left: calc(var(--gutter-x) * -0.5);
+			}
+			@include breakpoint(mobile-only) {
+				margin-left: calc(var(--gutter-x) * -0.5);
+			}
+		}
+	}
+}

@@ -1,0 +1,64 @@
+<?php
+return [
+    '@class' => 'Gantry\\Component\\File\\CompiledYamlFile',
+    'filename' => 'D:/Apache24/htdocs/Spice_Bites/templates/jl_bruno_free/custom/config/_offline/index.yaml',
+    'modified' => 1775727463,
+    'data' => [
+        'name' => '_offline',
+        'timestamp' => 1775727463,
+        'version' => 7,
+        'preset' => [
+            'image' => 'gantry-admin://images/layouts/default.png',
+            'name' => '_offline',
+            'timestamp' => 1775727462
+        ],
+        'positions' => [
+            
+        ],
+        'sections' => [
+            'navigation' => 'Navigation',
+            'slideshow' => 'Slideshow',
+            'hero' => 'Hero',
+            'topa' => 'Topa',
+            'topb' => 'Topb',
+            'topc' => 'Topc',
+            'topd' => 'Topd',
+            'above' => 'Above',
+            'sidebar' => 'Sidebar',
+            'mainbar' => 'Mainbar',
+            'below' => 'Below',
+            'bottoma' => 'Bottoma',
+            'bottomb' => 'Bottomb',
+            'bottomc' => 'Bottomc',
+            'bottomd' => 'Bottomd',
+            'extended' => 'Extended',
+            'copyright' => 'Copyright',
+            'aside' => 'Aside',
+            'footer' => 'Footer',
+            'offcanvas' => 'Offcanvas'
+        ],
+        'particles' => [
+            'messages' => [
+                'system-messages-4539' => 'System Messages'
+            ],
+            'content' => [
+                'system-content-3237' => 'Page Content'
+            ],
+            'jlnavbar' => [
+                'jlnavbar-2399' => 'JL Navbar'
+            ],
+            'copyright' => [
+                'copyright-1734' => 'Copyright'
+            ]
+        ],
+        'inherit' => [
+            'default' => [
+                'navigation' => 'navigation',
+                'footer' => 'footer',
+                'copyright' => 'copyright',
+                'jlnavbar-2399' => 'jlnavbar-1285',
+                'copyright-1734' => 'copyright-2958'
+            ]
+        ]
+    ]
+];

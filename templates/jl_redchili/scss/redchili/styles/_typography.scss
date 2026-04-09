@@ -1,0 +1,63 @@
+// Font Import
+@include import-font($font-family-default);
+@include import-font($font-family-title);
+
+body {
+	font-family: get-font-family($font-family-default);
+	font-weight: $font-weight-regular;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-family: get-font-family($font-family-title);
+	color: $base-heading-color;
+}
+
+.jl-h1,
+.jl-h2,
+.jl-h3,
+.jl-h4,
+.jl-h5,
+.jl-h6,
+.jl-heading-2xlarge,
+.jl-heading-large,
+.jl-heading-medium,
+.jl-heading-small,
+.jl-heading-xlarge {
+	font-family: get-font-family($font-family-title);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: $font-weight-medium;
+}
+
+bold,
+strong {
+	font-weight: $font-weight-bold;
+}
+
+p {
+	margin: 0 0 20px 0;
+}
+fieldset {
+	border: 0;
+	margin: 0;
+	min-width: 0;
+	padding: 0;
+}
+// Blockquote
+blockquote {
+	margin: 0 0 20px 0;
+	padding-left: 0;
+	cite {
+		display: inline-block;
+	}
+}

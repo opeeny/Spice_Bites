@@ -1,0 +1,81 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+{% set has_styles = particle.particle_title_color or particle.particle_title_fontsize or particle.title_color or particle.title_fontsize or particle.subtitle_color or particle.subtitle_fontsize or (particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty) %}
+{% if has_styles %}
+<style>
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}#el-{{ id }}.g5-title{ {%- if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %}}{% endif -%}
+{%- if particle.title_color or particle.title_fontsize -%}#{{ id }} .tm-title{ {%- if particle.title_color %}color:{{ particle.title_color }};{% endif %}{% if particle.title_fontsize %}font-size:{{ particle.title_fontsize }}px;{% endif %}}{% endif -%}
+{%- if particle.subtitle_color or particle.subtitle_fontsize -%}#{{ id }} .tm-description{ {%- if particle.subtitle_color %}color:{{ particle.subtitle_color }};{% endif %}{% if particle.subtitle_fontsize %}font-size:{{ particle.subtitle_fontsize }}px;{% endif %}}{% endif -%}
+{%- if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty -%}#{{ id }}-particle .g-container{max-width:{{ particle.bg_container_width|e }};}{% endif -%}
+</style>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{# Set Title/Content Text Transform #}
+{% set title_text_transform = particle.title_text_transform ? ' jl-text-' ~ particle.title_text_transform|e %}
+{% set title_font_weight = particle.title_font_weight ? ' jl-text-' ~ particle.title_font_weight|e %}
+{% set content_text_transform = particle.content_text_transform ? ' jl-text-' ~ particle.content_text_transform|e %}
+
+{# set Title#}
+{% set title %}
+{% if particle.title %}
+<{{ particle.titletag|e }} class="tm-title jl-margin-remove-bottom{{ title_text_transform ~ title_font_weight }}{% if particle.heading_color %} jl-text-{{particle.heading_color|e}}{% endif %}{% if particle.decoration %} jl-heading-{{particle.decoration|e}}{% endif %}{% if particle.style != 'default' %} jl-{{particle.style|e}}{% endif %}">
+{% if particle.decoration == 'line' %}<span>{{particle.title|raw}}</span>{% else %}{{particle.title|raw}}{% endif %}
+</{{ particle.titletag|e }}>
+{% endif %}
+{% endset %}
+
+{# set Subtitle #}
+{% set subtitle %}
+{% if particle.subtitle %}
+<div class="tm-description{{ content_text_transform }}{% if particle.description_style != 'default' %} jl-{{ particle.description_style|e }}{% endif %} jl-margin-{{ particle.description_margin_top == 'default' ? 'top' : particle.description_margin_top|e ~ '-top' }}{% if particle.description_color != 'default' %} jl-text-{{ particle.description_color|e }}{% endif %}">
+	{{ particle.subtitle|raw }}
+</div>
+{% endif %}
+{% endset %}
+
+{# set Subtitle #}
+{% set description %}
+{% if particle.description %}
+<div class="tm-description-below">
+	{{ particle.description|raw }}
+</div>
+{% endif %}
+{% endset %}
+
+{% set particle_classes = [
+    id,
+    particle.g_maxwidth ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div id="{{ id }}" class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }} {{- attr_extra|raw }}>
+	{{ title }}
+	{{ subtitle }}
+	<div id="g-mpos-{{ id }}" class="g-module-position jl-margin-{{ particle.module_margin_top == 'default' ? 'top' : particle.module_margin_top|e ~ '-top' }}">
+		{{ gantry.platform.displayModule(particle.module_id, {'style': particle.chrome|default('gantry'), 'position': 'particle'})|raw }}
+	</div>
+	{{ description }}
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}

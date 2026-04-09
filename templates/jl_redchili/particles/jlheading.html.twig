@@ -1,0 +1,82 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+{% set idclass = '.' ~ id %}
+{% if particle.particle_title_color or particle.particle_title_fontsize or particle.title_color or particle.title_fontsize or particle.subtitle_color or particle.subtitle_fontsize or particle.decoration_color or particle.decoration_width or (particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty) %}
+<style>
+{%- if particle.particle_title_color or particle.particle_title_fontsize %}#el-{{ id }}.g5-title{ {{ particle.particle_title_color ? 'color:' ~ particle.particle_title_color ~ ';' : '' }}{{ particle.particle_title_fontsize ? 'font-size:' ~ particle.particle_title_fontsize ~ 'px;' : '' }} }{% endif -%}
+{%- if particle.title_color or particle.title_fontsize %}{{ idclass }} .tm-title{ {{ particle.title_color ? 'color:' ~ particle.title_color ~ ';' : '' }}{{ particle.title_fontsize ? 'font-size:' ~ particle.title_fontsize ~ 'px;' : '' }} }{% endif -%}
+{%- if particle.subtitle_color or particle.subtitle_fontsize %}{{ idclass }} .tm-description{ {{ particle.subtitle_color ? 'color:' ~ particle.subtitle_color ~ ';' : '' }}{{ particle.subtitle_fontsize ? 'font-size:' ~ particle.subtitle_fontsize ~ 'px;' : '' }} }{% endif -%}
+{%- if particle.decoration == 'divider' %}{{ idclass }} .jl-heading-divider{ {{ particle.decoration_color ? 'border-color:' ~ particle.decoration_color ~ ';' : '' }}{{ particle.decoration_width ? 'border-width:' ~ particle.decoration_width ~ 'px;' : '' }} }{% elseif particle.decoration == 'bullet' %}{{ idclass }} .jl-heading-bullet::before{ {{ particle.decoration_color ? 'border-left-color:' ~ particle.decoration_color ~ ';' : '' }}{{ particle.decoration_width ? 'border-width:' ~ particle.decoration_width ~ 'px;' : '' }} }{% elseif particle.decoration == 'line' %}{{ idclass }} .jl-heading-line>::after,{{ idclass }} .jl-heading-line>::before{ {{ particle.decoration_color ? 'border-bottom-color:' ~ particle.decoration_color ~ ';' : '' }}{{ particle.decoration_width ? 'border-width:' ~ particle.decoration_width ~ 'px;' : '' }} }{% endif -%}
+{%- if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty %}{{ idclass }}-particle .g-container{max-width:{{ particle.bg_container_width|e }};} {% endif -%}
+</style>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{% set linkscroll = particle.title_link matches '/#/' and particle.title_link_target != '_blank' ? ' jl-scroll' : '' %}
+
+{# Simplified class handling #}
+{% set title_text_transform = particle.title_text_transform ? ' jl-text-' ~ particle.title_text_transform : '' %}
+{% set title_font_weight = particle.title_font_weight ? ' jl-text-' ~ particle.title_font_weight : '' %}
+{% set heading_color = particle.heading_color ? ' jl-text-' ~ particle.heading_color : '' %}
+{% set decoration_class = particle.decoration ? ' jl-heading-' ~ particle.decoration : '' %}
+{% set style_class = particle.style != 'default' ? ' jl-' ~ particle.style : '' %}
+
+{% set content_text_transform = particle.content_text_transform ? ' jl-text-' ~ particle.content_text_transform : '' %}
+{% set meta_font_weight = particle.meta_font_weight ? ' jl-text-' ~ particle.meta_font_weight : '' %}
+{% set des_dropcap = particle.description_dropcap ? ' jl-dropcap' : '' %}
+{% set description_style = particle.description_style != 'default' ? ' jl-' ~ particle.description_style : '' %}
+{% set margin_top = particle.description_margin_top == 'default' ? ' jl-margin-top' : ' jl-margin-' ~ particle.description_margin_top ~ '-top' %}
+{% set description_color = particle.description_color != 'default' ? ' jl-text-' ~ particle.description_color : '' %}
+
+{% set particle_classes = [
+    id,
+    particle.g_maxwidth ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div class="{{ particle_classes }}"{{ Macros.animation_render(particle, false)|raw }}{{- attr_extra|raw }}>
+    {%- if particle.title %}
+        <{{ particle.titletag|e }} class="tm-title jl-margin-remove-bottom{{ title_text_transform }}{{ title_font_weight }}{{ heading_color }}{{ decoration_class }}{{ style_class }}">
+            {%- if particle.title_link %}
+                <a target="{{ particle.title_link_target|default('_self') }}" href="{{ url(particle.title_link) }}" class="{{ particle.link_hover ? 'jl-link-heading' : 'jl-link-reset' }}"{{ linkscroll }}>
+            {% endif -%}
+            
+            {%- if particle.decoration == 'line' %}
+                <span>{{ particle.title|raw }}</span>
+            {%- else -%}
+                {{ particle.title|raw }}
+            {% endif -%}
+            
+            {%- if particle.title_link %}
+                </a>
+            {% endif -%}
+        </{{ particle.titletag|e }}>
+    {% endif -%}
+    {%- if particle.subtitle %}
+        <div class="tm-description{{ content_text_transform }}{{ meta_font_weight }}{{ des_dropcap }}{{ description_style }}{{ margin_top }}{{ description_color }}">
+            {{ particle.subtitle|raw }}
+        </div>
+    {% endif -%}
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+{% if particle.particle_title_color or particle.particle_title_fontsize %}
+<style>#el-{{ id }}.g5-title{ {% if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %} }</style>
+{% endif %}
+{% endblock %}
+
+{# Set Social Grid Alignment #}
+{% set grid_alignment %}
+{% if particle.align != 'inherit' %} jl-flex jl-flex-{{particle.align|e}}{% if particle.breakpoint != 'always' %}@{{particle.breakpoint|e}}{% endif %}{% endif %}{% if particle.align != 'inherit' and particle.breakpoint != 'always' %}{% if particle.fallback != 'inherit' %} jl-flex-{{particle.fallback|e}}{% endif %}{% endif %}
+{% endset %}
+
+{# Set Image #}
+{% set image_dimensions = (particle.image_width ? ' width="' ~ particle.image_width ~ '"' : '') ~ (particle.image_height ? ' height="' ~ particle.image_height ~ '"' : '') %}
+{% set image_size = particle.image_width is empty and particle.image_height is empty ? ' ' ~ particle.image|imagesize : '' %}
+
+{% set image_loading = not particle.image_loading ? ' loading="lazy"' : '' %}
+
+{# Set Social Class #}
+{% set socials_cls = particle.social_style and particle.social_style != 'button' ? ' jl-link-' ~ particle.social_style|e : '' %}
+
+{% set targetAttrib = particle.social_target ? 
+    ' target="' ~ particle.social_target|e ~ '"' ~ 
+    (particle.social_target == '_blank' ? ' rel="noopener noreferrer"' : '') 
+    : ' target="_self"' %}
+
+{# Set Social Items #}
+{% set socials %}
+<div class="jl-child-width-auto jl-grid-{{particle.social_gutter}}{% if particle.social_margin_top == 'default' %} jl-margin-top{% else %} jl-margin-{{ particle.social_margin_top|e }}-top{% endif %}{{ grid_alignment }}" jl-grid>
+{% for item in particle.items %}
+    {% set title = (item.title is not empty) ? item.title|e : item.text|e %}
+    {% set titleAttrib = (title is not empty) ? ' title="' ~ title ~ '" aria-label="' ~ title ~ '"' : '' %}
+    <div class="tm-item">
+        <a class="tm-link{{ socials_cls }}{{ particle.social_style == 'button' and particle.display in ['both', 'icons_only'] ? ' jl-icon-button' : '' }}" href="{{ item.link|e }}"{{ targetAttrib|raw }}{{ titleAttrib|raw }}>
+            {% if particle.display in ['both', 'icons_only'] %}<span class="{{ item.icon|e }}"></span>{% endif %}
+            {% if particle.display in ['both', 'text_only'] %}<span class="g-social-text">{{ item.text|e }}</span>{% endif %}
+        </a>
+    </div>
+{% endfor %}
+</div>
+{% endset %}
+
+{% set particle_classes = [
+    id,
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div id="{{ id }}" class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }} {{- attr_extra|raw }}>
+{% if particle.image %}
+<a class="jl-logo jl-link-reset{{ grid_alignment }}" href="{{ url }}" target="{{ particle.target|default('_self') }}" aria-label="Back to the homepage">
+  <img src="{{ url(particle.image) }}"{{ image_dimensions|raw }}{{ image_size|raw }} alt="{{ particle.image_alt|e }}"{{ image_loading|raw }}>
+</a>
+{% endif %}
+
+{% if particle.content %}
+<div class="tm-content jl-panel{% if particle.content_margin_top == 'default' %} jl-margin-top{% else %} jl-margin-{{ particle.content_margin_top|e }}-top{% endif %}">
+  {{ particle.content|raw }}
+</div>
+{% endif %}
+
+{% if particle.html %}
+<div class="jl-margin-top">
+    {% set html = particle.twig ? gantry.theme.compile(particle.html) : particle.html %}
+    {{ (particle.filter ? gantry.platform.filter(html) : html)|html|raw }}
+</div>
+{% endif %}
+
+{% if particle.module_id %}
+<div class="jl-margin-top">
+    {{ gantry.platform.displayModule(particle.module_id, {'style': particle.chrome|default('gantry'), 'position': 'particle'})|raw }}
+</div>
+{% endif %}
+
+{% if particle.items %}
+  {{ socials }}
+{% endif %}
+</div>
+{% endif %}
+{% endblock %}

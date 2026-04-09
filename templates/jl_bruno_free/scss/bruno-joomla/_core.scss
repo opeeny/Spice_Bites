@@ -1,0 +1,89 @@
+body {
+    color: $base-text-color;
+    background: $base-background;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@media print {
+    #g-page-surround {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}
+
+a {
+    color: $accent-color-1;
+    &:hover {
+        color: darken($base-text-color, 10%);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+    color: darken($base-text-color, 10%);
+}
+
+.button {
+    margin: 0;
+    border: none;
+    overflow: visible;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 30px;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 38px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    @include transition(background 0.1s);
+
+    &:hover {
+        background: lighten($accent-color-1, 5%);
+        color: $white;
+    }
+
+    &:active,
+    &:focus {
+        background: darken($accent-color-1, 5%);
+        box-shadow: inset -1px -1px 1px rgba(0, 0, 0, 0.15);
+        color: $white;
+        outline: 0;
+    }
+
+    &:disabled {
+        opacity: 0.25;
+        cursor: not-allowed;
+
+        &:hover {
+            background: $accent-color-1;
+        }
+    }
+}
+
+.gantry-logo {
+    display: inline-block;
+    @include breakpoint(mobile-only) {
+        display: block;
+        text-align: center;
+    }
+    img {
+        width: 150px;
+    }
+}
+
+.logo-large {
+    display: inline-block;
+}
+ul.jl-accordion {
+    margin-left: 0;
+}

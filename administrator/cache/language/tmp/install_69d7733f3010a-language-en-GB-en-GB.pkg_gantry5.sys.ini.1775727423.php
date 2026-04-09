@@ -1,0 +1,6 @@
+<?php
+defined('_JEXEC') or die;
+return array (
+  'PKG_GANTRY5' => 'Gantry 5',
+  'PKG_GANTRY5_DESCRIPTION' => 'Gantry 5 Framework Package. Contains library, component, Nucleus engine and system & quick icon plugins.',
+);

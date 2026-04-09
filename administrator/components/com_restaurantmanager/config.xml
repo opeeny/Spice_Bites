@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <fieldset name="permissions" 
+              label="JCONFIG_PERMISSIONS_LABEL" 
+              description="JCONFIG_PERMISSIONS_DESC">
+        <field name="rules" 
+               type="rules" 
+               label="JCONFIG_PERMISSIONS_LABEL" 
+               class="inputbox" 
+               validate="rules" 
+               filter="rules" 
+               component="com_restaurantmanager" 
+               section="component" />
+    </fieldset>
+    
+    <fieldset name="general" 
+              label="COM_RESTAURANTMANAGER_CONFIG_GENERAL" 
+              description="COM_RESTAURANTMANAGER_CONFIG_GENERAL_DESC">
+        <field name="number_of_tables" 
+               type="number" 
+               label="COM_RESTAURANTMANAGER_CONFIG_NUM_TABLES" 
+               description="COM_RESTAURANTMANAGER_CONFIG_NUM_TABLES_DESC" 
+               default="30" 
+               min="1" 
+               max="200" 
+               step="1" 
+               required="true" />
+        
+        <field name="number_of_menu_items" 
+               type="number" 
+               label="COM_RESTAURANTMANAGER_CONFIG_NUM_MENU_ITEMS" 
+               description="COM_RESTAURANTMANAGER_CONFIG_NUM_MENU_ITEMS_DESC" 
+               default="200" 
+               min="1" 
+               max="200" 
+               step="1" 
+               required="true" />
+        
+        <field name="auto_refresh_interval" 
+               type="number" 
+               label="COM_RESTAURANTMANAGER_CONFIG_AUTO_REFRESH" 
+               description="COM_RESTAURANTMANAGER_CONFIG_AUTO_REFRESH_DESC" 
+               default="10" 
+               min="5" 
+               max="60" 
+               step="5" 
+               required="true" 
+               hint="10" />
+    </fieldset>
+</config>

@@ -1,0 +1,194 @@
+{#
+═══════════════════════════════════════════════════════════════════════
+  Shared macros for all particles.
+  Import this file into any particle that requires parallax backgrounds,
+  title styling, and animation support.
+═══════════════════════════════════════════════════════════════════════
+#}
+
+{# ── Opening wrapper ────────────────────────────────────────────────── #}
+{% macro parallax_open(particle, id) %}
+{%- if particle.parallax_image -%}
+
+    {# Viewport height attribute #}
+    {%- set viewport_height = {
+        'full':    ' jl-height-viewport="offset-top: true"',
+        'percent': ' jl-height-viewport="offset-top: true; offset-bottom: 20"',
+        'section': ' jl-height-viewport="offset-top: true; offset-bottom: 50"',
+        'expand':  ' jl-height-viewport="expand: true"'
+    }[particle.viewport_height]|default('') -%}
+
+    {# Section padding #}
+    {%- set padding = ' jl-section' ~ (
+        particle.padding == 'none'    ? ' jl-padding-remove-vertical' :
+        particle.padding != 'default' ? ' jl-section-' ~ particle.padding : ''
+    ) -%}
+
+    {# Inline background color #}
+    {%- if particle.parallax_bg_color -%}
+        {%- set parallax_bg_color %} style="background-color: {{ particle.parallax_bg_color|e }};"{% endset -%}
+    {%- else -%}
+        {%- set parallax_bg_color = '' -%}
+    {%- endif -%}
+
+    {# Overlay div #}
+    {%- set parallax_overlay = particle.parallax_bg_overlay
+        ? '<div class="jl-position-cover" style="background-color: ' ~ particle.parallax_bg_overlay|e ~ ';"></div>'
+        : '' -%}
+
+    {# Container class #}
+    {%- set bg_container_maxwidth = particle.container_maxwidth in ['custom', 'default']
+        ? 'g-container'
+        : 'jl-container' ~ (particle.container_maxwidth in ['small', 'large', 'xlarge', 'expand']
+            ? ' jl-container-' ~ particle.container_maxwidth
+            : '') -%}
+
+    {# Parallax motion values — only set if both or either boundary defined #}
+    {%- set parallax_bg_horizontal = (particle.horizontal_start or particle.horizontal_end)
+        ? 'bgx: ' ~ particle.horizontal_start|default('0') ~ ',' ~ particle.horizontal_end|default('0') ~ ';'
+        : '' -%}
+    {%- set parallax_bg_vertical = (particle.vertical_start or particle.vertical_end)
+        ? 'bgy: ' ~ particle.vertical_start|default('0') ~ ',' ~ particle.vertical_end|default('0') ~ ';'
+        : '' -%}
+
+    {# Easing — only appended when motion exists, space after colon fixed #}
+    {%- set parallax_easing = particle.parallax_easing
+        ? ' easing: ' ~ particle.parallax_easing
+        : '' -%}
+
+    {# Require actual motion to activate parallax — easing alone is not enough #}
+    {%- set has_parallax = particle.bg_image_effect == 'parallax'
+        and (parallax_bg_horizontal or parallax_bg_vertical) -%}
+
+    {# Breakpoint media query #}
+    {%- set parallax_media = (particle.parallax_bg_breakpoint is not empty and particle.parallax_bg_breakpoint != 'always')
+        ? ' media: @' ~ particle.parallax_bg_breakpoint
+        : '' -%}
+
+    {# Build parallax attribute safely via capture block #}
+    {%- if has_parallax -%}
+        {%- set bgp_animation_cls %} jl-parallax="{{ parallax_bg_horizontal }}{{ parallax_bg_vertical }}{{ parallax_media }}{{ parallax_easing }}"{% endset -%}
+    {%- else -%}
+        {%- set bgp_animation_cls = '' -%}
+    {%- endif -%}
+
+    {# Modifier classes #}
+    {%- set position_class       = particle.parallax_bg_overlay ? ' jl-position-relative' : '' -%}
+    {%- set bg_fixed_class       = particle.bg_image_effect == 'fixed' ? ' jl-background-fixed' : '' -%}
+    {%- set bg_size_class        = particle.background_image_size != 'auto' ? ' jl-background-' ~ particle.background_image_size : '' -%}
+    {%- set bg_visibility_class  = particle.parallax_bg_visibility != 'always' ? ' jl-background-image@' ~ particle.parallax_bg_visibility : '' -%}
+    {%- set vertical_align_class = particle.vertical_alignment != 'none' and particle.viewport_height != 'none'
+        ? ' jl-flex jl-flex-' ~ particle.vertical_alignment : '' -%}
+    {%- set text_color_class     = particle.parallax_text_color != 'default' ? ' jl-' ~ particle.parallax_text_color : '' -%}
+    {%- set blend_mode_class     = particle.blendmode != 'inherit' ? ' jl-background-blend-' ~ particle.blendmode : '' -%}
+    {%- set loading_attr         = particle.bg_image_loading ? ' loading="eager"' : '' -%}
+
+    {# Build wrapper class string #}
+    {%- set wrapper_classes = 'jl-wrapper jl-background-norepeat'
+        ~ position_class
+        ~ bg_fixed_class
+        ~ padding
+        ~ ' jl-background-' ~ particle.background_image_position
+        ~ bg_size_class
+        ~ bg_visibility_class
+        ~ vertical_align_class
+        ~ text_color_class
+        ~ blend_mode_class -%}
+
+<div data-src="{{ url(particle.parallax_image) }}"{{ loading_attr|raw }} jl-img class="{{ wrapper_classes }}"{{ parallax_bg_color|raw }}{{ bgp_animation_cls|raw }}{{ viewport_height|raw }}>
+    {{ parallax_overlay|raw }}
+    <div class="{{ bg_container_maxwidth }}{{ position_class }}">
+        <div class="el-content">
+
+{%- endif -%}
+{% endmacro %}
+
+{# ── Closing wrapper ─────────────────────────────────────────────────── #}
+{% macro parallax_close(particle) %}
+{%- if particle.parallax_image -%}
+        </div>
+    </div>
+</div>
+{%- endif -%}
+{% endmacro %}
+
+{# ── particle_title ───────────────────────────────────────────────── #}
+{% macro particle_title_style(particle, id) %}
+{%- if particle.particle_title -%}
+    {%- set allowed_elements = ['h1','h2','h3','h4','h5','h6','p','div','span'] -%}
+    {%- set el     = particle.particle_title_element in allowed_elements
+        ? particle.particle_title_element : 'h3' -%}
+    {%- set deco   = particle.particle_title_decoration -%}
+    {%- set cls_align  = particle.particle_title_align != 'inherit'      ? ' jl-text-'    ~ particle.particle_title_align : '' -%}
+    {%- set cls_color  = particle.particle_predefined_color != 'default' ? ' jl-text-'    ~ particle.particle_predefined_color : '' -%}
+    {%- set cls_style  = particle.particle_title_style != 'default'      ? ' jl-'         ~ particle.particle_title_style : '' -%}
+    {%- set cls_deco   = deco != 'none'                                  ? ' jl-heading-' ~ deco : '' -%}
+    {%- set cls_trans  = particle.particle_title_text_transform          ? ' jl-text-'    ~ particle.particle_title_text_transform : '' -%}
+    {%- set cls_weight = particle.particle_title_font_weight             ? ' jl-text-'    ~ particle.particle_title_font_weight : '' -%}
+<{{ el }} id="el-{{ id }}" class="g5-title{{ cls_align }}{{ cls_color }}{{ cls_style }}{{ cls_deco }}{{ cls_trans }}{{ cls_weight }}">
+{%- if deco == 'line' -%}<span>{{ particle.particle_title|raw }}</span>
+{%- else -%}{{ particle.particle_title|raw }}
+{%- endif -%}
+</{{ el }}>
+{%- endif -%}
+{% endmacro %}
+
+{# ── animation_render ──────────────────────────────────────────────── #}
+{% macro animation_render(particle, has_children) %}
+{%- if particle.animation == 'parallax' -%}
+
+    {%- set parallax_parts = [
+        (particle.pa_horizontal_start is not empty or particle.pa_horizontal_end is not empty)
+            ? 'x: ' ~ particle.pa_horizontal_start|default('0') ~ ',' ~ particle.pa_horizontal_end|default('0'),
+        (particle.pa_vertical_start is not empty or particle.pa_vertical_end is not empty)
+            ? 'y: ' ~ particle.pa_vertical_start|default('0') ~ ',' ~ particle.pa_vertical_end|default('0'),
+        (particle.scale_start is not empty or particle.scale_end is not empty)
+            ? 'scale: ' ~ particle.scale_start|default('1') ~ ',' ~ particle.scale_end|default('1'),
+        (particle.rotate_start is not empty or particle.rotate_end is not empty)
+            ? 'rotate: ' ~ particle.rotate_start|default('0') ~ ',' ~ particle.rotate_end|default('0'),
+        (particle.opacity_start is not empty or particle.opacity_end is not empty)
+            ? 'opacity: ' ~ particle.opacity_start|default('1') ~ ',' ~ particle.opacity_end|default('1'),
+        particle.blur_start is not empty
+            ? 'blur: ' ~ particle.blur_start ~ (particle.blur_end is not empty ? ' ' ~ particle.blur_end ~ '%' : ''),
+    ]|filter(v => v is not empty) -%}
+
+    {%- if parallax_parts is not empty -%}
+        {%- set config_parts = [
+            'easing: ' ~ particle.easing|default('0'),
+            particle.parallax_start is not empty ? 'start: '  ~ particle.parallax_start,
+            particle.parallax_end is not empty   ? 'end: '    ~ particle.parallax_end,
+            (particle.pa_breakpoint is not empty and particle.pa_breakpoint != 'always')
+                ? 'media: @' ~ particle.pa_breakpoint,
+        ]|filter(v => v is not empty) -%}
+        {%- set attr %} jl-parallax="{{ (parallax_parts|merge(config_parts))|join('; ') }}"{% endset -%}
+        {{- attr|raw -}}
+    {%- endif -%}
+
+{%- elseif particle.animation is not empty and particle.animation != 'inherit' -%}
+
+    {%- set delay = particle.delay_element_animations
+        ? particle.animation_delay|default('300')
+        : 'false' -%}
+
+    {%- set scrollspy_parts = [
+        has_children ? 'target: [jl-scrollspy-class]',
+        'cls: jl-animation-' ~ particle.animation,
+        particle.animation_repeat == 'enabled' ? 'repeat: true',
+        'delay: ' ~ delay,
+    ]|filter(v => v is not empty) -%}
+    {%- set attr %} jl-scrollspy="{{ scrollspy_parts|join('; ') }}"{% endset -%}
+    {{- attr|raw -}}
+
+{%- endif -%}
+{% endmacro %}
+
+{# ── animation_child ──────────────────────────────────────────────── #}
+{% macro animation_child(particle) %}
+{%- if particle.animation is not empty
+    and particle.animation != 'inherit'
+    and particle.animation != 'parallax' -%}
+    {{- ' jl-scrollspy-class' -}}
+{%- endif -%}
+{% endmacro %}
+
+

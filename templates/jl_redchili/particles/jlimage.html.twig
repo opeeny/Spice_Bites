@@ -1,0 +1,91 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+{% if particle.particle_title_color or particle.particle_title_fontsize or (particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty) %}
+<style>{% if particle.particle_title_color or particle.particle_title_fontsize %}#el-{{ id }}.g5-title{ {% if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %} }{% endif %}{% if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty %}#{{ id }}-particle .g-container{max-width:{{ particle.bg_container_width|e }};} {% endif %}</style>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{# Link and Image Settings #}
+{% set linkscroll = particle.link|e matches '/#/' and particle.target == '_self' ? ' jl-scroll' %}
+{% set image_viewport_height = particle.image_viewport_height ? ' jl-object-cover' %}
+
+{# Image Dimensions and Styles #}
+{% set image_dimensions = (particle.image_width ? ' width="' ~ particle.image_width ~ '"' : '') ~ (particle.image_height ? ' height="' ~ particle.image_height ~ '"' : '') %}
+{% set image_size = particle.image_width is empty and particle.image_height is empty ? ' ' ~ particle.image|imagesize : '' %}
+{% set image_loading = not particle.image_loading ? ' loading="lazy"' : '' %}
+{# Image Style Classes #}
+{% set has_link_or_popup = particle.link or particle.image_popup %}
+{% set image_transition = particle.image_transition and has_link_or_popup ? ' jl-transition-' ~ particle.image_transition|e ~ ' jl-transition-opaque' %}
+{% set image_border_cls = particle.border != 'none' ? ' jl-border-' ~ particle.border|e %}
+{% set img_boxshadow = particle.box_shadow != 'none' ? ' jl-box-shadow-' ~ particle.box_shadow|e %}
+{% set img_boxshadow_hover = particle.box_shadow_hover != 'none' and particle.link ? ' jl-box-shadow-hover-' ~ particle.box_shadow_hover|e %}
+{% set link_transition = particle.link and particle.image_transition ? ' jl-inline-clip jl-transition-toggle' %}
+
+{% set particle_classes = [
+    id,
+    particle.link is empty and particle.image_popup is empty and particle.extra_shadow 
+        ? 'jl-box-shadow-bottom' 
+        : '',
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div id="{{ id }}" class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }} {{- attr_extra|raw }}>
+  
+  {% if particle.link or particle.target == 'modal' %}
+    <a class="tm-link{{ particle.extra_shadow ? ' jl-box-shadow-bottom' : '' }}{{ image_border_cls ~ img_boxshadow ~ img_boxshadow_hover ~ link_transition }}"{% if particle.target == 'modal' %} href="#{{ id }}" jl-toggle{% else %} href="{{ particle.link|e }}" target="{{ particle.target|default('_self')|e }}"{{ linkscroll }}{% endif %}{% if particle.link_aria_label %} aria-label="{{ particle.link_aria_label| e }}"{% endif %}>
+  {% endif %}
+
+  <img src="{{ url(particle.image)|e }}"{{ image_dimensions|raw }}{{ image_size|raw }} alt="{{ particle.image_alt|e }}" class="tm-image{{ image_transition ~ image_viewport_height }}{% if particle.link is empty %}{{ image_border_cls ~ img_boxshadow ~ img_boxshadow_hover }}{% endif %}"{{ particle.image_viewport_height ? ' style="height: 100vh"' : '' }}{{ image_loading|raw }}>
+
+  {% if particle.link or particle.target == 'modal' %}
+    </a>
+  {% endif %}
+
+  {% if particle.target == 'modal' %}
+  <div id="{{ id }}" class="jl-flex-top jl-modal" jl-modal>
+    <div class="jl-modal-dialog{% if particle.md_title or particle.md_content %} jl-modal-body{% endif %}{% if particle.center_modal %} jl-margin-auto-vertical{% endif %}">
+    <button class="jl-modal-close-{{particle.close_button}}" type="button" jl-close></button>
+      {% if particle.md_title or particle.md_content %}
+			{% if particle.md_title %}
+			<{{ particle.title_element|e }} class="jl-modal-title{% if particle.title_color != 'default' %} jl-text-{{particle.title_color|e}}{% endif %}{% if particle.title_style != 'default' %} jl-{{particle.title_style|e}}{% endif %}{% if particle.title_decoration != 'none' %} jl-heading-{{particle.title_decoration|e}}{% endif %}">
+			{% if particle.title_decoration == 'line' %} <span>{{ particle.md_title|raw }}</span>
+			{% else %}
+			{{ particle.md_title|raw }}
+			{% endif %}
+			</{{ particle.title_element|e }}>
+			{% endif %}
+			<div class="jl-margin-{{ particle.content_margin_top == 'default' ? 'top' : particle.content_margin_top|e ~ '-top' }}{% if particle.content_style != 'default' %} jl-text-{{ particle.content_style|e }}{% endif %}">
+        {% set md_content = particle.twig ? gantry.theme.compile(particle.md_content) : particle.md_content %}
+        {{ (particle.filter ? gantry.platform.filter(md_content) : md_content)|html|raw }}
+			</div>
+      {% else %}
+      <img src="{{ url(particle.image)|e }}"{{ image_size|raw }} class="tm-image" alt="{{ particle.image_alt|e }}">
+  {% endif %}
+    </div>
+    </div>
+  {% endif %}
+
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}

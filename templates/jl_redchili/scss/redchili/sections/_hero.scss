@@ -1,0 +1,33 @@
+#g-hero {
+    color: $hero-text-color;
+    background: $hero-background;
+    @if $hero-background-image {
+        position: relative;
+        overflow: hidden;
+        background-attachment: fixed;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url($hero-background-image);
+        &:before {
+        position: absolute;
+        content: '';
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: $hero-background, $alpha: .95)
+        }
+        .g-grid {
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
+
+@media print {
+    #g-hero  {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

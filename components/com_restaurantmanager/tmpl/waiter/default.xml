@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_RESTAURANTMANAGER_WAITER_VIEW_DEFAULT_TITLE" option="COM_RESTAURANTMANAGER_WAITER_VIEW_DEFAULT_OPTION">
+        <help key="Menu_Item_Restaurant_Manager_Waiter" />
+        <message>
+            <![CDATA[COM_RESTAURANTMANAGER_WAITER_VIEW_DEFAULT_DESC]]>
+        </message>
+    </layout>
+    
+    <fields name="request">
+        <fieldset name="request" label="COM_RESTAURANTMANAGER_WAITER_OPTIONS">
+            <field
+                name="id"
+                type="hidden"
+                default="0"
+            />
+        </fieldset>
+    </fields>
+</metadata>

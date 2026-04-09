@@ -1,0 +1,27 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url('gantry-theme://css/headroom.css') }}">
+<style>{% if particle.custombg %}{{ particle.section|default('#g-navigation') }}{background:{{ particle.custombg }} !important;} {% endif %}.headroom--not-top{position:fixed !important;z-index:10;right:0;left:0;top:0;}</style>
+{% endblock %}
+
+{% block javascript_footer %}
+    {% do gantry.document.addScript(url('gantry-theme://js/headroom.min.js')) %}
+    <script>
+    var myElement = document.querySelector("{{ particle.section|default('#g-navigation') }}"),
+        headroom = new Headroom(myElement, {
+            offset: {{ particle.offset|default(0) }},
+            tolerance: {{ particle.tolerance|default(0) }},
+            classes: {
+                initial: "animated",
+                pinned: "{{ particle.style == 'slide' ? 'slideDown' : particle.style == 'swing' ? 'swingInX' : particle.style == 'flip' ? 'flipInX' : particle.style == 'bounce' ? 'bounceInDown' : '' }}",
+                unpinned: "{{ particle.style == 'slide' ? 'slideUp' : particle.style == 'swing' ? 'swingOutX' : particle.style == 'flip' ? 'flipOutX' : particle.style == 'bounce' ? 'bounceOutUp' : '' }}",
+                top: "headroom--top",
+                notTop: "headroom--not-top",
+                bottom: "headroom--bottom",
+                notBottom: "headroom--not-bottom"
+            }
+        });
+    headroom.init();
+    </script>
+{% endblock %}

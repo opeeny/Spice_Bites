@@ -1,0 +1,75 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url('gantry-theme://css/headlines.css') }}"/>
+{% if particle.particle_title_color or particle.particle_title_fontsize or particle.title_color or particle.title_fontsize or particle.subtitle_color or particle.subtitle_fontsize or (particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty) %}
+<style>
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}
+#el-{{ id }}.g5-title{ {%- if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.title_color or particle.title_fontsize -%}
+.{{ id }} .cd-headline{ {%- if particle.title_color %}color:{{ particle.title_color }};{% endif %}{% if particle.title_fontsize %}font-size:{{ particle.title_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.subtitle_color or particle.subtitle_fontsize -%}
+.{{ id }} .cd-words-wrapper{ {%- if particle.subtitle_color %}color:{{ particle.subtitle_color }};{% endif %}{% if particle.subtitle_fontsize %}font-size:{{ particle.subtitle_fontsize }}px;{% endif %}}
+{%- endif -%}
+{%- if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty -%}
+#{{ id }}-particle .g-container{max-width:{{ particle.bg_container_width|e }};}
+{%- endif -%}
+</style>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{# Set Title Text Transform #}
+{% set title_text_transform = particle.title_text_transform ? ' jl-text-' ~ particle.title_text_transform|e : '' %}
+{% set title_text_color = particle.title_text_color != 'default' ? ' jl-text-' ~ particle.title_text_color|e : '' %}
+{% set title_font_weight = particle.title_font_weight ? 'jl-text-' ~ particle.title_font_weight|e : '' %}
+{% set sub_text_color = particle.sub_text_color != 'default' ? ' jl-text-' ~ particle.sub_text_color|e : '' %}
+{% set subtitle_style = particle.subtitle_style != 'default' ? ' jl-' ~ particle.subtitle_style|e : '' %}
+
+
+{%- set particle_classes = [
+    id,
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim -%}
+
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div class="{{ particle_classes }}"{{ Macros.animation_render(particle, false)|raw }} {{- attr_extra|raw }}>
+  <section class="cd-intro">
+    <{{ particle.titletag|e }} class="cd-headline jl-margin-remove-bottom{{ title_text_color ~ title_text_transform }}{% if particle.headlines %} {{ particle.headlines|e }}{% endif %}{% if particle.style != 'default' %} jl-{{ particle.style|e }}{% endif %}">
+    {% if particle.intro_text %}<span{% if particle.title_font_weight %} class="{{ title_font_weight }}"{% endif %}>{{ particle.intro_text|raw }}</span>{% endif %}
+    <span class="cd-words-wrapper{{ subtitle_style ~ sub_text_color }}">
+      {% for item in particle.animated %}
+      <b{% if loop.first %} class="is-visible"{% endif %}>{{ item.title|e }}</b>
+      {% endfor %}
+    </span>
+  {% if particle.after_text %}<span{% if particle.title_font_weight %} class="{{ title_font_weight }}"{% endif %}>{{ particle.after_text|raw }}</span>{% endif %}
+  </{{ particle.titletag|e }}>
+</section>
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}
+
+{% block javascript_footer %}
+{% do gantry.load('jquery') %}
+<script src="{{ url('gantry-theme://js/headlines.js') }}"></script>
+{% endblock %}

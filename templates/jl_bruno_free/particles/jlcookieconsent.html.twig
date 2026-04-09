@@ -1,0 +1,13 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block particle %}
+{% assets in 'head' with {priority: 0} %}
+<link rel="stylesheet" href="{{ url('gantry-theme://css/cookieconsent.min.css') }}"/>
+{% endassets -%}
+
+{% set color = particle.color %}
+{% scripts in 'footer' with {priority: 10} %}
+<script src="{{ url('gantry-theme://js/cookieconsent.min.js') }}" data-cfasync="false"></script>
+<script>window.addEventListener("load",function(){window.cookieconsent.initialise({"palette":{"popup":{"background":"{{ color.banner is not empty ? color.banner : '#000000' }}","text":"{{ color.bannertext is not empty ? color.bannertext : '#ffffff' }}"},"button":{ {% if particle.layout == 'wire' %}"background":"transparent","border":"{{ color.buttontext is not empty ? color.buttontext : '#f1d600' }}","text":"{{ color.buttontext is not empty ? color.buttontext : '#f1d600' }}"{% else %}"background":"{{ color.button is not empty ? color.button : '#f1d600' }}","text":"{{ color.buttontext is not empty ? color.buttontext : '#333' }}"{% endif %} }}{% if particle.layout != 'default' and particle.layout != 'wire' %},"theme":"{{ particle.layout }}"{% endif %}{% if particle.position != 'default' %},{% if particle.position == 'top2' %}"position":"top","static":true{% else %}"position":"{{ particle.position }}"{% endif %}{% endif %},"content":{"message":"{{ particle.message|e('js') }}"{% if particle.dismiss %},"dismiss":"{{ particle.dismiss|e('js') }}"{% endif %}{% if particle.readmore %},"link":"{{ particle.readmore|e('js') }}"{% endif %}{% if particle.policy %},"href":"{{ particle.policy|e('js') }}"{% endif %}}})});</script>
+{% endscripts %}
+{% endblock %}

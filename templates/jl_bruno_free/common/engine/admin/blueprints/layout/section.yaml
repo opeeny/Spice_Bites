@@ -1,0 +1,163 @@
+name: Section
+description: Layout section.
+type: section
+
+form:
+  fields:
+    boxed:
+      type: select.selectize
+      label: Layout
+      description: Select the Layout container behavior. 'Inherit' refers to Page Settings.
+      isset: true
+      selectize:
+        allowEmptyOption: true
+      options:
+        '': Inherit from Page Settings
+        0: Fullwidth (Boxed Content)
+        2: Fullwidth (Flushed Content)
+        1: Boxed
+        3: Remove Container
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: Enter CSS class names.
+      default:
+
+    variations:
+      type: input.section-variations
+      label: Variations
+      description: Enter Section Variations.
+      default:
+
+    extra:
+      type: collection.keyvalue
+      label: Tag Attributes
+      description: Extra Tag attributes.
+      key_placeholder: Key (data-*, style, ...)
+      value_placeholder: Value
+      exclude: ['id', 'class']
+    section_info:
+      type: separator.note
+      class: alert alert-info
+      content: 'Customizing Section'
+    background:
+      type: input.imagepicker
+      label: Background
+      description: Select the background image for section.
+      overridable: false
+    background_image_size:
+      type: select.select
+      label: Image Size
+      description: Determine whether the image will fit the section dimensions by clipping it or by filling the empty areas with the background color. By default, the image will not be resized.
+      default: auto
+      options:
+        auto: Auto
+        cover: Cover
+        contain: Contain
+    background_position:
+      type: select.selectize
+      label: Position
+      description: Set the initial background position relative to the section layer. By default, the image is centered.
+      default: center-center
+      options:
+        top-left: Top Left
+        top-center: Top Center
+        top-right: Top Right
+        center-left: Center Left
+        center-center: Center Center
+        center-right: Center Right
+        bottom-left: Bottom Left
+        bottom-center: Bottom Center
+        bottom-right: Bottom Right
+    background_effect:
+      type: select.selectize
+      label: Image Effect
+      description: Add a parallax effect or fix the background with regard to the viewport while scrolling.
+      default: parallax
+      options:
+        none: None
+        parallax: Parallax
+        fixed: Fixed
+    background_image_visibility:
+      type: select.select
+      label: Image Visibility
+      description: Display the image only on this device width and larger. This is useful to hide background images if the content becomes illegible on small viewports.
+      default: always
+      options:
+        always: Always
+        s: Small (Phone Landscape)
+        m: Medium (Tablet Landscape)
+        l: Large (Desktop)
+        xl: X-Large (Large Screens)
+    background_color:
+      type: input.colorpicker
+      label: Background Color
+      description: Use the background color in combination with blend modes, a transparent image or to fill the area, if the image doesn't cover the whole section.
+    background_blendmode:
+      type: select.select
+      label: Blend Mode
+      description: Determine how the image will blend with the background color.
+      default: inherit
+      options:
+          inherit: Normal
+          multiply: Multiply
+          screen: Screen
+          overlay: Overlay
+          darken: Darken
+          lighten: Lighten
+          color-dodge: Color-dodge
+          color-burn: Color-burn
+          hard-light: Hard-light
+          soft-light: Soft-light
+          difference: Difference
+          exclusion: Exclusion
+          hue: Hue
+          saturation: Saturation
+          color: Color
+          luminosity: Luminosity
+    background_overlay:
+      type: input.colorpicker
+      label: Overlay Color
+      description: Set an additional transparent overlay to soften the image.
+    horizontal_start:
+      type: input.number
+      label: Horizontal Start
+      description: Animate the vertical position (translateY) in pixels. Value can be between -600 (min) and 600 (max).
+      min: -600
+      max: 600
+      default: 0
+    horizontal_end:
+      type: input.number
+      label: Horizontal End
+      description: Animate the vertical position (translateY) in pixels. Value can be between -600 (min) and 600 (max).
+      min: -600
+      max: 600
+      default: 0
+    vertical_start:
+      type: input.number
+      label: Vertical Start
+      description: Animate the vertical position (translateY) in pixels. Value can be between -600 (min) and 600 (max).
+      min: -600
+      max: 600
+      default: 0
+    vertical_end:
+      type: input.number
+      label: Vertical End
+      description: Animate the vertical position (translateY) in pixels. Value can be between -600 (min) and 600 (max).
+      min: -600
+      max: 600
+      default: 0
+    parallax_bg_breakpoint:
+      type: select.select
+      label: Parallax Breakpoint
+      description: Display the parallax effect only on this device width and larger.
+      default: always
+      options:
+        always: Always
+        s: Small (Phone Landscape)
+        m: Medium (Tablet Landscape)
+        l: Large (Desktop)
+        xl: X-Large (Large Screens)
+    _inherit:
+      type: gantry.inherit

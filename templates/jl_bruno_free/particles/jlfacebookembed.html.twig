@@ -1,0 +1,39 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}
+<style>#el-{{ id }}.g5-title{ {%- if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %} }</style>
+{%- endif %}
+{% endblock %}
+
+{% set video_data_width = (particle.video_data_width ? ' data-width="'~ particle.video_data_width ~'"') %}
+{% set post_data_width = (particle.post_data_width ? ' data-width="'~ particle.post_data_width ~'"') %}
+{% set particle_classes = [
+    id,
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim %}
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }} {{- attr_extra|raw }}>
+{% pageblock body_top %}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/{{ particle.locales|e }}/sdk.js#xfbml=1&version=v21.0"></script>
+{% endpageblock %}
+{% if particle.embed_types == 'video' %}
+ <div class="fb-video" data-href="{{particle.url}}"{{video_data_width|raw}} data-allowfullscreen="{{ particle.allowfullscreen ? 'true' : 'false' }}" data-autoplay="{{ particle.autoplay ? 'true' : 'false' }}" data-show-text="{{ particle.full_post ? 'true' : 'false' }}" data-show-captions="{{ particle.show_captions ? 'true' : 'false' }}"></div>
+{% elseif particle.embed_types == 'post' %}
+<div class="fb-post" data-href="{{particle.url}}"{{post_data_width|raw}} data-lazy="{{ particle.data_lazy ? 'true' : 'false' }}" data-show-text="{{ particle.full_post ? 'true' : 'false' }}"></div>
+{% else %}
+<div class="fb-comment-embed" data-href="{{particle.url}}" data-lazy="{{ particle.data_lazy ? 'true' : 'false' }}" data-include-parent="{{ particle.include_parent ? 'true' : 'false' }}"{{video_data_width|raw}}></div>
+{% endif %}
+</div>
+{% endif %}
+{% endblock %}

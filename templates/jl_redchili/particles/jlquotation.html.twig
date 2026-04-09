@@ -1,0 +1,73 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+<style>.{{ id }} blockquote{margin:0 0 20px 0!important;font-size:1rem;border-left:none;position:relative;}.{{ id }} blockquote cite{display:inline-block;font-size:1rem;}
+{%- if particle.quote_icon and particle.quote_pos == 'default' -%}.{{ id }} .quote-right{position:absolute;right:0;color:#999;opacity:.5;}{% endif %}
+{%- if particle.quote_icon -%}.{{ id }} .quote-right{color:{{ particle.quote_color|default('#999999')|e }};}{% endif %}
+{%- if particle.particle_title_color or particle.particle_title_fontsize -%}#el-{{ id }}.g5-title{ {{ particle.particle_title_color ? 'color:' ~ particle.particle_title_color ~ ';' : '' }}{{ particle.particle_title_fontsize ? 'font-size:' ~ particle.particle_title_fontsize ~ 'px;' : '' }} }{% endif %}
+{%- if particle.customize_content_color or particle.customize_content_fontsize -%}#{{ id }} blockquote,#{{ id }} blockquote p{ {{ particle.customize_content_color ? 'color:' ~ particle.customize_content_color ~ ';' : '' }}{{ particle.customize_content_fontsize ? 'font-size:' ~ particle.customize_content_fontsize ~ 'px;' : '' }} }{% endif %}
+{%- if particle.author_color or particle.author_fontsize -%}#{{ id }} .tm-author a{ {{ particle.author_color ? 'color:' ~ particle.author_color ~ ';' : '' }}{{ particle.author_fontsize ? 'font-size:' ~ particle.author_fontsize ~ 'px;' : '' }} }{% endif %}
+{%- if particle.footer_color or particle.footer_fontsize -%}#{{ id }} .tm-footer{ {{ particle.footer_color ? 'color:' ~ particle.footer_color ~ ';' : '' }}{{ particle.footer_fontsize ? 'font-size:' ~ particle.footer_fontsize ~ 'px;' : '' }} }{% endif %}
+{%- if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty -%}#{{ id }}-particle .g-container{max-width:{{ particle.bg_container_width|e }};}{% endif %}
+</style>
+{% endblock %}
+
+{% block javascript %}
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{% set dropcap = particle.dropcap ? ' jl-dropcap' %}
+{% set textcolor = particle.text_color != 'default' ? ' jl-text-' ~ particle.text_color|e %}
+{% set text_style = particle.text_style != 'default' ? ' jl-text-' ~ particle.text_style|e %}
+{% set text_size = particle.text_size != 'default' ? ' jl-text-' ~ particle.text_size|e %}
+
+{# Set Link Scroll #}
+{% set linkscroll = particle.link|e matches '/#/' and particle.link_target != '_blank' ? ' jl-scroll' %}
+
+{% set quote_icon_type = particle.quote_icon_type == 'default' ? '<svg width="80" height="80" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.27,7.79 C17.27,9.45 16.97,10.43 15.99,12.02 C14.98,13.64 13,15.23 11.56,15.97 L11.1,15.08 C12.34,14.2 13.14,13.51 14.02,11.82 C14.27,11.34 14.41,10.92 14.49,10.54 C14.3,10.58 14.09,10.6 13.88,10.6 C12.06,10.6 10.59,9.12 10.59,7.3 C10.59,5.48 12.06,4 13.88,4 C15.39,4 16.67,5.02 17.05,6.42 C17.19,6.82 17.27,7.27 17.27,7.79 L17.27,7.79 Z"></path><path d="M8.68,7.79 C8.68,9.45 8.38,10.43 7.4,12.02 C6.39,13.64 4.41,15.23 2.97,15.97 L2.51,15.08 C3.75,14.2 4.55,13.51 5.43,11.82 C5.68,11.34 5.82,10.92 5.9,10.54 C5.71,10.58 5.5,10.6 5.29,10.6 C3.47,10.6 2,9.12 2,7.3 C2,5.48 3.47,4 5.29,4 C6.8,4 8.08,5.02 8.46,6.42 C8.6,6.82 8.68,7.27 8.68,7.79 L8.68,7.79 Z"></path></svg>' : '<svg width="40" height="40" viewBox="0 0 20 20"><polyline fill="none" stroke="#000" points="2 0.5 19.5 0.5 19.5 13"></polyline><path d="M5,19.71 L5,15 L0,15 L0,2 L18,2 L18,15 L9.71,15 L5,19.71 L5,19.71 L5,19.71 Z M1,14 L6,14 L6,17.29 L9.29,14 L17,14 L17,3 L1,3 L1,14 L1,14 L1,14 Z"></path></svg>' %}
+
+{%- set particle_classes = [
+    id,
+    (particle.g_maxwidth != 'inherit' 
+        ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : ''))
+        : ''),
+    (particle.align != 'inherit' 
+        ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') 
+        : ''),
+    (particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : ''),
+    (particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : ''),
+    (particle.margin != 'inherit' 
+        ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') 
+        : ''),
+    (particle.visibility != 'inherit' 
+        ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) 
+        : ''),
+    (particle.dropcap ? 'jl-dropcap' : ''),
+    (particle.text_color != 'default' ? 'jl-text-' ~ particle.text_color|e : ''),
+    (particle.text_style != 'default' ? 'jl-text-' ~ particle.text_style|e : ''),
+    (particle.text_size != 'default' ? 'jl-text-' ~ particle.text_size|e : ''),
+    (particle.class ? particle.class : '')
+] | filter(v => v)|join(' ')|trim -%}
+{% set attr_extra = particle.extra|attribute_array %}
+
+{% block particle %}
+{% if particle.enabled %}
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div id="{{ id }}" class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }} {{- attr_extra|raw }}>
+<blockquote>
+{% if particle.quote_icon and particle.quote_pos == 'top' %}<span class="quote-right jl-icon jl-display-block">{{ quote_icon_type|raw }}</span>{% endif %}
+{{ particle.content|raw }}
+{% if particle.quote_icon and particle.quote_pos == 'default' %}<span class="quote-right jl-icon">{{ quote_icon_type|raw }}</span>{% endif %}
+<footer class="tm-footer">
+{{ particle.author_footer|raw }}
+<cite class="tm-author">{% if particle.link %}<a class="{% if particle.link_style == 'default' %}jl-link{% else %}jl-link-{{particle.link_style}}{% endif %}" target="{{ particle.link_target|default('_stmf')|e }}" href="{{ particle.link|e }}" title="{{ particle.author_footer|e }}"{{ linkscroll }}>{% endif %}{{particle.author|raw}}{% if particle.link %}</a>{% endif %}</cite>
+</footer>
+</blockquote>
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}

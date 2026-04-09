@@ -1,0 +1,31 @@
+#g-extension {
+    color: $extension-text-color;
+    background: $extension-background;
+    @if $extension-background-image {
+        position: relative;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url($extension-background-image);
+        &:before {
+            position: absolute;
+            content: "";
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color: $extension-background, $alpha: 0.75);
+        }
+        .g-grid {
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
+
+@media print {
+    #g-extension {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

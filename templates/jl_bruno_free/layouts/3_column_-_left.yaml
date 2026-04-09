@@ -1,0 +1,176 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/3-col-left.png'
+  name: 3_column_-_left
+  timestamp: 1588006042
+layout:
+  navigation: {  }
+  slideshow: {  }
+  hero: {  }
+  topa: {  }
+  topb: {  }
+  topc: {  }
+  topd: {  }
+  above: {  }
+  /container-main/:
+    -
+      -
+        'sidebar 20': {  }
+      -
+        'aside 20': {  }
+      -
+        'main 60':
+          -
+            - position-breadcrumbs
+          -
+            - system-messages-4990
+          -
+            - position-position-4659
+          -
+            - system-content-6253
+  below: {  }
+  bottoma: {  }
+  bottomb: {  }
+  bottomc: {  }
+  bottomd: {  }
+  extended: {  }
+  footer: {  }
+  copyright: {  }
+  offcanvas: {  }
+structure:
+  navigation:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  slideshow:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  hero:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  topa:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  topb:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  topc:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  topd:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  above:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  sidebar:
+    type: section
+    subtype: aside
+    block:
+      fixed: 1
+  aside:
+    block:
+      fixed: 1
+  container-main:
+    attributes:
+      boxed: ''
+  below:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  bottoma:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  bottomb:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  bottomc:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  bottomd:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  extended:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+  footer:
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  copyright:
+    type: section
+    inherit:
+      outline: default
+      include:
+        - attributes
+        - children
+  offcanvas:
+    inherit:
+      outline: default
+      include:
+        - children
+        - attributes
+content:
+  position-breadcrumbs:
+    attributes:
+      key: breadcrumbs
+  position-position-4659:
+    title: 'Mainbar A'
+    attributes:
+      key: mainbar-a

@@ -1,0 +1,378 @@
+/* Restaurant Manager - Frontend Styles for Joomla 6 */
+
+.rbm-waiter-interface {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.rbm-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.rbm-header h2 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.rbm-header p {
+    margin: 0;
+    color: #666;
+}
+
+/* Tables Section */
+.rbm-tables-section {
+    margin: 30px 0;
+}
+
+.rbm-tables-section h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.rbm-tables-grid-frontend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.rbm-table-btn {
+    background: #fff;
+    border: 3px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rbm-table-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.rbm-table-btn.active {
+    border-color: #667eea;
+    background: #f0f3ff;
+}
+
+.rbm-table-btn.has-orders {
+    border-color: #ffc107;
+    background: #fff9e6;
+}
+
+.rbm-table-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+}
+
+.rbm-table-status-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #28a745;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.rbm-table-btn.has-orders .rbm-table-status-icon {
+    background: #ffc107;
+}
+
+/* Selected Table */
+.rbm-selected-table {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.rbm-selected-table h3 {
+    margin: 0;
+    color: #fff;
+}
+
+/* Order Form */
+.rbm-order-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e5e5;
+}
+
+.rbm-order-form h4 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.rbm-form-row {
+    margin-bottom: 15px;
+}
+
+.rbm-form-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.rbm-form-row input,
+.rbm-form-row select,
+.rbm-form-row textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.rbm-form-row input:focus,
+.rbm-form-row select:focus,
+.rbm-form-row textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.rbm-btn-primary {
+    background: #667eea;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.rbm-btn-primary:hover {
+    background: #5568d3;
+}
+
+.rbm-btn-primary .icon-plus {
+    margin-right: 5px;
+}
+
+/* Current Orders */
+.rbm-current-orders {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+}
+
+.rbm-current-orders h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.rbm-order-item {
+    padding: 15px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+}
+
+.rbm-order-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.rbm-order-item-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.rbm-order-item-price {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.rbm-order-item-details {
+    font-size: 14px;
+    color: #666;
+}
+
+.rbm-order-item-notes {
+    margin-top: 8px;
+    padding: 8px;
+    background: #fff;
+    border-left: 3px solid #667eea;
+    font-size: 13px;
+    color: #666;
+}
+
+.rbm-no-orders {
+    text-align: center;
+    padding: 30px;
+    color: #999;
+    font-style: italic;
+}
+
+/* Messages */
+#rbm-message {
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+#rbm-message.alert-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+#rbm-message.alert-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* Footer */
+.rbm-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.rbm-footer a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.rbm-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .rbm-waiter-interface {
+        padding: 10px;
+    }
+    
+    .rbm-tables-grid-frontend {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 10px;
+    }
+    
+    .rbm-table-btn {
+        padding: 15px;
+        min-height: 80px;
+    }
+    
+    .rbm-table-number {
+        font-size: 24px;
+    }
+    
+    .rbm-order-form,
+    .rbm-current-orders {
+        padding: 15px;
+    }
+}
+
+/* Order item actions */
+.rbm-order-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rbm-order-item-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.rbm-delete-order-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+    background: #ef4444;
+    color: white;
+}
+
+.rbm-delete-order-btn:hover {
+    background: #dc2626;
+}
+
+.rbm-sent-badge {
+    background: #10b981;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.rbm-order-quantity-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Waiter clock */
+.rbm-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.rbm-header-clock {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.8em;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+    color: #1e40af;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.rbm-clock-icon {
+    font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+    .rbm-header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .rbm-header-clock {
+        font-size: 1.4em;
+    }
+}

@@ -1,0 +1,77 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% block stylesheets %}
+{% if particle.type == 'bar' %}
+<style>.jl-position-z-index {z-index: 9;}</style>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url('gantry-theme://js/jlcomponents/notification.min.js') }}"></script>
+{% do gantry.document.addScript(url('gantry-theme://js/js.cookie.min.js')) %}
+{% endblock %}
+
+{% block particle %}
+{% set is_bar = particle.type == 'bar' %}
+
+{% if is_bar %}
+<div id="{{ id }}" class="jl-section jl-section-xsmall jl-section-{{ particle.bar_style }}{% if particle.bar_position != 'top' %} jl-position-{{ particle.bar_position|e }} jl-position-fixed{% endif %} jl-position-z-index hidden">
+    <div class="jl-container jl-container-expand jl-text-center{{ particle.bar_style in ['default', 'muted'] ? ' jl-text-emphasis' : ' jl-light' }}">
+        {{ particle.message|raw }}
+
+        {% set is_icon = particle.button_styles == 'icon' %}
+        <button id="el-accept" type="button" class="{{ is_icon ? 'jl-close jl-position-center-right jl-position-medium jl-icon' : 'jl-button jl-button-' ~ particle.button_styles ~ ' jl-margin-small-left' }}" data-jl-{{ is_icon ? 'close ' : '' }}data-jl-toggle="target: !.jl-section; animation: true">
+            {% if not is_icon %}{{ particle.button|default('Ok')|raw }}{% endif %}
+        </button>
+        
+        {% if particle.reject_button %}
+        <button id="el-reject" type="button" class="jl-button jl-button-default jl-margin-small-left" data-jl-toggle="target: !.jl-section; animation: true">
+            {{ particle.reject_button|raw }}
+        </button>
+        {% endif %}
+    </div>
+</div>
+{% else %}
+<div id="{{ id }}" class="jl-notification jl-notification-{{ particle.position|e }} hidden">
+    <div class="jl-notification-message{% if particle.style != 'default' %} jl-notification-message-{{particle.style}}{% endif %} jl-panel">
+        {{ particle.message|raw }}
+
+        <p class="jl-margin-small-top">
+            {% set is_icon = particle.button_styles == 'icon' %}
+            <button id="el-accept" type="button" class="{{ is_icon ? 'jl-notification-close jl-close jl-icon' : 'jl-button jl-button-' ~ particle.button_styles }}" data-jl-{{ is_icon ? 'close ' : '' }}data-jl-toggle="target: !.jl-notification; animation: jl-animation-fade">
+                {% if not is_icon %}{{ particle.button|default('Ok')|raw }}{% endif %}
+            </button>
+            
+            {% if particle.reject_button %}
+            <button id="el-reject" type="button" class="jl-button jl-button-default{{ is_icon ? '' : ' jl-margin-small-left' }}" data-jl-toggle="target: !.jl-notification; animation: jl-animation-fade">
+                {{ particle.reject_button|raw }}
+            </button>
+            {% endif %}
+        </p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block javascript_footer %}
+<script>
+document.getElementById('{{ id }}-particle').classList.add('nomarginall', 'nopaddingall');
+const cookieBox = document.getElementById('{{ id }}');
+const cookieButton = document.getElementById('el-accept');
+const cookierejectButton = document.getElementById('el-reject');
+
+if (!Cookies.get('{{ id }}_cookieAllowed')) {
+cookieBox.classList.remove('hidden'); 
+  cookieButton.onclick = function() {
+    Cookies.set('{{ id }}_cookieAllowed', true, { expires: {{ particle.expires | e |default('365') }} }); // cookie will expire in 365 days
+    cookieBox.classList.add('hidden');
+  } 
+  {% if particle.reject_button %}
+    cookierejectButton.onclick = function() {
+    Cookies.set('{{ id }}_cookieAllowed', false, { expires: {{ particle.expires | e |default('365') }} }); // cookie will expire in 365 days
+    cookieBox.classList.add('hidden');
+  }
+  {% endif %}
+}
+</script>
+{% endblock %}

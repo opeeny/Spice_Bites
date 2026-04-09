@@ -1,0 +1,60 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% import '@particles/macros_helper.html.twig' as Macros %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ url('gantry-theme://css/juxtapose.min.css') }}" type="text/css"/>
+<style>{% if particle.particle_title_color or particle.particle_title_fontsize %}#el-{{ id }}.g5-title{ {% if particle.particle_title_color %}color:{{ particle.particle_title_color }};{% endif %}{% if particle.particle_title_fontsize %}font-size:{{ particle.particle_title_fontsize }}px;{% endif %} }{% endif %}{% if particle.control_backgroundcolor %}#{{ id }} .jx-slider{color:{{ particle.control_backgroundcolor }};} {% endif %}{% if particle.label_backgroundcolor or particle.label_color %}#{{ id }} .jx-image div.jx-label{ {% if particle.label_backgroundcolor %}background-color:{{ particle.label_backgroundcolor }};{% endif %}{% if particle.label_color %}color:{{ particle.label_color }};{% endif %} }{% endif %}.jx-label{top:50%!important;}.jx-slider{z-index:1;}{% if particle.parallax_image and particle.container_maxwidth == 'custom' and particle.bg_container_width is not empty %}#{{ id }}-particle .g-container{max-width:{{ particle.bg_container_width|e }};} {% endif %}</style>
+{% endblock %}
+
+{% block javascript %}
+{% if (particle.animation == 'parallax' or particle.bg_image_effect == 'parallax') %}
+    <script src="{{ url('gantry-theme://js/jlcomponents/parallax.min.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{% set particle_classes = [
+    id,
+    particle.g_maxwidth != 'inherit' ? 'jl-width-' ~ particle.g_maxwidth ~ (particle.g_maxwidth_breakpoint != 'always' ? '@' ~ particle.g_maxwidth_breakpoint : '') ~ (particle.g_maxwidth_alignment == 'center' ? ' jl-margin-auto' : (particle.g_maxwidth_alignment == 'right' ? ' jl-margin-auto-left' : '')) : '',
+    particle.align != 'inherit' ? 'jl-text-' ~ particle.align ~ (particle.breakpoint != 'always' ? '@' ~ particle.breakpoint ~ (particle.fallback != 'inherit' ? ' jl-text-' ~ particle.fallback : '') : '') : '',
+    particle.animation == 'parallax' and particle.pa_z_index ? 'jl-position-z-index jl-position-relative' : '',
+    particle.animation == 'parallax' and particle.parallax_transform_origin != 'center-center' ? 'jl-transform-origin-' ~ particle.parallax_transform_origin : '',
+    particle.margin != 'inherit' ? (particle.margin != 'default' ? 'jl-margin-' ~ particle.margin : 'jl-margin') : '',
+    particle.visibility != 'inherit' ? (particle.visibility in ['s', 'm', 'l', 'xl'] ? 'jl-visible@' ~ particle.visibility : 'jl-' ~ particle.visibility|replace({'-': '@'})) : '',
+    particle.class|default('')
+] | filter(v => v)|join(' ')|trim %}
+
+{% set attr_extra = particle.extra|attribute_array %}
+{% block particle %}
+{% if particle.enabled %}
+{{- Macros.parallax_open(particle, id)|raw }}
+{{ Macros.particle_title_style(particle, id)|raw }}
+<div id="{{ id }}" class="{{ particle_classes }}"{{ Macros.animation_render(particle)|raw }} {{- attr_extra|raw }}>
+</div>
+{{- Macros.parallax_close(particle)|raw }}
+{% endif %}
+{% endblock %}
+
+{% block javascript_footer %}
+  <script type="text/javascript" src="{{ url('gantry-theme://js/juxtapose.min.js') }}"></script>
+  <script>
+  var slider = new juxtapose.JXSlider('#{{ id }}',
+  [
+    {
+      src: '{{url(particle.image1)|e}}',
+      label: '{{particle.label1|e}}',
+    },
+    {
+      src: '{{url(particle.image2)|e}}',
+      label: '{{particle.label2|e}}',
+    }
+  ],
+  {
+    animate: true,
+    showLabels: true,
+    showCredits: false,
+    startingPosition: "50%",
+    makeResponsive: true,
+    mode:"{{particle.mode == "1" ? "vertical" : "horizontal"}}"
+  });
+  </script>
+{% endblock %}

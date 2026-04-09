@@ -1,0 +1,81 @@
+{% set tag_type = segment.subtype|default('section') %}
+{% set attr_id = segment.attributes.id ?: 'g-' ~ segment.id %}
+{% set attr_class = segment.attributes.class
+~ (segment.attributes.variations ? ' ' ~ segment.attributes.variations|join(' ')) %}
+
+
+{% set attr_background = segment.attributes.background %}
+{% set attr_background_position = segment.attributes.background_position %}
+{% set attr_background_image_size = segment.attributes.background_image_size %}
+{% set attr_background_image_visibility = segment.attributes.background_image_visibility %}
+{% set attr_background_color = segment.attributes.background_color %}
+{% set attr_background_blendmode = segment.attributes.background_blendmode %}
+{% set attr_background_effect = segment.attributes.background_effect %}
+{% set attr_horizontal_start = segment.attributes.horizontal_start %}
+{% set attr_horizontal_end = segment.attributes.horizontal_end %}
+{% set attr_vertical_start = segment.attributes.vertical_start %}
+{% set attr_vertical_end = segment.attributes.vertical_end %}
+{% set attr_parallax_bg_breakpoint = segment.attributes.parallax_bg_breakpoint %}
+
+{% set attr_background_overlay = segment.attributes.background_overlay %}
+
+{# set Viewport Height #}
+{% set section_parallax_background %}
+{% if attr_horizontal_start or attr_horizontal_end or attr_vertical_start or attr_vertical_end %} jl-parallax="{% if attr_horizontal_start or attr_horizontal_end %}bgx: {{ attr_horizontal_start|e }},{{ attr_horizontal_end|e }};{% endif %}{% if attr_vertical_start or attr_vertical_end %}bgy: {{ attr_vertical_start|e }},{{ attr_vertical_end|e }};{% endif %}{% if attr_parallax_bg_breakpoint != 'always' %} media: @{{ attr_parallax_bg_breakpoint|e }}{% endif %}"{% endif %}
+{% endset %}
+
+
+{# set Background color #}
+{% set background_color %}
+{% if attr_background_color %} style="background-color: {{attr_background_color}};"{% endif %}
+{% endset %}
+
+{% set attr_extra = segment.attributes.extra|attribute_array %}
+{% set boxed = segment.attributes.boxed %}
+{% if boxed is not null %}
+{% set boxed = boxed|trim == '' ? gantry.config.page.body.layout.sections : boxed %}
+{% endif %}
+
+{%- set html %}
+{% if segment.children %}
+{% for segment in segments %}
+{% include '@nucleus/layout/' ~ segment.type ~ '.html.twig' with { 'segments':segment.children } %}
+{% endfor %}
+{% endif %}
+{% endset %}
+
+{%- if segment.attributes.sticky or html|trim %}
+{%- if boxed is not null and (boxed == 0 or boxed == 2) %}
+{% set html %}
+{% if attr_background_overlay %}<div class="g-container jl-position-relative">{{ html|raw }}</div>{% else %}<div class="g-container">{{ html|raw }}</div>{% endif %}
+{% endset %}
+{% endif %}
+
+{% set html %}
+{% if boxed == 2 %}{% set attr_class = attr_class ~ ' g-flushed' %}{% endif %}
+{% set attr_class_bg = attr_class ? '' ~ attr_class|trim ~ ' ' -%}
+{% set attr_class = attr_class ? ' class="' ~ attr_class|trim ~ '"' -%}
+
+
+{% if attr_background %}
+<{{ tag_type }} id="{{ attr_id }}" class="{%- if boxed == 1 or boxed == 3 %}bg-overlay {% endif %}{% if attr_background_overlay %}jl-position-relative{% endif %}" {{- attr_extra|raw }}>
+<div class="{{ attr_class_bg|raw }}jl-background-norepeat jl-background-{{attr_background_position}}{% if attr_background_image_size != 'auto' %} jl-background-{{attr_background_image_size|e}}{% endif %}{% if attr_background_effect == 'fixed' %} jl-background-fixed{% endif %}{% if attr_background_image_visibility != 'always' %} jl-background-image@{{attr_background_image_visibility|e}}{% endif %}{% if attr_background_blendmode != 'inherit' %} jl-background-blend-{{attr_background_blendmode|e}}{% endif %}"{{background_color}} data-src="{{ url(attr_background) }}" jl-img{% if attr_background_effect == 'parallax' %}{{section_parallax_background}}{% endif %}>
+{% if attr_background_overlay %}<div class="jl-position-cover" style="background-color: {{attr_background_overlay}};"></div>{% endif %}
+{% else %}
+<{{ tag_type }} id="{{ attr_id }}" {{ attr_class|raw }} {{- attr_extra|raw }}>
+{% endif %}
+
+{{ html|raw }}
+
+{% if attr_background %}</div></{{ tag_type }}>
+{% else %}
+</{{ tag_type }}>
+{% endif %}
+{%- endset %}
+
+{%- if boxed == 1 %}
+<div class="g-container">{{ html|raw }}</div>
+{% else %}
+{{ html|raw }}
+{% endif %}
+{% endif %}

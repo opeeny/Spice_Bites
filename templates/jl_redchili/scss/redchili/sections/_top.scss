@@ -1,0 +1,33 @@
+#g-top {
+    color: $top-text-color;
+    background: $top-background;
+    font-size: $core-font-size - 0.05rem;
+    a:not(.jl-button) {
+        &.jl-icon-button {
+            background: #fff;
+            color: #061526;
+            border-radius: 2px;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            &:hover,
+            &:focus,
+            &:active {
+                color: darken($color: $accent-color-1, $amount: 20);
+            }
+        }
+        color: $top-text-color;
+        &:hover,
+        &:focus,
+        &:active {
+            color: darken($top-text-color, 10%);
+        }
+    }
+}
+
+@media print {
+    #g-top {
+        background: #fff !important;
+        color: #000 !important;
+    }
+}

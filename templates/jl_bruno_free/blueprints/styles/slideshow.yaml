@@ -1,0 +1,15 @@
+name: Slideshow Section
+description: Customizing style for Slideshow section
+type: section
+
+form:
+  fields:
+
+    background:
+      type: input.colorpicker
+      label: Background Color
+      default: "rgba(255,255,255, 0)"
+    text-color:
+      type: input.colorpicker
+      label: Text Color
+      default: "#030303"
